@@ -5,7 +5,7 @@ import MarkdownIt from "markdown-it";
 const cwd = process.cwd();
 const outputRoot = process.env.OUTPUT_DIR
   ? path.resolve(process.env.OUTPUT_DIR)
-  : path.resolve(cwd, "output");
+  : path.resolve(cwd, "docs");
 const contentRoot = path.resolve(cwd, "content/blog");
 const blogRoot = path.join(outputRoot, "blog");
 const md = new MarkdownIt({ html: true, linkify: true, typographer: true });

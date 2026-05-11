@@ -7,7 +7,7 @@ const sourceRoot =
   process.argv[2] ||
   "/Users/arian/Documents/iPage_Files/phasereditor3";
 const source = path.resolve(sourceRoot);
-const outputDir = path.resolve(cwd, "output");
+const outputDir = path.resolve(cwd, "docs");
 const target = outputDir;
 
 const routeEntryFiles = [

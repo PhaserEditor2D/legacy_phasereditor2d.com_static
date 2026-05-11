@@ -9,11 +9,11 @@ Static website migrated from `phasereditor3`.
   - Renders PHP route pages to static HTML
   - Copies blog markdown content into `content/blog`
   - Generates static blog pages from markdown using JavaScript
-  - Writes the generated website into `output/`
+  - Writes the generated website into `docs/`
 
 - `npm run build:blog`
   - Rebuilds only the static `/blog` pages from `content/blog`
-  - Writes blog output into `output/blog`
+  - Writes blog output into `docs/blog`
   - Use this when you add or edit blog markdown files.
 
 ## Blog Content
