@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rayo | Phaser Editor 2D Blog</title>
+  <meta name="description" content="A lightweight text editor made to code HTML5 Games with the Phaser framework.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);"><h1>Rayo</h1><div class="lead"><p>Rayo is a lightweight text editor to develop HTML5 games using the Phaser framework.</p>
+<p><a href="http://phasereditor.boniatillo.com/files/Rayo-0.0.9.preview.zip">Download Rayo-0.0.9-preview.zip</a></p>
+<p>However its simplicity and short live, Rayo provides nice and out of the box  features that we are pretty sure many of you will love:</p>
+<ul>
+<li>An accurate JavaScript type inference engine (<a href="http://ternjs.net">ternjs</a> via <a href="https://github.com/angelozerr/tern.java">tern.java</a>) optimized for Phaser API.</li>
+<li>JavaScript editor with auto-completion and JSDoc popups and windows (<a href="https://github.com/bobbylight/RSyntaxTextArea">RSyntaxTextArea</a>).</li>
+<li>Supports operations on JavaScript editors like: symbol rename, go to definition and quick outline.</li>
+<li>JavaScript code analyzer (<a href="http://eslint.org/">ESLint</a>)</li>
+<li>Source code <a href="http://jsbeautifier.org">beautifier</a>.</li>
+<li>File templates for Phaser concepts (custom sprite, group, state, etc…).</li>
+<li>Advanced Phaser documentation search tool (with the <a href="http://phaserchains.boniatillo.com">Chains</a> style)</li>
+<li>Integrated HTTP server to run your project quickly.</li>
+</ul>
+<p>What about Phaser Editor? It is our flagship product, actually we developed Rayo to test ternjs, tern.java and other nodejs based libs, before to include them in Phaser Editor.</p>
+<h2>Installation</h2>
+<p>Rayo is a Java program, so you need to install Java in your OS to run it. In addition, Rayo uses other JavaScript libs that are executed with nodejs, so you need to install nodejs too:</p>
+<ul>
+<li>Install <a href="https://www.java.com/en/download/manual.jsp">Java 8</a> (the 64 bits version is recommended)</li>
+<li>Install <a href="https://nodejs.org">nodejs</a>, be sure the <code>node</code> program is on the system path.</li>
+</ul>
+<p>To execute Rayo click on the <code>rayo.jar</code> file. On Windows machines it works, in other platforms if it does not work, open a terminal and type:</p>
+<pre><code>$ java -jar rayo.jar
+</code></pre>
+<h2>Create your first project</h2>
+<p>The first time you open Rayo the project explorer is empty, there is only a button to open a folder. To create a project, click on that button, it opens a dialog to choose  a folder. Then select the folder of your project  -you can create a new one-.</p>
+<p><img src="http://phasereditor.boniatillo.com/blog/content/images/20160114103856-OpenProjectFolder.png" alt="Open the project folder"></p>
+<h2>Configure the project</h2>
+<p><strong>Configure Tern server</strong></p>
+<p>Rayo uses a <a href="http://ternjs.net">tern</a> server for JavaScript type inference. This server is configured via a the <a href="http://ternjs.net/doc/manual.html#configuration">tern project</a>. It is a file <code>.tern-project</code> that Rayo generates automatically, however, probably it is something you want to configure later to include other JavaScript libs in the type inference engine.</p>
+<p><strong>Configure file exclusion</strong></p>
+<p>By default Rayo parses all JavaScript files under 100KB of size. However, it is possible you want to exclude other files like minified files that you are not interested in, like is the case of the Phaser build files.</p>
+<p>To get control of what files are processed by the inference engine, you can create a <code>.rayo-exclusion</code> file. This file has a very simple format, in each line you write a regular expression, if the name of a file in the same directory or a sub-directory matches any regilar expression, then it is excluded from the inference engine. For example, if you want to exclude all minified files, the <code>.rayo-exclude</code> file could be:</p>
+<pre><code># excluding all minified files
+*.min.js
+</code></pre>
+<p>Note the lines that start with <code>#</code> are not processed, they are comments.</p>
+<p>In Rayo we provide a way to create this file to exclude all Phaser minified libs, so it is a good configuration to start. Just right click on the Project panel (it opens a popup menu) and find in the <code>Others</code> menu the exclusion template:</p>
+<p><img src="http://phasereditor.boniatillo.com/blog/content/images/20160114104103-Templates.png" alt="Templates menu"></p>
+<p>After change any exclusion rule, you should refresh the project panel to get a feedback of the excluded files. You can know what files are exluceded because they are of a lighter color:</p>
+<p><img src="http://phasereditor.boniatillo.com/blog/content/images/20160114103808-ExcludeFiles.png" alt="Exclude files"></p>
+<p>A simple way to exclude files is to exclude a whole file tree. For example, if you want to exclude all the files of the <code>lib</code> folder, then create a <code>.rayo-exclude</code> file inside <code>lib</code> and write a single rule:</p>
+<pre><code># exclude all in this folder and sub-folders
+*
+</code></pre>
+<p><strong>Configure the linter</strong></p>
+<p>In Rayo we use a linter (<a href="http://eslint.org/">ESLint</a>) to find JavaScript errors and potential problems. This tool is called by the Tern server and can be configured in two ways: in the <code>.tern-project</code> or in an external <code>.eslist.json</code> file.</p>
+<p>If you open the <code>.tern-project</code> generated by Rayo, you will find the <code>&quot;eslint&quot;</code> section, you can modify the <code>&quot;config&quot;</code> section and set the linter parameters.</p>
+<p>If you prefer to use an external file, then delete the <code>&quot;config&quot;</code> section and put a new parameter:</p>
+<pre><code>&quot;configFile&quot;: &quot;.eslintrc.json&quot;
+</code></pre>
+<p>The value is the name of the file, you can use whatever name you like, however, in Rayo you can create a default <code>.eslintrc.json</code> file, just open the Project menu (right click) and go to <code>New &gt; Others &gt; .eslintrc.json</code></p>
+<p>Important, when you change a parameter in the Tern project file or the linter file, to get make it effective you should reload the project, by pressing <code>SHIFT+F5</code> or via the project button, it opens a menu with the option of reload the project. It restarts the Tern server.</p>
+<p><img src="http://phasereditor.boniatillo.com/blog/content/images/20160114103956-ReloadProject.png" alt="Reload the project"></p>
+<h2>File templates</h2>
+<p>Rayo provides few file templates to start coding Phaser games. You find them in the Project panel context menu (right click), in the <code>New...</code> menu are listed the different templates:</p>
+<ul>
+<li>A <code>Main.js</code> with the code to create the <code>Phaser.Game</code> and register common states.</li>
+<li>A <code>State.js</code> with the code of a custom <code>Phaser.State</code>.</li>
+<li>A <code>Group.js</code> and <code>Sprite.js</code> to create a custom <code>Phaser.Group</code> and <code>Phaser.Sprite</code> respectively.</li>
+<li>And other templates you can check yourself.</li>
+</ul>
+<p>You can write your own templates by adding files to the <code>templates</code> folder that is placed in the same folder of the <code>rayo.jar</code> file. Note the templates are grouped in folders like <code>group_0</code>, <code>group_1</code>, etc… We use that layout to add separators between the templates in the Project context menu.</p>
+<p>Feel free to add your own templates or modify those provided by Rayo.</p>
+<h2>Import files</h2>
+<p>To copy external files to your project, like assets or libs, right click on the destiny location and select the <code>Import files...</code> item. It opens a file dialog to select the files you want to add to your project. You can add many files at the same time.</p>
+<h2>The JavaScript editor</h2>
+<p>The JavaScript editor is the main feature of Rayo, actually we developed Rayo as an experiment to test the Tern and tern.java projects, looking forward to include it in our flagship product: Phaser Editor.</p>
+<p><strong>Smart auto completion</strong></p>
+<p>You will notice auto completion as soon as you start typing. It is enabled by default and it works very good (thanks ternjs and tern.java!) for regular sized files. If your file is too big, you can disable the COL (completion on letters) and enable it just for when you type a dot (<code>.</code>). To change the COL, look below the editor in the right corner:</p>
+<p><img src="http://phasereditor.boniatillo.com/blog/content/images/20160114103759-CompletionOnLetters.png" alt="Completion on letters"></p>
+<p>Our editor is based on <a href="https://github.com/bobbylight/RSyntaxTextArea">RSyntaxText</a>, a great third-party component that provides a foundation for syntax highlighting, auto-completion, jsdoc hints and others…</p>
+<p>So you will get all of this on Rayo:</p>
+<p><strong>Symbol completions</strong></p>
+<p><img src="http://phasereditor.boniatillo.com/blog/content/images/20160114103845-MethodsCompletion.png" alt="Members completions"></p>
+<p><strong>Parameters completions</strong></p>
+<p><img src="http://phasereditor.boniatillo.com/blog/content/images/20160114103927-ParamsCompletions.png" alt="Parameters completions"></p>
+<p><strong>JSDoc popup</strong></p>
+<p><img src="http://phasereditor.boniatillo.com/blog/content/images/20160114103819-JSDocHover.png" alt="JSDoc hover"></p>
+<p><strong>Symbol rename</strong></p>
+<p>Ternjs supports symbol renames and we include it on Rayo. With the <code>ALT+SHIFT+R</code> a rename dialog is open, the user enter the new name and all the symbol references are updated even if they are in different files:</p>
+<p><img src="http://phasereditor.boniatillo.com/blog/content/images/20160114104008-Rename.png" alt="Symbol rename"></p>
+<p><strong>Go to definition</strong></p>
+<p>To go to the deifnition of a symbol, put the cursor on it and press <code>F3</code>.</p>
+<p><strong>Code formatting</strong></p>
+<p>The JavaScript, HTML and CSS editors supports code formatting (by pressing <code>CTRL+SHIFT+F</code>), via
+<a href="http://jsbeautifier.org">jsbeautifier</a>. It is yet an experimental feature but we think the current state deserves to be included in the public releases. Well… the whole Rayo is an experiment :-)</p>
+<p><strong>Quick outline</strong></p>
+<p>To have a quick outline and search for definitions type <code>CTRL+O</code>. It opens a popup with the outline of the file, you can search for declarations and click on them to go to it’s line.</p>
+<p><img src="http://phasereditor.boniatillo.com/blog/content/images/20160114103909-Outline.png" alt="Outline"></p>
+<h2>The Problems panel</h2>
+<p>Rayo uses <a href="http://eslint.org/">ESLint</a> as JavaScript linter. The result of this tool is shown in the Problem panel. If you click on a problem it opens the correspondant file and scroll to the problem’s line.</p>
+<p>In a previous section we covered how to configure the linter. By default it defines “Phaser” as a global variable.</p>
+<p>In addition you can change the linter configuration per file, with comments in the first lines. In this example the rule <code>no-unused-vars</code> is configured with an error level, and the rule <code>no-else-return</code> with a warning level:</p>
+<p><img src="http://phasereditor.boniatillo.com/blog/content/images/20160114103935-ProblemsPanel.png" alt="Problems panel"></p>
+<p>Note the problems are shown together with the rule applied to find it, so it is easier for you to configure the linter as you like.</p>
+<p>In future versions of Rayo a “quick fix” option will be added, since it is already supported by ESLint.</p>
+<h2>Documentation search: Chains</h2>
+<p>Chains is a panel to search the Phaser API documentation. It has the same concept of the <a href="http://phaserchains.boniatillo.com">online tool</a> and the <a href="http://phasereditor.boniatillo.com/blog/quick-start/035-chains">one bundled in Phaser Editor</a>.</p>
+<p>The main different of the Rayo version of Chains, is that we show the API members together with the Phaser examples  lines (listed at the end):</p>
+<p><img src="http://phasereditor.boniatillo.com/blog/content/images/20160114103733-Chains.png" alt="Chains"></p>
+<p>By clicking on a row it opens the API member in the JSDoc panel or the Phaser example in the OS default web browser.</p>
+<h2>Built-in HTTP server</h2>
+<p>Many features of a game needs to be run on a local HTTP server, like WebGL. In Rayo we provide a built-in server that you can launch by pressing <code>F9</code>. You will find that options in the File menu or the project panel context menu, with the name of Open In Web Browser. When this command is executed, the local HTTP server is started and the default browser is launched to open the url of your game.</p>
+</div></article>
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

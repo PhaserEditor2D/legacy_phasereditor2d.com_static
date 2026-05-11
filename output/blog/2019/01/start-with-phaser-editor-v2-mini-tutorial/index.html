@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Start with Phaser Editor v2 mini-tutorial | Phaser Editor 2D Blog</title>
+  <meta name="description" content="A mini-tutorial about to start a project with Phaser Editor v2.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Start with Phaser Editor v2 mini-tutorial</h1>
+        <p class="text-info">January 10, 2019 - Posted in <a href="/blog/category/tutorials">tutorials</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20190110135234-portada.png" alt="Start with Phaser Editor v2 mini-tutorial"></p>
+        <div class="lead"><p>Hi,</p>
+<p>This is a small guide you can follow to start a game with the just-released Phaser Editor v2 and Phaser v3.</p>
+<p><a href="https://youtu.be/H9vWkRBiTTs">Watch all the steps in this video</a></p>
+<h2>Download and run the editor</h2>
+<p>The binaries are available on the download page of the Phaser Editor website:</p>
+<p><a href="https://phasereditor2d.com/blog/downloads">Go to Downloads</a></p>
+<p>Be careful, because there are two versions there, <code>v1.5.3</code> and <code>v2.0.0</code>. This tutorial is about <code>v2.0.0</code>. There are binaries for Windows, macOS, and Linux, pick the one of your platform.</p>
+<p>Next to the binaries is an MD5 checksum file, that you can use to validate the integrity of the ZIP file.</p>
+<p>What you download is a ZIP file with the binaries of the editor. It does not require any installation, just unzip it in a folder where you have to write permissions.</p>
+<h3>Windows considerations</h3>
+<p>Phaser Editor v2 uses the Language Server Protocol of VSCode for HTML related files editing. This server is implemented in nodejs, and contains a lot of JavaScript files and node modules that, when you uncompress the ZIP, may create errors of the type “the file name is too long”. For that reason, we strongly recommend extracting the zip file to a folder with a short path, something like <code>D:\TestPhaserEditor</code>.</p>
+<p>To execute the editor, click the <code>PhaserEditor2D.exe</code> file.</p>
+<h3>macOS considerations</h3>
+<p>Phaser Editor is packed as a macOS app (a folder with the name <code>PhaserEditor2D.app</code>). It is displayed in Finder as an application and not a folder, with the name <code>PhaserEditor2D</code>. To run the editor, just double click on that application.</p>
+<p>Maybe the system shows you a security warning because the application is not downloaded from the Apple Store. To force execute the editor, right click on the <code>PhaserEditor2D</code> application and select the option <code>Open</code>, the security warning will be shown again but with the option of continue with the execution.</p>
+<p>The first window that shows Phaser Editor is the Workspace selector. By default, macOS shows a path inside the application folder (<code>PhaserEditor2D.app/Contents/Eclipse/workspace</code>), but you can change it to any other place outside the application.</p>
+<p>When we build the binaries we set the execution permissions to the files, but if it fails, you can run the script <code>SetExecPermissions.sh</code> in a terminal.</p>
+<h3>Linux considerations</h3>
+<p>In Linux, just uncompress the ZIP and run the <code>PhaserEditor2D</code> file. If you have any problem with execution permissions, just run the script <code>SetExecPermissions.sh</code> in a terminal.</p>
+<h3>Debug</h3>
+<p>If you find glitches and want to give us a better report, you can execute the editor in debug mode. In Windows, double click on the <code>Debug.bat</code> file. In macOS and Linux open a terminal and run <code>Debug.sh</code>.</p>
+<h2>Select the workspace</h2>
+<p>When you run the editor it shows the launcher window. In the launcher, you must select the path of the workspace. A workspace is a folder where you are going to store the projects and metadata like preferences. You can have as many workspaces as you like, and as many projects into a workspace as you like too. If the workspace folder does not exist it is created.</p>
+<p><img src="/blog/content/images/Launcher__20190110.png" alt="Launcher"></p>
+<h2>Create a project</h2>
+<p>When the editor opens a new workspace it shows no project. To start a game you have to create a project. There are two different wizards to create a project: the Phaser Project and the Phaser Example Project.</p>
+<p><img src="/blog/content/images/NewPhaserProjectMenu__20190110.png" alt="New Phaser Project menu"></p>
+<h3>The Phaser Example Project</h3>
+<p>If you like to see what the editor can do, you can start by creating a project with the content of an example. There are two types of examples, Phaser Editor Examples, and Official Phaser Examples.</p>
+<p>The Phaser Editor Examples are project templates that contain an example made (or adapted) by the Phaser Editor team. It is a quick way to go into the editor features since those examples are created with the different editors of the IDE.</p>
+<p>The Official Phaser Examples, as the name says, are the Phaser examples developed by the Phaser team (and community), but wrapped in a Phaser Editor project. These templates are great to learn Phaser, to try the different Phaser features. You can start with any of that templates and then create new Phaser Editor files, like scenes, animations, atlas, etc…</p>
+<p><img src="/blog/content/images/PhaserExampleProjectWizard__20190110.png" alt="Phaser Example project wizard"></p>
+<h3>The Phaser Project</h3>
+<p>Example projects are fine to learn and see what’s inside the IDE, but to create your games probably the best is to create an “empty” project. In this tutorial, we are going to use this wizard, that you can launch, as we said, from the <code>File</code> menu or the Assets window.</p>
+<p><img src="/blog/content/images/PhaserProjectWizard__20190110.png" alt="Phaser project wizard"></p>
+<p>Each project template has a main file that is opened when you create the project. Usually, that main file is a scene file. If this case, it opens the <code>Level.scene</code> file.</p>
+<p>This is the initial layout:</p>
+<p><img src="/blog/content/images/InitialLayout__20190110.png" alt="Initial layout"></p>
+<p>That layout corresponds to the Phaser perspective. A perspective contains a set of views with a certain layout. You can switch to a different perspective, like Phaser Labs and Git, listed in the Perspective bar.</p>
+<p>You can drag the views and editors to different places, to change the default layout, and save it to a new perspective. You can reset a perspective too, to the initial layout.</p>
+<h2>Add an image to the scene</h2>
+<p>In Phaser Editor, the workflow to add an image to a scene is pretty similar to the workflow you follow when you code the scene manually. The images should be imported into the project. You have to write in the <code>preload</code> method an instruction to load the image file and assign a key. Then, in the <code>create</code> method you write the code to create the image object, using the same key of the preload method.</p>
+<p>In Phaser Editor you import the image file in the project, add it to the asset pack, and add the image key to the scene. In future versions, we should provide alternative paths to simplify or automate this workflow.</p>
+<p>Let’s see step by step how we recommend to do it in Phaser Editor.</p>
+<h3>Step 1: Import the image into the project</h3>
+<p>To import an image into the project, just copy it in your OS and paste it inside any sub-folder inside the <code>WebContent/assets</code> folder of your project. The Project Explorer view shows all the folders and files of your project, it is like the Windows Explorer of the editor, use it to paste or drop the external images (or any other file).</p>
+<p><img src="/blog/content/images/ImportImageFile__20190110.png" alt="Import image files"></p>
+<p>In case you drop a file, the editor asks for the way you want to import the files, by creating a new copy or just create a link. For now, just keep the default option.</p>
+<h3>Step 2: Add the image to the Asset Pack</h3>
+<p>Phaser Editor uses the standard Phaser Asset Pack format to pack the assets. This Asset Pack is just a JSON file that contains the properties of the assets, like type (image, atlas, animations), frame size, normal map texture, etc… The objects you can create in the scene editor (Image, Sprite, TileSprite) uses the keys defined in an Asset Pack, it does not link to files, else to Asset Pack keys, just like you do when you code a scene manually.</p>
+<p>To the image file to the pack, open the <code>pack.json</code> file. You can find that file in the Project Explorer view, in the <code>WebContent/assets</code> folder, or in the Assets view, the Pack Files section. Just double click the file to open it in the Asset Pack editor.</p>
+<p><img src="/blog/content/images/OpenAssetPackEditor__20190110.png" alt="Open Asset Pack editor"></p>
+<p>In the Pack, the assets are grouped in sections. To add a new asset, click on the “plus” icon of the section. Alternatively, you can click the “plus” icon of an asset type, to add more files of the same time, but in this example, there is not any previous image, so we should click on the icon of the section. When you click the section “plus”, it shows a menu with all the type of assets you can add: select the Image type.</p>
+<p><img src="/blog/content/images/PackAddImageMenu__20190110.png" alt="Add image to pack"></p>
+<p>It opens the Image Dialog, where you can select the image file you can add. Select <code>sky__20190110.png</code>.</p>
+<p><img src="/blog/content/images/PackAddImageDialog__20190110.png" alt="Add image to pack"></p>
+<p>It adds the new <code>sky</code> key in the <code>section1</code> section of the <code>pack.json</code> Asset Pack.</p>
+<p><img src="/blog/content/images/PackImageEntry__20190110.png" alt="Add image to pack"></p>
+<h3>Step 3: Add the image key “sky” to the scene</h3>
+<p>The Assets view shows the keys of all the packs of the project. Open the <code>Level.scene</code> file, select the <code>sky</code> image in the Assets view and drop it into the scene.</p>
+<p><img src="/blog/content/images/SceneDropImageKey__20190110.png" alt="Drop image into the scene"></p>
+<p>You can press the <code>End</code> key to send the image to the background, and place it in the center position.</p>
+<h3>Step 4: Run the game</h3>
+<p>To run the game click on the “browser” button in the main toolbar, or press <code>Ctrl+Alt+F5</code>. It will open the project in the OS default browser. You can change the default browser in <code>Preferences &gt; Browser</code>.</p>
+<p><img src="/blog/content/images/RunGame__20190110.png" alt="Run the game"></p>
+<p><img src="/blog/content/images/Game__20190110.png" alt="The game running"></p>
+<hr>
+<p>This was a very simple tutorial, to write the complete documentation is priority number one for us, it should be ready in a few weeks. In the meantime, we should create more mini tutorials and videos.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/v2">v2</a>, <a href="/blog/tag/tutorial">tutorial</a>, <a href="/blog/tag/scene">scene</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

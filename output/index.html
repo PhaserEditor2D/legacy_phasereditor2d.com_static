@@ -1,0 +1,915 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- open-graph card -->
+    <meta name="og:title" content="Phaser Editor 2D | HTML5 Game IDE">
+    <meta name="og:description" content="A friendly IDE to create HTML5 2D games. Made for the web with web technologies. Runs locally or in our cloud IDE. The games are based on the popular Phaser framework.">
+    <meta name="og:image" content="https://phasereditor2d.com/static/images/editor-screenshot.jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PhaserEditor2D">
+    <meta name="twitter:creator" content="@PhaserEditor2D">
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-67206336-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-67206336-2');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- website -->
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+    <title>Phaser Editor 2D | HTML5 Game IDE</title>
+    <meta name="description" content="Online IDE for HTML5 games creation.">
+
+    <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+    <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+    <a class="navbar-brand" href="/">
+
+        <img class="logo-icon mr-1" src="/static/images/favicon.png">
+
+        Phaser Editor 2D
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse float-right" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link " href="/downloads">Downloads</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link " href="/pricing">Pricing</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/blog">Blog</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="productsMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Products
+                </a>
+                <div class="dropdown-menu" aria-labelledby="productsMenu">
+                    <a class="dropdown-item" href="/">Phaser Editor 2D v3</a>
+                    <a class="dropdown-item" href="/start">Templates &amp; Online IDE</a>
+                    <a class="dropdown-item" href="https://marketplace.phasereditor2d.com">Marketplace</a>
+                    <a class="dropdown-item" href="https://licmanager.phasereditor2d.com">License Manager</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://phasereditor2d.gumroad.com/l/uPhaserHelpCenter">uPhaserHelpCenter App</a>
+                    <a class="dropdown-item" href="https://chains-phaser2.phasereditor2d.com/">Phaser 2 Chains</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="helpMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Help
+                </a>
+                <div class="dropdown-menu" aria-labelledby="helpMenu">
+                    <a class="dropdown-item" href="https://help-v3.phasereditor2d.com">Phaser Editor 2D v3 Help</a>
+                    <a class="dropdown-item" href="https://help.phasereditor2d.com/v2">Phaser Editor 2D v2 Help</a>
+                    <a class="dropdown-item" href="https://help.phasereditor2d.com/v1">Phaser Editor 2D v1 Help</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.youtube.com/@PhaserEditor2D">YouTube Channel</a>
+                    <a class="dropdown-item" href="/blog/category/tutorials">Tutorials</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/versions">Versions Comparison</a>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="alert alert-danger text-center" style="border-radius: 0px;">
+    <code class="text-white">
+        <strong>Notice:</strong>
+        Phaser Editor has moved! Visit the new site for the latest version and all resources.
+        <a class="" href="https://phaser.io/editor">Click here to explore Phaser Editor at phaser.io</a>
+    </code>
+</div>
+    <div class="p-5">
+
+    </div>
+
+    <div class="container header-section">
+
+        <div class="row">
+
+            <div class="col-lg-6">
+
+                <div class="header-logo-section">
+
+                    <div class="logo">
+                        <a href="https://phasereditor2d.com">
+                            <img class="logo-image" src="/static/images/logo.png" />
+                        </a>
+                    </div>
+
+                    <div>
+                        <h1 class="name mb-0">
+                            Phaser Editor 2D
+                        </h1>
+
+                        <p class="lead">A web-based IDE <br>
+                            for HTML5 game development. <br>
+                            <small class="text-success">Editor 3.67.0 / Phaser 3.80</small>
+                        </p>
+
+                        <ul class="social list-inline">
+                            <li class="list-inline-item">
+                                <a class="bg-primary" href="https://twitter.com/PhaserEditor2D" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="bg-primary" href="https://www.facebook.com/PhaserEditor2D" target="_blank"><i class="fab fa-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="bg-primary" href="https://youtube.com/c/PhaserEditor2D" target="_blank"><i class="fab fa-youtube"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="bg-primary" href="https://discord.com/invite/4DdpMMD" target="_blank"><i class="fab fa-discord"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="bg-primary" href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/" target="_blank"><i class="fab fa-github"></i></a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="clearfix mb-4"></div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+                <img src="/static/images/editor-screenshot.jpeg" class="img-fluid shadow-lg rounded previewInModal" alt="Screenshot">
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- separator -->
+    <div class="separator"></div>
+
+    <div class="container text-center">
+
+        <p>
+            <a class="btn btn-info btn-lg mb-2" href="/downloads">
+                <i class="fa fa-download mr-2"></i>
+                Get Installer</a>
+
+            <a class="btn btn-success btn-lg mb-2" href="start">
+                <i class="fa fa-play mr-1"></i>
+                Start Online</a>
+        </p>
+
+        <a href="https://marketplace.phasereditor2d.com">Get more in the Marketplace &RightArrow;</a>
+    </div>
+
+    <!-- separator -->
+    <div class="separator"></div>
+
+    <!-- Newsletter form -->
+    <div class="container text-center" style="max-width: 40rem">
+        <div class="card border-primary bg-transparent">
+            <div class="card-body">
+                <h5 class="card-title">Phaser Editor 2D newsletter</h5>
+                <p class="card-text">
+                    Hey there! Be the first to know about our latest releases, products, tutorials, and promo discounts.
+                </p>
+                <a class="btn btn-primary" href="https://phasereditor2d.gumroad.com/subscribe" target="_blank" role="button">
+                    Sign up for our newsletter today
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- separator -->
+    <div class="separator"></div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-4">
+
+                
+    <div class="card shadow-lg mb-4 border-success">
+
+        <div class="card-body">
+
+            <h5>Phaser 3 Framework</h5>
+
+            <p>
+                <img class="img-fluid rounded previewInModal" src="/static/images/phaser-website.png">
+            </p>
+
+            <div class="card-text lead">
+                The games are powered by the popular <a href="https://phaser.io">Phaser v3 framework</a> (third-party).
+                    No extra runtime is required for your game.
+            </div>
+        </div>
+    </div>
+            </div>
+
+            <div class="col-lg-4">
+
+                
+    <div class="card shadow-lg mb-4 border-warning">
+
+        <div class="card-body">
+
+            <h5>Scene Editor</h5>
+
+            <p>
+                <img class="img-fluid rounded previewInModal" src="/static/images/scene-editor.png">
+            </p>
+
+            <div class="card-text lead">
+                 A <a href="https://help-v3.phasereditor2d.com/scene-editor/">visual editor</a> to layout the game levels and screens. A powerful system to create reusable objects (<a href="https://help-v3.phasereditor2d.com/scene-editor/prefabs.html">prefabs</a> and <a href="https://help-v3.phasereditor2d.com/scene-editor/script-node.html">script nodes</a>).
+            </div>
+        </div>
+    </div>
+            </div>
+
+            <div class="col-lg-4">
+                
+    <div class="card shadow-lg mb-4 border-danger">
+
+        <div class="card-body">
+
+            <h5>Tiled Map Editor Compatibility</h5>
+
+            <p>
+                <img class="img-fluid rounded previewInModal" src="/static/images/tiled-scene-editor.png">
+            </p>
+
+            <div class="card-text lead">
+                The Scene Editor is <a href="https://help-v3.phasereditor2d.com/scene-editor/tilemap-object.html">powerful tool for adding prefab-characters</a>, animations and behaviors to the <a href="https://mapeditor.org/">Tiled</a> maps.
+            </div>
+        </div>
+    </div>            </div>
+
+        </div> <!-- row -->
+
+        <div class="row">
+
+            <div class="col-lg-4">
+                
+    <div class="card shadow-lg mb-4 border-warning">
+
+        <div class="card-body">
+
+            <h5>Physics Tooling</h5>
+
+            <p>
+                <img class="img-fluid rounded previewInModal" src="/static/images/physics-body.png">
+            </p>
+
+            <div class="card-text lead">
+                Visual tools for editing the <a href="https://code.visualstudio.com">physics body</a> geometry, movement, and collision.
+            </div>
+        </div>
+    </div>            </div>
+
+            <div class="col-lg-4">
+                
+    <div class="card shadow-lg mb-4 border-success">
+
+        <div class="card-body">
+
+            <h5>Prefab System</h5>
+
+            <p>
+                <img class="img-fluid rounded previewInModal" src="/static/images/prefab.png">
+            </p>
+
+            <div class="card-text lead">
+                The <a href="https://help-v3.phasereditor2d.com/scene-editor/prefabs.html">prefab system</a>, allows making resuable objects & behaviors, nested prefabs, prefab variants, and prefab instance's children.
+            </div>
+        </div>
+    </div>            </div>
+
+            <div class="col-lg-4">
+                
+    <div class="card shadow-lg mb-4 border-success">
+
+        <div class="card-body">
+
+            <h5>Script Nodes</h5>
+
+            <p>
+                <img class="img-fluid rounded previewInModal" src="/static/images/script-nodes.png">
+            </p>
+
+            <div class="card-text lead">
+                The <a href="https://help-v3.phasereditor2d.com/scene-editor/script-node.html">Script Nodes</a> are logical objects for visually composing the game behaviors.
+            </div>
+        </div>
+    </div>            </div>
+
+            <div class="col-lg-4">
+                
+    <div class="card shadow-lg mb-4 border-danger">
+
+        <div class="card-body">
+
+            <h5>Animations Editor</h5>
+
+            <p>
+                <img class="img-fluid rounded previewInModal" src="/static/images/animations-editor.png">
+            </p>
+
+            <div class="card-text lead">
+                <a href="https://help-v3.phasereditor2d.com/animations-editor/">Smart tool for packing</a> (manually and automatically) the sprite-animations. In-line animation preview. Animation properties editor.
+            </div>
+        </div>
+    </div>            </div>
+
+            <div class="col-lg-4">
+                
+    <div class="card shadow-lg mb-4 border-info">
+
+        <div class="card-body">
+
+            <h5>Asset Pack Editor</h5>
+
+            <p>
+                <img class="img-fluid rounded previewInModal" src="/static/images/asset-pack-editor.png">
+            </p>
+
+            <div class="card-text lead">
+                <a href="https://help-v3.phasereditor2d.com/asset-pack-editor/">Packs the assets</a> in a manifest file. You can load all the game assets as easy as calling <code>this.load.pack(...)</code>.
+            </div>
+        </div>
+    </div>            </div>
+
+            <div class="col-lg-4">
+
+                
+    <div class="card shadow-lg mb-4 border-success">
+
+        <div class="card-body">
+
+            <h5>Coding</h5>
+
+            <p>
+                <img class="img-fluid rounded previewInModal" src="/static/images/js-editor.png">
+            </p>
+
+            <div class="card-text lead">
+                Fully compatible with <a href="https://code.visualstudio.com">Visual Studio Code</a>. JavaScript & TypeScript projects are supported.
+            </div>
+        </div>
+    </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-right ">
+                <small><a href="https://help-v3.phasereditor2d.com/intro/main-features.html">Read more about the main features...</a></small>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- separator -->
+    <div class="p-4"></div>
+    <div class="p-4"></div>
+    <div class="p-4"></div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 mb-4">
+                <img src="./static/images/helpcenter.jpg" class="img-fluid shadow-lg rounded previewInModal border-info" alt="...">
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <h2 class="">Unofficial Phaser Help Center</h2>
+                <h4 class="text-muted"><code>C:/> uPhaserHelpCenter.exe</code></h4>
+                <p>
+                    Cross-platform, advanced app for:
+                </p>
+                <ul>
+                    <li>Browsing the Phaser docs, examples, and code.</li>
+                    <li>Powerful queries, fast responses.</li>
+                    <li>Inline preview.</li>
+                    <li>Phaser Labs integration.</li>
+                    <li>Offline (desktop app) and online (PWA) support.</li>
+                    <li>Always free!</li>
+                </ul>
+                <p>
+                    <a href="https://github.com/PhaserEditor2D/helpcenter-phaser3" target="_blank">Learn more</a>
+                </p>
+                <p class="mt-4">
+                    <a class="btn btn-primary" target="_blank" href="https://phasereditor2d.gumroad.com/l/uPhaserHelpCenter">Get uPhaserHelpCenter</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- separator -->
+    <div class="p-4"></div>
+    <div class="p-4"></div>
+
+    <div class="container text-center">
+        <h3>Latest News</h3>
+        <a href="https://phasereditor2d.com/blog">Read all articles in the blog</a>
+    </div>
+
+    <div class="p-4"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class='col-lg-6 mb-1 mt-1'><div class='card border-0 bg-transparent'><div class='card-body'><a href='https://phasereditor2d.com/blog/2024/02/phaser-editor-2d-v3670-is-released'><h4 class=''>Phaser Editor 2D v3.67.0 is released</h4></a><div><img src='https://phasereditor2d.com/blog/content/images/20240221173424-3.67.0.jpg' class='img-thumbnail rounded float-left mr-2 border-success' style='width:200px'> <p><small class='text-info'>22 February 2024</small> <span class='lead'>
+                                The latest version of Phaser Editor 2D has just rolled out! This release includes an exciting new feature: the Shader Effects! It also adds support to new ways of editing numeric inputs in the...
+                <a href="https://phasereditor2d.com/blog/2024/02/phaser-editor-2d-v3670-is-released">Read more</a>            </span></p></div></div></div></div><div class='col-lg-6 mb-1 mt-1'><div class='card border-0 bg-transparent'><div class='card-body'><a href='https://phasereditor2d.com/blog/2024/01/phaser-editor-2d-v3660-released'><h4 class=''>Phaser Editor 2D v3.66.0 released</h4></a><div><img src='https://phasereditor2d.com/blog/content/images/20240110034207-phaser-editor-366.jpg' class='img-thumbnail rounded float-left mr-2 border-success' style='width:200px'> <p><small class='text-info'>12 January 2024</small> <span class='lead'>
+                                The latest version of Phaser Editor 2D has just rolled out! This version coincides with the release of Phaser v3.80 and has been updated to fully support it. It also adds a new way to visually edit...
+                <a href="https://phasereditor2d.com/blog/2024/01/phaser-editor-2d-v3660-released">Read more</a>            </span></p></div></div></div></div><div class='col-lg-6 mb-1 mt-1'><div class='card border-0 bg-transparent'><div class='card-body'><a href='https://phasereditor2d.com/blog/2024/01/we-are-closing-the-lifetime-license-to-new-users'><h4 class=''>We are closing the Lifetime License to new users</h4></a><div> <p><small class='text-info'>07 January 2024</small> <span class='lead'>
+                                Dear, As I announced in my previous post, we are integrating Phaser Editor 2D into the new Phaser Studio services. Merging into a company, in addition to funding the Phaser Editor 2D development,...
+                <a href="https://phasereditor2d.com/blog/2024/01/we-are-closing-the-lifetime-license-to-new-users">Read more</a>            </span></p></div></div></div></div><div class='col-lg-6 mb-1 mt-1'><div class='card border-0 bg-transparent'><div class='card-body'><a href='https://phasereditor2d.com/blog/2024/01/phaser-editor-2d-joins-to-phaser-studio'><h4 class=''>Phaser Editor 2D joins to Phaser Studio</h4></a><div> <p><small class='text-info'>05 January 2024</small> <span class='lead'>
+                                Hi! I have joined the Phaser Studio team as their Senior Tools engineer. Phaser Studio is a new company led by Richard Davey. The goal of this company is "to modernize the Phaser framework". This is...
+                <a href="https://phasereditor2d.com/blog/2024/01/phaser-editor-2d-joins-to-phaser-studio">Read more</a>            </span></p></div></div></div></div><div class='col-lg-6 mb-1 mt-1'><div class='card border-0 bg-transparent'><div class='card-body'><a href='https://phasereditor2d.com/blog/2023/12/phaser-editor-2d-v365-released-powering-script-nodes-user-components-and-prefabs'><h4 class=''>Phaser Editor 2D v3.65 released. Powering script nodes, user components, and prefabs.</h4></a><div><img src='https://phasereditor2d.com/blog/content/images/20231211081025-release%203.65%20Large.jpeg' class='img-thumbnail rounded float-left mr-2 border-success' style='width:200px'> <p><small class='text-info'>13 December 2023</small> <span class='lead'>
+                                Hi! I'm glad to announce the latest release of Phaser Editor 2D. This update is a significant milestone as it includes script libraries, bringing us one step closer to implementing a visual...
+                <a href="https://phasereditor2d.com/blog/2023/12/phaser-editor-2d-v365-released-powering-script-nodes-user-components-and-prefabs">Read more</a>            </span></p></div></div></div></div><div class='col-lg-6 mb-1 mt-1'><div class='card border-0 bg-transparent'><div class='card-body'><a href='https://phasereditor2d.com/blog/2023/11/tutorial-your-first-html5-project-using-phaser-editor-2d-webpack-and-typescript'><h4 class=''>[Tutorial] Your first HTML5 project using Phaser Editor 2D, Webpack and TypeScript</h4></a><div><img src='https://phasereditor2d.com/blog/content/images/20231130101513-Emanuele%20Feronato%20tutorial%201.png' class='img-thumbnail rounded float-left mr-2 border-success' style='width:200px'> <p><small class='text-info'>30 November 2023</small> <span class='lead'>
+                                Hi! Emanuele Feronato, an experienced game developer and author of the book HTML5 Cross Platform Game Development Using Phaser 3, just wrote a new tutorial about starting with Phaser Editor 2D. Is it...
+                <a href="https://phasereditor2d.com/blog/2023/11/tutorial-your-first-html5-project-using-phaser-editor-2d-webpack-and-typescript">Read more</a>            </span></p></div></div></div></div><div class='col-lg-6 mb-1 mt-1'><div class='card border-0 bg-transparent'><div class='card-body'><a href='https://phasereditor2d.com/blog/2023/11/cyber-monday-sales-60-off'><h4 class=''>Cyber Monday sales (60% off)</h4></a><div><img src='https://phasereditor2d.com/blog/content/images/20231127032533-Cyber%20Monday%202023.png' class='img-thumbnail rounded float-left mr-2 border-success' style='width:200px'> <p><small class='text-info'>27 November 2023</small> <span class='lead'>
+                                Hi friends, This Monday is cyber and Phaser Editor 2D is 60% off! Follow the link: cybermonday2023 Kind regards, Arian...
+                <a href="https://phasereditor2d.com/blog/2023/11/cyber-monday-sales-60-off">Read more</a>            </span></p></div></div></div></div><div class='col-lg-6 mb-1 mt-1'><div class='card border-0 bg-transparent'><div class='card-body'><a href='https://phasereditor2d.com/blog/2023/11/black-friday-sales-started-50-off-get-a-phaser-editor-2d-lifetime-license'><h4 class=''>Black Friday sales started! 50% off! Get a Phaser Editor 2D Lifetime License.</h4></a><div><img src='https://phasereditor2d.com/blog/content/images/20231122234722-Black%20Friday%202023.png' class='img-thumbnail rounded float-left mr-2 border-success' style='width:200px'> <p><small class='text-info'>22 November 2023</small> <span class='lead'>
+                                Hi friends! The Black Friday sales just started in Phaser Editor 2D! Purchase Phaser Editor 2D Lifetime License Today, with a 50% off discount. Happy Thanksgiving! Happy Friday! Arian...
+                <a href="https://phasereditor2d.com/blog/2023/11/black-friday-sales-started-50-off-get-a-phaser-editor-2d-lifetime-license">Read more</a>            </span></p></div></div></div></div><div class='col-lg-6 mb-1 mt-1'><div class='card border-0 bg-transparent'><div class='card-body'><a href='https://phasereditor2d.com/blog/2023/11/uphaserhelpcenter-released-updating-to-phaser-3700'><h4 class=''>uPhaserHelpCenter released - updating to Phaser 3.70.0</h4></a><div><img src='https://phasereditor2d.com/blog/content/images/20231113222926-uPhaserHelpCenter-v1.3.2.png' class='img-thumbnail rounded float-left mr-2 border-success' style='width:200px'> <p><small class='text-info'>13 November 2023</small> <span class='lead'>
+                                Hi! I just updated uPhaserHelpCenter to support Phaser v3.70.0. Get a look and search for "setDirectControl" 🤓 Get the uPhaserHelpCenter binaries Or try it online:...
+                <a href="https://phasereditor2d.com/blog/2023/11/uphaserhelpcenter-released-updating-to-phaser-3700">Read more</a>            </span></p></div></div></div></div><div class='col-lg-6 mb-1 mt-1'><div class='card border-0 bg-transparent'><div class='card-body'><a href='https://phasereditor2d.com/blog/2023/11/phaser-editor-2d-v3640-released-boosting-sprite-animations-hi-aseprite'><h4 class=''>Phaser Editor 2D v3.64.0 released - Boosting sprite animations - Hi Aseprite!</h4></a><div><img src='https://phasereditor2d.com/blog/content/images/20231107153157-release-v3640.png' class='img-thumbnail rounded float-left mr-2 border-success' style='width:200px'> <p><small class='text-info'>09 November 2023</small> <span class='lead'>
+                                Hi! Today I'm releasing a new version of Phaser Editor 2D. This new release includes a couple of new features for boosting your workflow with Sprite animations. It also adds support for Aseprite, a...
+                <a href="https://phasereditor2d.com/blog/2023/11/phaser-editor-2d-v3640-released-boosting-sprite-animations-hi-aseprite">Read more</a>            </span></p></div></div></div></div>        </div>
+
+    </div>
+
+    <!-- separator -->
+    <div class="separator"></div>
+
+    <div class="container text-center">
+        <h3 id="ourcade-tutorials">Phaser Editor 2D Tutorials</h3>
+
+        <a href="https://www.youtube.com/@PhaserEditor2D">Phaser Editor 2D YouTube Channel</a>
+    </div>
+
+    <!-- separator -->
+    <div class="p-4"></div>
+
+    <div class="container">
+
+        <!-- Phaser Editor 2D tutorials -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                
+
+    <div class='card border-0 bg-black'>
+        <div class='card-body'>
+            <p><a href='https://www.youtube.com/playlist?list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE'><h4 class=''>Making your first Phaser game.</h4></a></p>
+            <div>
+                <a href='https://www.youtube.com/playlist?list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE'>
+                    <img class="img-thumbnail rounded float-left mr-4 border-info" style="max-width:20em" src="https://img.youtube.com/vi/mZx7gj6gT4A/0.jpg">
+                </a>
+                <p>
+                    By <a href="https://www.youtube.com/@PhaserEditor2D">Phaser Editor 2D</a>
+                    <br><br>
+                    <span class='lead'>
+A series of videos for making your first game with Phaser & Phaser Editor 2D.
+It is a basic game. You are Phaser character jumping around a world of platforms, and collect stars.
+When you collect all the stars, new stars appears... and a bomb!
+You should avoid those bombs. If you touch a bomb, you lose.
+<p><i>These series of videos follow step by step the <a href="http://phaser.io/tutorials/making-your-first-phaser-3-game/part1">official Phaser tutorial</a> made by Richard Davey, author of Phaser.</i></p>
+
+
+
+                    <div class="clearfix"></div>
+                    <br>
+                    <ul class="list-unstyled">
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=mZx7gj6gT4A&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/mZx7gj6gT4A/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=mZx7gj6gT4A&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE"><h5 class="mt-0 mb-1">Part 1: Introduction.</h5></a>
+            Setup a Phaser project with Phaser Editor 2D.
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=fs8ePQfNM1Y&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/fs8ePQfNM1Y/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=fs8ePQfNM1Y&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE"><h5 class="mt-0 mb-1">Part 2: Loading Assets.</h5></a>
+            Add the images & spritesheets to the asset pack file. Create your first scene.
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=5c2JM8wXxqk&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/5c2JM8wXxqk/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=5c2JM8wXxqk&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE"><h5 class="mt-0 mb-1">Part 3: World Building.</h5></a>
+            Add objects to the scene. Make the platform prefab. Add physics to a prefab.
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=nMXOcrQU9cs&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/nMXOcrQU9cs/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=nMXOcrQU9cs&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE"><h5 class="mt-0 mb-1">Part 4: The Platforms.</h5></a>
+            Group the platforms with an Object List (array). Refresh the static physics bodies of the platforms. Merge user code with generated code.
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=edZ9FCFu5F8&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/edZ9FCFu5F8/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=edZ9FCFu5F8&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE"><h5 class="mt-0 mb-1">Part 5: The Player</h5></a>
+            Create the player prefab and add physics to it. Create the player animations. Create a user property for auto-player the player animation.
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=oOu1DLiCnds&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/oOu1DLiCnds/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=oOu1DLiCnds&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE"><h5 class="mt-0 mb-1">Part 6: Adding Physics.</h5></a>
+            Add a collider for testing interaction between the player and the platforms. Add platforms to a Layer.
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=bPp90HGAHkU&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/bPp90HGAHkU/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=bPp90HGAHkU&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE"><h5 class="mt-0 mb-1">Part 7: Controlling the Player.</h5></a>
+            Add cursor keys to the scene for controlling the player. Animate the player.
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=Gw04sFKRk4k&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/Gw04sFKRk4k/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=Gw04sFKRk4k&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE"><h5 class="mt-0 mb-1">Part 8: Collecting Stars</h5></a>
+            Add the stars and layout them. Add a collider/overlap for collecing the stars. Refactor the level & prefabs.
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=4ii9qQwvkZQ&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/4ii9qQwvkZQ/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=4ii9qQwvkZQ&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE"><h5 class="mt-0 mb-1">Part 9: Scores and Scoring.</h5></a>
+            Create a score Text object & prefab. Update the score text when the player takes a star.
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=JFSHgEoGmz8&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/JFSHgEoGmz8/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=JFSHgEoGmz8&list=PLB8gI_5U0MvBiK7GExn8ONPk5jDPd2KlE"><h5 class="mt-0 mb-1">Part 10: Bouncing Bombs.</h5></a>
+            Respawn the stars & restart physics bodies. Spawn the bombs.
+        </div>
+    </li>
+</ul></span>
+                </p>
+            </div>
+        </div>
+    </div>               </div>
+        </div>
+
+        <!-- separator -->
+        <div class="separator"></div>
+
+        <div class="container text-center">
+            <h3 id="ourcade-tutorials">Ourcade Tutorials</h3>
+
+            <a href="https://ourcade.co">Learn more about Phaser and Phaser Editor 2D in Ourcade.co</a>
+
+            <small>
+                <p class="font-weight-lighter font-italic">
+                    <a href="https://ourcade.co">Ourcade.co</a> is an amazing (third-party) website full of content for learning and mastering Phaser game development.
+                    <br>
+                    It also provides online tools and components to boost your productivity.
+                </p>
+            </small>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                
+
+    <div class='card border-0 bg-black'>
+        <div class='card-body'>
+            <p><a href='https://phasereditor2d.com/blog/2020/10/tutorial-preloader-scene-in-phaser-editor-2d'><h4 class=''>Preloader Scene in Phaser Editor 2D</h4></a></p>
+            <div>
+                <a href='https://phasereditor2d.com/blog/2020/10/tutorial-preloader-scene-in-phaser-editor-2d'>
+                    <img class="img-thumbnail rounded float-left mr-4 border-info" style="max-width:20em" src="https://img.youtube.com/vi/VroTei-BOIY/0.jpg">
+                </a>
+                <p>
+                    By <a href="https://ourcade.co">SuperTommy at Ourcade.co</a>
+                    <br><br>
+                    <span class='lead'>
+
+                    We've got another video going over the use of PhaserEditor2D!
+                
+                    This time it is about creating a Preloader Scene to let players know that assets are being loaded before a game starts. Combine it with the Apple loading indicator from the blog post above!
+                
+                    PhaserEditor2D's project structure is a little bit different than the code-only project set-up that we usually use so this video goes over the things you need to know.
+                </span>
+                </p>
+            </div>
+        </div>
+    </div>               </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-lg-12">
+                
+
+    <div class='card border-0 bg-black'>
+        <div class='card-body'>
+            <p><a href='https://phasereditor2d.com/blog/2020/09/tutorial-memory-match-in-phaser-editor-2d-a-mario-party-style-memory-game'><h4 class=''> Memory Match in Phaser Editor 2D - A Mario Party-style Memory Game</h4></a></p>
+            <div>
+                <a href='https://phasereditor2d.com/blog/2020/09/tutorial-memory-match-in-phaser-editor-2d-a-mario-party-style-memory-game'>
+                    <img class="img-thumbnail rounded float-left mr-4 border-info" style="max-width:20em" src="https://img.youtube.com/vi/el00yk97tY4/0.jpg">
+                </a>
+                <p>
+                    By <a href="https://ourcade.co">SuperTommy at Ourcade.co</a>
+                    <br><br>
+                    <span class='lead'>                    
+                    This is a series for creating a Memory Match game with Phaser Editor 2D as found in Mario Party! 🎉 It takes the conceptually simple memory game mechanics and spices it up as only Nintendo can. You use a character to select boxes and find all matches before the time runs out.
+
+                    <div class="clearfix"></div>
+                    <br>
+                    <ul class="list-unstyled">
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=el00yk97tY4&list=PLNwtXgWIx3riMHtFVL_x2PkiNhwPtX0gJ">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/el00yk97tY4/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=el00yk97tY4&list=PLNwtXgWIx3riMHtFVL_x2PkiNhwPtX0gJ"><h5 class="mt-0 mb-1">Create a Character in Phaser Editor 2D for Memory Match - Part 1</h5></a>
+            In part 1, we use Kenney's Sokoban assets to create a character that can walk up, down, left, and right. Learn how to create a new Phaser Editor 2D project, add images, and create animations!
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=fBknzu-OUHU&list=PLNwtXgWIx3riMHtFVL_x2PkiNhwPtX0gJ">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/fBknzu-OUHU/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=fBknzu-OUHU&list=PLNwtXgWIx3riMHtFVL_x2PkiNhwPtX0gJ"><h5 class="mt-0 mb-1">Use Prefabs to Create Boxes in Phaser Editor 2D for Memory Match - Part 2</h5></a>
+            In part 2, we use the concept of Prefabs to create instances of boxes that share the same template and can be updated at the same time to layout the design of a level.
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=mEtekgmaLaE&list=PLNwtXgWIx3riMHtFVL_x2PkiNhwPtX0gJ">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/mEtekgmaLaE/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=mEtekgmaLaE&list=PLNwtXgWIx3riMHtFVL_x2PkiNhwPtX0gJ"><h5 class="mt-0 mb-1">Components to Add Box Reveal in Phaser Editor 2D for Memory Match - Part 3</h5></a>
+            In part 3, we use User Components to add logic and functionality to boxes for revealing the item it is holding.
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=Vn75xPf6TyM&list=PLNwtXgWIx3riMHtFVL_x2PkiNhwPtX0gJ">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/Vn75xPf6TyM/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=Vn75xPf6TyM&list=PLNwtXgWIx3riMHtFVL_x2PkiNhwPtX0gJ"><h5 class="mt-0 mb-1">Checking for Matches in Phaser Editor for Memory Match - Part 4</h5></a>
+            In part 4, we implement checking for matches between boxes within the updated codebase that uses Components.
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=DUcKwrAshEw&list=PLNwtXgWIx3riMHtFVL_x2PkiNhwPtX0gJ">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/DUcKwrAshEw/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=DUcKwrAshEw&list=PLNwtXgWIx3riMHtFVL_x2PkiNhwPtX0gJ"><h5 class="mt-0 mb-1">Determining Win Condition in Phaser Editor for Memory Match - Part 5</h5></a>
+            In part 5, we implement the logic for the evil bear and checking for the win condition when all matches are found.
+        </div>
+    </li>
+
+    <li class="media p-2" style="max-width:60em">
+        <a target="_blank" href="https://www.youtube.com/watch?v=aCPPo6SVuqY&list=PLNwtXgWIx3riMHtFVL_x2PkiNhwPtX0gJ">
+            <img class="mr-3 rounded" src="https://img.youtube.com/vi/aCPPo6SVuqY/0.jpg" style="width:6em">
+        </a>
+        <div class="media-body">
+            <a target="_blank" href="https://www.youtube.com/watch?v=aCPPo6SVuqY&list=PLNwtXgWIx3riMHtFVL_x2PkiNhwPtX0gJ"><h5 class="mt-0 mb-1">Adding a Countdown Timer in Phaser Editor 2D for Memory Match - Part 6</h5></a>
+            In part 6, we add a countdown timer with User Components. Then we add a message when time's up and all matches have not been found.
+        </div>
+    </li>
+</ul></span>
+                </p>
+            </div>
+        </div>
+    </div>               </div>
+        </div>
+
+        <!-- separator -->
+        <div class="separator"></div>
+
+        <div class="container text-center">
+            <h3 id="featured-tutorials">Featured Tutorials</h3>
+            <a href="https://phasereditor2d.com/blog">Read all the tutorials in the blog</a>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-4">
+                
+
+    <div class="card-body">
+
+            <h5><a href="https://phasereditor2d.com/blog/2020/08/tutorial-a-day-in-the-beach-a-demo-of-buttons-based-on-components">A day in the beach. A demo of buttons based on components</a></h5>
+
+            <p>
+                <a href="https://phasereditor2d.com/blog/2020/08/tutorial-a-day-in-the-beach-a-demo-of-buttons-based-on-components">
+                    <img class="img-fluid rounded" src="https://phasereditor2d.com/blog/content/images/20200818130633-Aday-beach-tutorial.png" style="max-height:15em">
+                </a>
+            </p>
+
+            <div class="card-text lead">
+                <p>
+                    By <a href="https://phasereditor2d.com">Arian Fornaris at Phaser Editor 2D</a>
+                </p>
+                A day in the beach is a very simple point-and-click game. Some starfishes pop into the screen and you have to click on them. The game is made by using components and prefabs.
+            </div>
+        </div>              </div>
+
+            <div class="col-lg-4">
+                
+
+    <div class="card-body">
+
+            <h5><a href="https://phasereditor2d.com/blog/2020/06/tutorial-prefab-user-properties-step-by-step">Prefab user properties. Step by Step</a></h5>
+
+            <p>
+                <a href="https://phasereditor2d.com/blog/2020/06/tutorial-prefab-user-properties-step-by-step">
+                    <img class="img-fluid rounded" src="https://img.youtube.com/vi/3ppowkkgz8Q/0.jpg" style="max-height:15em">
+                </a>
+            </p>
+
+            <div class="card-text lead">
+                <p>
+                    By <a href="https://phasereditor2d.com">Arian Fornaris at Phaser Editor 2D</a>
+                </p>
+                It shows how to use prefab user properties to create a couple of animated objects and tweak the parameters of each animation.
+            </div>
+        </div>              </div>
+
+            <div class="col-lg-4">
+                
+
+    <div class="card-body">
+
+            <h5><a href="https://phasereditor2d.com/blog/2020/09/user-tutorial-creating-buttons-using-the-user-components-in-phaser-editor-v3">Creating Buttons Using The User Components In Phaser Editor v3</a></h5>
+
+            <p>
+                <a href="https://phasereditor2d.com/blog/2020/09/user-tutorial-creating-buttons-using-the-user-components-in-phaser-editor-v3">
+                    <img class="img-fluid rounded" src="https://phasereditor2d.com/blog/content/images/20200908092929-button-component.png" style="max-height:15em">
+                </a>
+            </p>
+
+            <div class="card-text lead">
+                <p>
+                    By <a href="https://gameplaycoder.com">Cartrell Hampton at GameplayCoder.com</a>
+                </p>
+                While v3 of Phaser does not have a native button in it like v2 does. I decided to add one. And since I’m using Arian’s Phaser Editor v3, which recently got User Components added to it, why not use them to create the buttons? Let’s go for it!
+            </div>
+        </div>              </div>
+        </div>
+
+
+    </div> <!-- container -->
+
+    <!-- separator -->
+    <div class="p-4"></div>
+
+    <footer class="footer p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <h5>About</h5>
+                    <p><a href="https://phasereditor2d.com">Phaser Editor 2D</a> is a multi-platform IDE to develop games based on the fast and popular <a href="https://phaser.io">Phaser framework</a>. It is a commercial product made and supported by
+                        <a href="https://twitter.com/boniatillo_com">Arian Fornaris</a>.</p>
+                    <p>Phaser is a free and open source software developed and owned by Richard Davey at
+                        <a href="https://www.photonstorm.com">www.photonstorm.com</a>. You can visit
+                        <a href="https://phaser.io/community/donate">their funding
+                            page</a> and help them to make Phaser even better.</p>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <h5>Connect</h5>
+                    <ul>
+                        <li><a href="https://phasereditor2d.gumroad.com/subscribe">Subscribe to our Newsletter</a></li>
+                        <li> <a href="mailto:developers@phasereditor2d.com">Email us</a></li>
+                        <li><a href="http://www.html5gamedevs.com/profile/8392-phasereditor2d/">Follow us on HTML5GameDevs</a></li>
+                        <li><a href="https://twitter.com/PhaserEditor2D">Follow us on Twitter</a></li>
+                        <li><a href="https://www.facebook.com/PhaserEditor2D">Follow us on Facebook</a></li>
+                        <li><a href="https://gamedevacademy.org/author/boniatillo/">Tutorials on GameDev Academy</a></li>
+                        <li><a href="https://youtube.com/c/PhaserEditor2D">Tutorials on YouTube</a></li>
+                        <li><a href="https://www.google.com/search?as_epq=phaser+editor&as_sitesearch=phaser.io">Search on Phaser.io news</a></li>
+                        <li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/">Fork on GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Copyright &copy; 2022 <a href="https://twitter.com/PhaserEditor2D">Arian Fornaris</a>. Isla de la Juventud, Cuba.
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+
+    <div id="imageModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 90%" role="document">
+    <div class="modal-content border-info">
+      <div class="modal-body text-center">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <img id="imageModal_image" class="img-fluid mt-2 shadow-lg rounded-lg">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener("load", function() {
+    $("img.previewInModal").on("click", function() {
+
+      $("#imageModal_image").attr("src", $(this).attr("src"));
+      $('#imageModal').modal();
+    });
+
+  });
+</script>
+    <!-- mailchimp registration form -->
+    <!--
+    <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us11.list-manage.com","uuid":"573a10942b2f5dd70ae7e3a66","lid":"33ce89bad7"}) })</script>
+    -->
+</body>
+
+</html>

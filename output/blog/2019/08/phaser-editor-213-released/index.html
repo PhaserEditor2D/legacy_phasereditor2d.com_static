@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2.1.3 released | Phaser Editor 2D Blog</title>
+  <meta name="description" content="Phaser Editor v2.1.3 released. Improved Blocks view. Better Scene Editor selection and much more.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2.1.3 released</h1>
+        <p class="text-info">August 10, 2019 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/v2.1.3/asset-pack-editor-blocks-import.png" alt="Phaser Editor 2.1.3 released"></p>
+        <div class="lead"><p>Hi,</p>
+<p>We are happy to release Phaser Editor v2.1.3! It comes with some new features that we hope you will enjoy, like the <a href="/docs/v2/workbench.html#blocks-view">Blocks view</a> support for the <a href="/docs/v2/texture-packer-editor.html#add-images-to-the-atlas">Texture Packer Editor</a> and the <a href="#asset-pack-editor-blocks-view-support">Asset Pack Editor</a>.</p>
+<p><a href="/blog/downloads/">Download Phaser Editor 2D v2.1.3</a></p>
+<p>The <a href="#scene-editor">Scene Editor</a> was updated too, with bug fixes, better support for the experimental Chromium-based WebView and some minor improvements like those in the selection tools.</p>
+<p>There is some progress in the <a href="/docs/v2">Documentation for v2</a>, we finished the <a href="/docs/v2/workbench.html">Workbench</a> and the <a href="/docs/v2/texture-packer-editor">Texture Packer Editor</a> chapters.</p>
+<!-- index-start -->
+<ul>
+<li><a href="#games-and-tutorials">Games and tutorials</a></li>
+<li><a href="#documentation-progress">Documentation progress</a></li>
+<li><a href="#phaser-3.19.0">Phaser 3.19.0</a></li>
+<li><a href="#asset-pack-editor">Asset Pack Editor</a></li>
+<li><a href="#asset-pack-editor-import-files-from-the-blocks-view">Import files from the Blocks view</a></li>
+<li><a href="#asset-pack-editor-undo-redo-support">Better undo/redo support</a></li>
+<li><a href="#asset-pack-editor-other-changes">Other changes</a></li>
+<li><a href="#scene-editor">Scene Editor</a></li>
+<li><a href="#improved-experimental-chromium-webview">Improved experimental Chromium based WebView</a></li>
+<li><a href="#improved-mouse-zooming">Improved mouse zooming</a></li>
+<li><a href="#improved-selection-tool">Improved selection tool</a></li>
+<li><a href="#improved-object-dragging">Improved object dragging</a></li>
+<li><a href="#scene-editor-phaser-version">Phaser version</a></li>
+<li><a href="#animations-editor">Animations Editor</a></li>
+<li><a href="#texture-packer-editor">Texture Packer Editor</a></li>
+<li><a href="#texture-packer-editor-toolbar">Toolbar</a></li>
+<li><a href="#texture-packer-editor-blocks-view">Blocks view</a></li>
+<li><a href="#texture-packer-editor-other-changes">Other changes</a></li>
+<li><a href="#blocks-view">Blocks view</a></li>
+<li><a href="#project-view">Project view</a></li>
+<li><a href="#assets-view">Assets view</a></li>
+<li><a href="#other-general-changes">Other changes</a></li>
+<li><a href="#whats-next">What’s next</a></li>
+</ul>
+<!-- index-end -->
+<h2>Games and tutorials {#games-and-tutorials}</h2>
+<p>If you are creating games, tutorials or any other content (no matter if it is your first project) with Phaser Editor, please, tell us, we will be proud to feature it in our website, newsletter and social channels.</p>
+<h2>Documentation progress {#documentation-progress}</h2>
+<p>Writing the <a href="/docs/v2">Phaser Editor v2 Documentation</a> is the main task we are doing these days, and we just finished two more chapters. The <a href="/docs/v2/workbench.html">Workbench</a> is a huge one. It explains the common concepts and IDE parts.</p>
+<ul>
+<li><a href="/docs/v2/workbench.html">Chapter 2: Workbench</a></li>
+<li><a href="/docs/v2/texture-packer-editor.html">Chapter 3: Texture Packer Editor</a></li>
+</ul>
+<p>The next in line is the Asset Pack Editor chapter.</p>
+<h2>Phaser 3.19.0 {#phaser-3.19.0}</h2>
+<p>We updated the <strong>project templates</strong>, <strong>Phaser Labs</strong> tools and the <strong>Scene Editor</strong> to <strong><code>Phaser v3.19.0</code></strong>.</p>
+<p>The Phaser runtime files of your old projects are not updated. If you wish to update your game runtime to the new Phaser version you should do it manually. <a href="/docs/v2/workbench.html#phaser-version-update">Learn more about it in the docs</a>.</p>
+<p>If you created a project in a previous version of the editor, and you want to update to the new Phaser runtime, you should do it manually, by replacing the <code>WebContent/lib/phaser.js</code> file.</p>
+<h2>Asset Pack Editor {#asset-pack-editor}</h2>
+<p>This version includes some nice features that make the Asset Pack Editor a lot more friendly.</p>
+<h3>Import files from the Blocks view {#asset-pack-editor-import-files-from-the-blocks-view}</h3>
+<p>In previous versions of the editor, the workflow to import files into the asset pack files was:</p>
+<ul>
+<li>Click on the <strong>Add File Key</strong> button.</li>
+<li>Select the file type.</li>
+<li>Select the files to import.</li>
+<li>Change, if needed, the configuration of the new file key.</li>
+</ul>
+<p>Now the editor provides an alternative workflow:</p>
+<ul>
+<li>The <a href="/docs/v2/workbench.html#blocks-view">Blocks view</a> connects with the active Asset Pack Editor and shows all the files that are not included in any asset pack in the project. Select some files you want to import.</li>
+<li>Choose one of the file types listed in the <a href="/docs/v2/workbench.html#properties-view">Properties view</a>.</li>
+<li>Change, if needed, the configuration of the new file keys.</li>
+</ul>
+<p>Let’s see the next image:</p>
+<p><img src="/blog/content/images/v2.1.3/asset-pack-editor-blocks-import.png" alt="Import from Blocks view"></p>
+<p>The Blocks view shows some files that are not imported yet. When you select them, the Properties view shows a series of buttons you can press to import the selected files.</p>
+<p>The first group of buttons is the <strong>Guess by content type</strong> group. It lists the file types inferred from the content type of the files. For example, it detects all the atlas files and shows the buttons to import them. In the image, you can see it detected one <code>atlas</code> file, one <code>multiatlas</code> file and two image files. The detected images are part of the atlas files, so you should press the “import atlas files” buttons. Other types supported by this group are image, spritesheet, bitmap font, animations, audio sprite, scene file (when is generated by the Scene Editor), tilemap and audio. We should add more types in future releases.</p>
+<p>The second group of buttons is the <strong>Guess by file extension</strong> group. It looks for the file types associated with the file extension, not the content of the file.</p>
+<p>The third group only contains one general import button, that opens a dialog to select the file type to import all the selected files.</p>
+<p><img src="/blog/content/images/v2.1.3/asset-pack-editor-general-import-button.png" alt="General import button"></p>
+<p>Let’s say you clicked the <strong>Import 1 ‘atlas’ files</strong> and the <strong>Import 1 ‘multiatlas’ files</strong>, see how those files are removed from the Blocks view and added to the Asset Pack Editor.</p>
+<p><img src="/blog/content/images/v2.1.3/asset-pack-editor-blocks-imported-atlas.png" alt="Imported atlas files"></p>
+<p>By the way, the Blocks view only shows the files stored in the asset pack file folder and sub-folders. For example, if your pack file is on the <code>WebContent/assets/</code> folder, then the Blocks view will ignore all the files of the <code>WebContent/js/</code> folder. We recommend to create the file packs in folders dedicated only for assets that are supposed to be imported, so the Blocks view of the Asset Pack Editor will show only relevant content.</p>
+<p>We think this is a very quick and friendly workflow, another step on the automatic importing of resources. This tool could be used even if you are only interested in Phaser Editor only as a resource manager, and not a scene maker.</p>
+<h3>Better undo/redo support {#asset-pack-editor-undo-redo-support}</h3>
+<p>Phaser Editor v2 inherited the Asset Pack Editor refactoring tooling from v1, but it was used only as an undo/redo alternative because yet the scenes and animations do not support refactorings. In this version, we decided to remove the refactoring support and use the real undo/redo framework provided by the workbench. So, now are the Asset Pack Editor operations can be undo/redo. All the Phaser Editor custom files have a JSON format so it is very easy to modify manually, in case you “break” it. Yet we have to evaluate if we need refactoring tools or just smarter search/replace tools.</p>
+<h3>Other changes {#asset-pack-editor-other-changes}</h3>
+<ul>
+<li>Added a context menu to delete or add file keys.</li>
+<li>Removed the delete and rename buttons from the Properties view. You can use the context menu or the DELETE key to delete the file keys.</li>
+<li>We added a <code>contentType</code> field in the meta description of the Asset Pack File, to help differentiate it from other JSON files.</li>
+<li>If the pack file is empty, the Asset Pack Editor shows a help message with the steps to add the first file keys.</li>
+</ul>
+<h2>Scene Editor {#scene-editor}</h2>
+<p>We fixed some bugs and added minor features to the Scene Editor.</p>
+<h3>Improved experimental Chromium based WebView {#improved-experimental-chromium-webview}</h3>
+<p>The experimental Chromium-based WebView now works much better in Windows. We recommend you to test it. By default, Phaser Editor uses the native Internet Explorer-based WebView, to enable the Chromium WebView, go to <em>Windows → Preferences → Phaser Editor → WebView</em> and select the <strong>Chromium Browser (Experimental)</strong> option. Then re-open the scene editors.</p>
+<ul>
+<li>The editor gets the focus when an object is selected in the WebView. This fixes several synchronization issues with the <a href="/docs/v2/workbench.html#properties-view">Properties</a> and <a href="/docs/v2/workbench.html#outline-view">Outline</a> views.</li>
+<li>The scene objects dragging is now smooth. The WebView now just requests the needed number of paint calls.</li>
+</ul>
+<p>In Linux and macOS it uses a WebKit based WebView by default, which performs very well. The Chromium WebView is yet very unstable in these platforms.</p>
+<h3>Improved mouse zooming {#improved-mouse-zooming}</h3>
+<p>Now the Scene Editor mouse-wheel zooming is consistent with the other image-based controls of the IDE: it keeps pointing to the same image’s point.</p>
+<h3>Improved selection tool {#improved-selection-tool}</h3>
+<p>The selection tool was improved:</p>
+<ul>
+<li>To select an object you have to release the mouse.</li>
+<li>If you drag the mouse it paints a frame, and all the objects inside the frame will be selected when the mouse is released.</li>
+<li>Tile-sprite objects now support a pixel-perfect hit test.</li>
+<li>Fixed the selection frame of flipped tile-sprite objects.</li>
+</ul>
+<h3>Improved object dragging {#improved-object-dragging}</h3>
+<p>Now to drag an object you have to do two steps:</p>
+<ul>
+<li>Down and release the mouse in the same point (select it).</li>
+<li>Down the mouse in the selected object and move it.</li>
+</ul>
+<p>This is the same behavior of Phaser Editor v1 and prevents the accidental changing of the object’s position.</p>
+<h3>Phaser version {#scene-editor-phaser-version}</h3>
+<p>The Scene Editor scene uses the Phaser 3.19.0 version. This means some scene objects could be rendered different in your game if it uses an older version of Phaser.</p>
+<h2>Animations Editor {#animations-editor}</h2>
+<p>The Animations Editor received some touches.</p>
+<ul>
+<li>Implemented undo/redo for all the operations.</li>
+<li>The editor shows all the animations in a grid layout when no animation is selected.</li>
+<li>If the animations file is empty, the editor shows a message with instructions to create new animations.</li>
+<li>The editor context menu shows the option to add or delete animations.</li>
+<li>Added a <code>contentType</code> field to the animations file. It helps to differentiate animation files from other JSON files.</li>
+</ul>
+<h2>Texture Packer Editor {#texture-packer-editor}</h2>
+<p>The Texture Packer Editor was “modernizer”. Now it contributes to the main toolbar and the Blocks view.</p>
+<h3>Documentation</h3>
+<p>We finished the documentation of the <a href="/docs/v2/texture-packer-editor.html">Texture Packer Editor</a>.</p>
+<h3>Toolbar {#texture-packer-editor-toolbar}</h3>
+<p>We moved the <strong>Settings</strong> and <strong>Build Atlas</strong> buttons to the main IDE toolbar.</p>
+<p><img src="/blog/content/images/v2.1.3/texture-packer-editor-toolbar.png" alt="Texture Packer Editor toolbar"></p>
+<h3>Blocks view {#texture-packer-editor-blocks-view}</h3>
+<p>Now the Blocks view connects to the active Texture Packer editor and shows all the images outside the <code>WebContent</code> folder that, at the same time, are not part of any other Texture Packer Editor file. In this way, you can drag images (or folders) from the Blocks view and drop them into the Texture Packer Editor.</p>
+<p><a href="/docs/v2/texture-packer-editor.html#add-images-to-the-atlas">Learn more about adding images to the Texture Packer Editor</a></p>
+<p><strong>Warning</strong>: keep your project clean. Don’t add unneeded files to your project, because we are implementing tools that analyze all the content of the project and display that content in different layouts and contexts (like the Blocks view and the Project view). If you have server files (<code>node_modules</code>), or other files related to third-party tools, or original versions of your images (just to mention a few cases), we recommend to store them in other place outside the project, or <a href="/docs/v2/workbench.html#resource-filters">filter them off</a>.</p>
+<p><img src="/blog/content/images/v2.1.3/texture-packer-import-1.png" alt="Texture Packer Editor import files from Blocks view. Step 1."></p>
+<p><img src="/blog/content/images/v2.1.3/texture-packer-import-2.png" alt="Texture Packer Editor import files from Blocks view. Step 2."></p>
+<h3>Other changes {#texture-packer-editor-other-changes}</h3>
+<ul>
+<li>The context menu now shows a Delete option.</li>
+<li>When the atlas is empty, the editor shows a message with the instructions to add the first images.</li>
+</ul>
+<h2>Blocks view {#blocks-view}</h2>
+<p>The Blocks view received some love too.</p>
+<ul>
+<li>It renders lines to join a parent block with its children. If the block has two levels of depth, two lines are rendered.
+<img src="/blog/content/images/v2.1.3/blocks-view-depth-lines.png" alt="Blocks view: depth lines"></li>
+<li>When a non-terminal block is collapsed, it shows some of the children icons inside it.
+<br>Collapsed:
+<img src="/blog/content/images/v2.1.3/blocks-view-non-terminal-collapsed.png" alt="Blocks view: non-terminal block collapsed">
+Expanded:
+<img src="/blog/content/images/v2.1.3/blocks-view-non-terminal-expanded.png" alt="Blocks view: non-terminal block expanded"></li>
+<li>The selection rendering was improved.
+<img src="/blog/content/images/v2.1.3/blocks-view-selection.png" alt="Blocks view: selection"></li>
+<li>Now you can select all elements with the <code>Ctrl+A</code> keys.</li>
+<li>Fixed some issues when closing an editor and the connection with the Properties view.</li>
+</ul>
+<h2>Project view {#project-view}</h2>
+<p>We added a button to the view’s toolbar and a context menu option to clean the current project.</p>
+<p><img src="/blog/content/images/v2.1.3/project-view-clean-button.png" alt="Project view: clean button"></p>
+<h2>Assets view {#assets-view}</h2>
+<ul>
+<li>Removed the context menu.</li>
+<li>Better integration with the Properties view.</li>
+<li>Fixes some issues with the file icons rendering.</li>
+</ul>
+<h2>Other changes {#other-general-changes}</h2>
+<ul>
+<li>Registers undo/redo actions in the Outline and Properties views connected to the Asset Pack Editor, Animations Editor, and Scene Editor.</li>
+<li>Fixed change notification in the number fields of the Properties view forms. It created an unexpected undo/redo behavior.</li>
+<li>BitmapFont renderer in the UI: fixes a <strong>null-pointer-exception</strong> when the font file is missing.</li>
+<li>Project wizard: validates if the folder already exists in the filesystem.</li>
+<li>IDE main toolbar: fixes <strong>null-pointer-exception</strong> when the last editor is closed.</li>
+<li>Use a special icon for the tilemap files.</li>
+<li>Limits the number of spritesheet frames in the UI. Many spritesheets contains a lot of frames and it may slow the UI. Now the sprite-sheet preview controls will show only a maximum of 50 frames per sprite-sheet. You can change that limit in <em>Window → Preferences → Phaser Editor → Preview → Spritesheet</em>.</li>
+<li>Fixes <strong>null-pointer-exception</strong> in certain parts of the UI when you have files with no (<code>null</code>) extension.</li>
+</ul>
+<h2>What’s next {#whats-next}</h2>
+<p>We keep writing the <a href="/docs/v2">documentation</a> for Phaser Editor v2. Many of the changes we mentioned in this article were implemented as a consequence of the documentation writing. Something we have to do is to spend important time to develop some real games. It gives us a user perspective of the product that helps to make it more robust and friendly.</p>
+<ul>
+<li>(<strong>done</strong>) Support missing loader file types (like <code>css</code> and <code>scripts</code>).</li>
+<li>(<strong>done</strong>) Support TypeScript projects and code generators.</li>
+<li>(<strong>done</strong>) Support Scene Text object.</li>
+<li>(<strong>done</strong>) Support undo/redo on the Animations and Asset Pack editors.</li>
+<li>(<strong>Next in line</strong>) Start writing the documentation.</li>
+<li>Update the website and make Phaser Editor v2 the recommended option.</li>
+<li>Support Scene Tilemap object.</li>
+<li>Support Scene layers (an idea we have about only-editor layers).</li>
+<li>Support Scene Prefab object.</li>
+<li>Support other Scene object types and custom styling for fonts and HTML elements.</li>
+</ul>
+<p>See you soon,</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/blocks">blocks</a>, <a href="/blog/tag/scene-editor">scene-editor</a>, <a href="/blog/tag/texture-packer">texture-packer</a>, <a href="/blog/tag/scene-editor">scene editor</a>, <a href="/blog/tag/texture-packer">texture packer</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

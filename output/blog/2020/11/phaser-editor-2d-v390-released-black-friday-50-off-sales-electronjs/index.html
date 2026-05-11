@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.9.0 released! Black Friday 50% off sales &amp;amp; ElectronJS! | Phaser Editor 2D Blog</title>
+  <meta name="description" content="This new release comes with a 50% off Black Friday sales, Electron JS wrapper, and Shapes support.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.9.0 released! Black Friday 50% off sales &amp;amp; ElectronJS!</h1>
+        <p class="text-info">November 24, 2020 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20201124035156-release390.png" alt="Phaser Editor 2D v3.9.0 released! Black Friday 50% off sales &amp;amp; ElectronJS!"></p>
+        <div class="lead"><p><em>Update 12-01-2020</em>: <a href="https://phasereditor2d.com/blog/2020/12/phaser-editor-2d-v391-hotfix-released">v3.9.1 hotfix relseased</a></p>
+<p>Hi!</p>
+<p>Did you say Electron? It is here! Phaser Editor 2D v3.9.0 arrives in the form of an Electron-wrapped application!</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.9.0</a></p>
+<p>If you like it, this is the best moment to purchase a license because the <strong>Black Friday sales just started</strong>!</p>
+<p><a href="https://gum.co/phasereditor/blackfriday2020">Get a license  with a Black Friday 50% off discount</a></p>
+<h2>ElectronJS</h2>
+<p>So many users asked for an Electron-based editor that we did it for this special date. Honestly, we still love the Phaser Editor 2D server. It allows us to run the editor inside any browser and always you can configure it as a desktop application, but we understand that providing the server and the browser in a single package could be more friendly for many of you.</p>
+<p>And there is a very nice new feature only available in the Electron-based editor: you can change the workspace folder inside the Projects dialog. We talk about it later.</p>
+<p>We created a new public repository for this new product: <a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3-electron">github.com/PhaserEditor2D/PhaserEditor2D-v3-electron</a></p>
+<p>You are welcome to contribute.</p>
+<p>But don’t expect all Phaser Editor 2D code there. The whole thing is pretty simple, in the main process we start the regular (source-closed) Phaser Editor 2D server (in port <code>1995</code>) and load the editor in the Electron’s render process.</p>
+<p>If you open the process monitor of your OS, you will see the Electron process and a <code>PhaserEditor2D</code> server process, which is a child of the main Electron process.</p>
+<h3>Install</h3>
+<p>Yet, Phaser Editor 2D is a portable application. But the Electron-based distribution is easier to “install” in your system.</p>
+<h4>Install on Windows</h4>
+<p>You don’t need to install it. Just start the <code>PhaserEditor2D.exe</code> file and pin it in the taskbar.</p>
+<h4>Install on macOS</h4>
+<p>Move the <strong>PhaserEditor2D</strong> app to the <strong>Applications</strong> folder. To execute it the first time you have to right-click on the app and select the <strong>Open</strong> option.</p>
+<h4>Install on Linux</h4>
+<p>You can execute the editor in a Terminal:</p>
+<pre><code>$ ./PhaserEditor2D
+</code></pre>
+<p>Or you can install it by running the <code>install.sh</code> script:</p>
+<pre><code>$ ./install.sh
+</code></pre>
+<p>It will create a desktop shortcut and will add Phaser Editor 2D to the Desktop Environment menu.</p>
+<p>You can remove the shortcut and menu by running the <code>uninstall.sh</code> script:</p>
+<pre><code>$ ./uninstall.sh
+</code></pre>
+<p>It does not require root privileges.</p>
+<h3>Changing the workspace</h3>
+<p>Something great about Electron is that you can use native dialogs. To take advantage of it, we added the option of change the workspace directory inside the IDE.</p>
+<p>Now, when you open the Projects dialog (<code>Ctrl+P</code>), it shows the current workspace path and provides a button to change it. Please, don’t confuse the workspace directory with the folder of a particular project. A workspace is a folder that contains all the project’s folders.</p>
+<p><img src="/blog/content/images/v3.9.0/change-workspace.png" alt="Change workspace"></p>
+<p>For now, this feature is only available in Electron, but we will implement it also in the server distribution when you run it in the application mode. We just need to find a multi-platform method to launch a native file dialog in Go.</p>
+<h2>License activation dialog</h2>
+<p>Now you can unlock the editor using a dialog inside the IDE. This feature is available when you run the editor in application mode (including inside Electron):</p>
+<p><img src="/blog/content/images/v3.9.0/unlock-editor.png" alt="Register license dialog"></p>
+<p>The old method is still available, you can activate the editor in a terminal:</p>
+<pre><code>$ PhaserEditor2D -lickey XXXX-XXXX-XXXX-XXXX
+</code></pre>
+<p>By the way, the license activation status (Premium or Free) is shown in the window’s title.</p>
+<h2>Scene Editor</h2>
+<p>We also implemented some new features in the Scene Editor: the Shapes objects!</p>
+<h3>Shapes objects</h3>
+<p>Phaser supports a couple of shape objects and we plan to support all of them. In this release, we included support for the most basic shapes: Rectangle, Ellipse, and Triangle.</p>
+<p><a href="https://help.phasereditor2d.com/v3/scene-editor/shape-object.html">Learn more about Shapes</a></p>
+<p>You can add a shape to the scene by dragging it from the Blocks view:</p>
+<p><img src="/blog/content/images/v3.9.0/create-shape.png" alt="Create shape"></p>
+<p>And you can change the size of the shape with the <strong>Resize Tool</strong> (you can select with the <code>Z</code> key):</p>
+<p><img src="/blog/content/images/v3.9.0/resize-tool.png" alt="Create shape"></p>
+<p>All shapes share common “style” properties that you can edit in the <strong>Shapes</strong> section of the Inspector view:</p>
+<p><img src="/blog/content/images/v3.9.0/shape-style-properties.png" alt="Create shape"></p>
+<h3>Tilemap Layer rendering in the Outline view</h3>
+<p>We improved the way a Tilemap Layer object is rendered in the Outline view. It now shows a “thumbnail” image of the Tilemap Layer object:</p>
+<p><img src="/blog/content/images/v3.9.0/tilemap-layer-outline.png" alt="Tilemap layer object cell renderer"></p>
+<h3>Grouping built-in type blocks in the Blocks view</h3>
+<p>As you may notice in the previous screenshots, the Blocks view groups the built-in type blogs by category:</p>
+<p><img src="/blog/content/images/v3.9.0/built-in-blocks-view.png" alt="Grouping built-in type blocks"></p>
+<h3>Resize Tile Sprite tool</h3>
+<p>We renamed the <strong>Resize Tile Sprite tool</strong> to <strong>Resize Tool</strong>, you can apply it to TileSprite objects and shapes.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/electronjs">electronjs</a>, <a href="/blog/tag/scene-editor">scene-editor</a>, <a href="/blog/tag/scene-editor">scene editor</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

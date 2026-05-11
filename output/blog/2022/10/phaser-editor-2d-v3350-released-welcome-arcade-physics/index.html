@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.35.0 released. Welcome Arcade physics. | Phaser Editor 2D Blog</title>
+  <meta name="description" content="A new release with support for Arcade physics. New prefab instance ability to append children. Bug fixes. Apple Silicon fixes.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.35.0 released. Welcome Arcade physics.</h1>
+        <p class="text-info">October 14, 2022 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20221012044654-v3.35.0.png" alt="Phaser Editor 2D v3.35.0 released. Welcome Arcade physics."></p>
+        <div class="lead"><p>Hi!</p>
+<p>A new version of Phaser Editor 2D is ready for download!</p>
+<p>This is an important release because it includes two new important features: the Arcade physics tools &amp; the appendable children of a prefab instance.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.35.0</a></p>
+<h2>Arcade physics</h2>
+<p>The new physics tooling is here! Finally! This is a feature requested by many of you, <a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/211">including sponsors</a>. Now you can create the <a href="https://help-v3.phasereditor2d.com/scene-editor/arcade-physics-add-object.html">Image and Sprite physics objects</a>:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221012052727-arcade-blocks.jpeg" alt="Arcade scene blocks"></p>
+<p>Or enable an Arcade physics body on any other object:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221012053617-add-body.jpeg" alt="Enable physics body"></p>
+<p>Also, you can <a href="https://help-v3.phasereditor2d.com/scene-editor/arcade-physics-collider.html">create a Collider</a>:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221012053212-collider.png" alt="Collider properties"></p>
+<p>But what you requested more, was the <a href="https://help-v3.phasereditor2d.com/scene-editor/manipulation-tools.html#arcade-physics-body-tool">in-scene body editor</a>:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221012053939-edit-body-tool.jpeg" alt="Edit body tool"></p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221013083632-circular-body-edit.jpeg" alt="Circular body edit"></p>
+<p>And the <a href="https://help-v3.phasereditor2d.com/scene-editor/arcade-physics-properties.html">body properties editor</a>:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221012054235-body-properties.jpeg" alt="Physics body properties"></p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/arcade-physics.html">Learn more about the Arcade Physics tooling</a></p>
+<p>Oh, and I updated the <a href="https://marketplace.phasereditor2d.com/examples/volcano/">Volcano</a> and <a href="https://marketplace.phasereditor2d.com/examples/sunny-land">Sunny Land</a> examples. Both now use the new physics tooling. Remember the all-in-one distribution of the editor <a href="https://help-v3.phasereditor2d.com/first-steps/create-first-project.html">allows create a new project based on the Phaser Editor 2D Marketplace templates &amp; examples</a>.</p>
+<h2>Adding children to a prefab instance</h2>
+<p>Adding children to a prefab instance is a game-changer feature! At least in my experience, I had been in that situation multiple times where I wanted to add new objects to a prefab instance. Fortunately, it is also a <a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/236">feature requested by sponsors</a> of the editor, so it landed in this release. I was surprised by how quickly I implemented it. Taking a rest or working on other projects helped me get more energy to work on these issues.</p>
+<p>For keeping compatible behavior, you cannot add a child to a prefab instance by default, first, you have to enable it in the prefab. You should check the <strong>Allow Append Children</strong> flag in the <strong>Children</strong> properties section:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221013084626-allow-append-children-prefab.jpeg" alt="Allow append children to a prefab instance"></p>
+<p>The above image shows a basic dialog prefab. You can create prefab variants like a <strong>LevelCompleteDialogPrefab</strong>:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221013085321-level-complete-dialog.jpeg" alt="Level complete dialog"></p>
+<p>Or a <strong>GamePausedDialogPrefab</strong>:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221013085304-game-paused-dialog.jpeg" alt="Game pause dialog"></p>
+<p>Both dialogs keep the same (inherited) behavior as the basic dialog:</p>
+<ul>
+<li>It has a show-up effect.</li>
+<li>It closes when you touch the <strong>close</strong> button.</li>
+</ul>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/prefab-instance-children.html">Learn more about adding children to a prefab instance</a></p>
+<h2>Colored parameters</h2>
+<p>This is a small change. Now some parameters are colored red and green. Basically, those related to XY vectors:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221013091915-xy-colored.jpeg" alt="Colored parameters"></p>
+<h2>Removed Monaco editor</h2>
+<p>In this release, I removed the Monaco editor plugin. Now there is a basic editor for editing the code. I did this because I don’t see a strong argument for keeping a so complex piece in the editor. Right now, there are very advanced editors like VS Code. Even, you can run VS Code in any environment you can run Phaser Editor 2D, including the cloud &amp; the browser.</p>
+<p>I know some of you are using Phaser Editor 2D for writing JavaScript games. I apologize for any inconvenience. Please, take a look at Visual Studio Code.</p>
+<h2>Apple Silicon &amp; code signing</h2>
+<p>Some users reported the ARM distribution of the all-in-one editor is not running on M1 machines. I never had that problem… sure… because I’m testing the editor on the same machine I build it!</p>
+<p>The problem is:</p>
+<p>“New in macOS 11 on Macs with Apple silicon, and starting in macOS Big Sur 11 beta 6, the operating system enforces that any executable must be signed before it’s allowed to run…”</p>
+<p>Phaser Editor 2D is not signed. For signing the app, I have to join the Apple Developer Program but unfortunately, it is not available for residents in Cuba. I need a third party to help me with this (<a href="https://github.com/cuban-opensourcers/cuban-restricted">like in many other services</a>) and it will take some time.</p>
+<p>The good news is that there is a way to run the app, just open the Terminal and execute this command:</p>
+<pre><code>sudo xattr -r -d com.apple.quarantine PhaserEditor2D-allInOne.app
+</code></pre>
+<p>After this, double-click the app, and it should run well. Now when you unzip the app, it has a README file explaining this workaround.</p>
+<p>Please, if you know about another alternative, let me know. You can comment on <a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/242">this issue</a>.</p>
+<h2>What’s next</h2>
+<p>For this release, I tried to implement the new ObjectScript (a powerful alternative to User Components). But failed. I first tried to implement it as another Game Object, but it was not a good idea. I want to try again, but implementing them just as plain objects, outside the display list. It will require some time since I have to implement a sort of hybrid of user components and prefabs.</p>
+<p>Also, I want to implement Sound, Key, and Event objects you can add to the scene.</p>
+<p>After this, I will look at the <a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/labels/sponsor">list of issues</a> created by the sponsors of the editor.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/arcade">arcade</a>, <a href="/blog/tag/physics">physics</a>, <a href="/blog/tag/prefab">prefab</a>, <a href="/blog/tag/children">children</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

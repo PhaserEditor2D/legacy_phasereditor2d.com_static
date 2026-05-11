@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.60.2 released. | Phaser Editor 2D Blog</title>
+  <meta name="description" content="A new version with bug fixes and minor improvements. Scene preview command. Open code files in the external editor.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.60.2 released.</h1>
+        <p class="text-info">April 27, 2023 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20230426213450-release3.60.2.jpeg" alt="Phaser Editor 2D v3.60.2 released."></p>
+        <div class="lead"><p>Hi!</p>
+<p>Today I’m releasing a new version of Phaser Editor 2D!</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.60.3</a></p>
+<p>(Released v3.60.3 with a bug fix when running the built-in http server)</p>
+<p>This version includes bug fixes and minor improvements. Bug fixes are about the Script Nodes. If you are working with Script Nodes, I recommend you to read these notes.</p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor 2D, please tell me, and I will be proud to feature it on the website, newsletter, and social channels.</p>
+<h2>Collaboration</h2>
+<p>A lot is happening in our <a href="https://discord.com/invite/4DdpMMD">Discord server</a>. Join us for collaboration. Ask questions or tell us your ideas. Your feedback is highly appreciated and is very important in the process of providing a more friendly and stable IDE.</p>
+<h2>Bug fixes</h2>
+<h3>ScriptNode <code>update</code> event</h3>
+<p>The <code>ScriptNode</code> class, like the base <code>UserComponent</code> class, has an <code>update()</code> method you can override in your custom base classes. For executing the <code>update()</code> method, the <code>ScriptNode</code> class registers a listener to the <code>&quot;update&quot;</code> event of the scene. However, when you switch from one scene to another, the scene events are not removed. This means the ScriptNode class should remove the listeners from the event when it is shut down. There was the bug, it was never removed from the “update” scene’s event. It does now.</p>
+<p>If you are using script nodes in your project, I strongly recommend you update the script node files in the <code>src/script-nodes-basic/</code> folder. You can get the fixed files from the <a href="http://github.com/PhaserEditor2D/script-nodes-basic">script-nodes-basic project</a>.</p>
+<p>I updated the project templates with the new script nodes, so creating a new project is fine.</p>
+<h3>Create a prefab with a parent object</h3>
+<p>For creating a prefab you have two options:</p>
+<ol>
+<li>Create a prefab scene file, and add an object to it.</li>
+<li>Select an object in a scene, and select the option of creating a prefab with it.</li>
+</ol>
+<p>If you select the second option for creating a prefab of a Container, Layer, or ScriptNode object, then it should move the children also to the prefab. It did it wrong until now, that is fixed and children are included in the prefab but not in the original object.</p>
+<h2>Script Node enhancements</h2>
+<p>Again, I encourage you to update your basic script nodes from the <a href="http://github.com/PhaserEditor2D/script-nodes-basic">script-nodes-basic project</a>.</p>
+<h3>Improves OnEventScript</h3>
+<p>The <strong>OnEventScript</strong> node is a trigger-like node. It listens to a certain event and executes the children nodes, which are expected to be action-like nodes.</p>
+<p>Now, this node allows you to listen to events from different sources (<code>Event Emitter</code>):</p>
+<ul>
+<li>The global game events (<code>game.events</code>)</li>
+<li>The scene events (<code>scene.events</code>)</li>
+<li>The scene loader (<code>scene.loader</code>)</li>
+<li>The scene input plugin (<code>scene.input</code>)</li>
+<li>The scene keyboard plugin (<code>scene.input.keyboard</code>)</li>
+<li>The scene animations manager (<code>scene.anims</code>)</li>
+<li>The game object (<code>gameObject</code>)</li>
+</ul>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230426231236-on-event-script.jpeg" alt="On event script node"></p>
+<p>It also allows registering the event once, by checking the <strong>Once</strong> parameter.</p>
+<p>These changes don’t break the code using the previous version of this script node.</p>
+<h3>Removes the <code>OnKeyboardEventScript</code></h3>
+<p>I deleted the <strong>OnKeyboardEventScript</strong> because now you can listen to the keyboard with the new <strong>OnEventScript</strong> node.</p>
+<p>If you are using this script node in your project, I encourage you to use the <strong>OnEventScript</strong> node or a prefab variant of it.</p>
+<h3>EmitEventActionScript</h3>
+<p>This is an action-like node that emits an event. You can select different sources (Event Emitter) for emitting the event. The options are the same as the <strong>OnEventScript</strong> node: the scene events, the input events, the keyboard events, etc…</p>
+<h3>Improves the <code>execute()</code> method</h3>
+<p>The <strong>ScriptNode</strong> class contains the <code>execute()</code> method. If you want to implement an action-like node, then you should override the <code>execute()</code> method with the action code. Now this method can receive multiple arguments:</p>
+<pre><code>execute(arg1: string, arg2: number) {
+   ...
+}
+</code></pre>
+<p>The <code>executeChildren()</code> method in the ScriptNode is used for calling the <code>execute()</code> method of the children. Now this method supports multiple arguments, too.</p>
+<h3>Updates starter and example project templates</h3>
+<p>I updated all project templates, it uses the new ScriptNodes. The <a href="https://marketplace.phasereditor2d.com/examples/a-day-in-the-beach/">A day in the beach</a> example is a particular case where I use the script nodes, extensively. I recommend you take a look at its code and scenes.</p>
+<h2>Preview Scene command</h2>
+<p>I love this new feature. Now, if you are editing a scene, you can press <code>Ctrl+0</code> and it will open the scene in the default system browser. It runs the game, the game loads the assets and starts the given scene.</p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/misc-preview-scene.html">Learn more about this feature</a></p>
+<h2>Open JavaScript/TypeScript files with Visual Studio Code.</h2>
+<p>Now you can set Phaser Editor 2D to open the coding files in an external editor: Visual Studio Code by default. For this purpose, you can use the <strong>Enable/Disable Open Code File In External Editor</strong></p>
+<p><a href="https://help-v3.phasereditor2d.com/code-editor/vscode-compatibility.html#visual-studio-code-phaser-editor-2d-integration">Learn more about the external editors</a></p>
+<h2>What’s next</h2>
+<p>I’m on the way to implementing the new rendering FX that landed in Phaser 3.60. But I did a pause and did this bug-fixes release and had the opportunity of implementing a couple of new features and enhancements.</p>
+<p>I should continue the pause and make a series of videos about the Script Nodes. I think it is confusing for some of you.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/preview-scene">preview-scene</a>, <a href="/blog/tag/bugs">bugs</a>, <a href="/blog/tag/preview-scene">preview scene</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

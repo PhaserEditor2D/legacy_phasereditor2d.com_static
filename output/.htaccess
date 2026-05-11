@@ -1,0 +1,45 @@
+Options -Indexes
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^helpcenter\.phasereditor2d\.com$ [NC]
+RewriteRule ^ https://explorer.phaser.io%{REQUEST_URI} [L,R=301]
+
+# Don't show directory listings for URLs which map to a directory.
+RedirectMatch "/license/?$" "/pricing"
+Redirect 301 /chains /helpcenter
+Redirect 301 /blog/quick-start/010-first-steps /docs/first-steps.html
+Redirect 301 /blog/quick-start/020-asset-pack /docs/assets-manager.html
+Redirect 301 /blog/quick-start/030-coding-js-editor /docs/jseditor.html
+Redirect 301 /blog/quick-start/035-chains /docs/chains.html
+Redirect 301 /blog/quick-start/040-preview-window /docs/preview-window.html
+Redirect 301 /blog/quick-start/050-texture-atlas /docs/texture-packer.html
+Redirect 301 /blog/quick-start/060-optimize-png /docs/optipng.html
+Redirect 301 /blog/quick-start/070-audio-sprites /docs/audio-sprites.html 
+Redirect 301 /blog/quick-start/090-update /docs/update.html
+Redirect 301 /blog/quick-start/080-canvas /docs/canvas.html
+Redirect 301 /blog/quick-start /docs
+Redirect 301 /blog/features https://phasereditor2d.com
+Redirect 301 /blog/downloads https://phasereditor2d.com/downloads
+# Requires mod_expires to be enabled.
+<IfModule mod_expires.c>
+  # to activate mode_expires
+  ExpiresActive on
+  ExpiresDefault                                      "access plus 1 month"
+  <FilesMatch (\.js|\.html|\.css)$>
+    ExpiresActive off
+  </FilesMatch>
+</IfModule>
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Begin EnforceSSL phasereditor2d.com
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^(www.)?phasereditor2d.com$
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L]
+</IfModule>
+# End EnforceSSL
+

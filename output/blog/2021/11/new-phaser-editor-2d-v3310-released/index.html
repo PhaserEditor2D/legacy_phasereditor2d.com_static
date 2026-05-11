@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.31.0 released. | Phaser Editor 2D Blog</title>
+  <meta name="description" content="A new version with important bug fixes and small new improvements.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.31.0 released.</h1>
+        <p class="text-info">November 29, 2021 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20211125093726-release3.31.0.png" alt="Phaser Editor 2D v3.31.0 released."></p>
+        <div class="lead"><p>Hi!</p>
+<p>I’m happy to deliver a new version of Phaser Editor 2D!</p>
+<p>By the way, the editor sold this year’s Black Friday/Cyber Monday season more than ever. Thank you!</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D</a></p>
+<p>This v3.31.0 is all about bug fixes (and some small additions). Many of these bugs were reported by users. Especially, users who are pushing the editor to the edge of its concepts and architecture.</p>
+<p>It is the case of the prefabs and nested prefabs architecture. This release includes a couple of bug fixes and small changes for making it a more robust solution.</p>
+<p>I recommend you update your projects to this release as soon as possible. Open the project with this version of the editor, compile all the scenes, and test the game. Let me know if you have any issues. It is always a pleasure to support you.</p>
+<p>Keep with me until the end of this post. I will share some thoughts about how is it going with the editor and what is next.</p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor 2D, please tell me, and I will be proud to feature it on the website, newsletter, and social channels.</p>
+<h2>Collaboration</h2>
+<p>A lot is happening in our <a href="https://discord.com/invite/4DdpMMD">Discord server</a>. Join us for collaboration. Ask questions or tell us your ideas. Your feedback is highly appreciated and is very important in the process of providing a more friendly and stable IDE.</p>
+<h2>Changing the default render type</h2>
+<p>There are two new commands for changing the default renderer type of the Scene Editor. If your game is all CANVAS renderer based, then you may want to use the same CANVAS type when editing the scenes:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20211129084122-set-default-render-type-commands.png" alt="Commands for changing the default render type"></p>
+<p>These commands require refreshing the browser.</p>
+<h2>Open the game in the browser (All-in-One edition)</h2>
+<p>Some of you reported it is hard to debug a game when it runs in the browser provided by the All-in-One edition. Now when you run a game inside the editor, it opens the OS default browser.</p>
+<p>However, I recommend you take a look at Webpack (or similar tools) and third-party development servers. The Phaser Editor 2D built-in HTTP server is very basic and doesn’t cover all the complexity of web development. A good start point is the <a href="https://phasereditor2d.com/start/">Webpack project template</a>.</p>
+<h2>Other additions &amp; changes</h2>
+<ul>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/145">#145</a>: BitmapText: adds support for <code>maxWidth</code> property.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/147">#147</a> Scene compiler: formats Text style JSON with a VSCode similar formatting.</li>
+</ul>
+<h2>Fixed origin serialization</h2>
+<p>Phaser 3 doesn’t have a consistent default value for the origin of the objects. For images, sprites, tile sprites, the origin is at the center of the object <code>(0.5, 0.5)</code>. However, for the text and bitmap text objects, the origin is at <code>(0, 0)</code>. When I created the first version of the scene editor, I assumed the same origin default value for all the objects: <code>(0.5, 0.5)</code>, and added some tweaks in the scene serialization and code compilation to target the cases when the default origin of an object is not at the center.</p>
+<p>That was a very bad and lazy solution. Later I introduced nested prefabs and things got worst, generating bugs in the representation of multi-level nested prefabs of texts and bitmap texts.</p>
+<p>The default value of any property is essential for serialization and code generation. If the value of a property is the same as the default value, then it is not included in the compiled code and the <code>.scene</code> file.</p>
+<p>In this release I took the time for implementing a better solution, assuming the origin of an object is variable and depends on the type of the object. Now we have a cleaner solution, but it introduces incompatibilities with the data of previous <code>.scene</code> files, where the default origin of objects is always at the center.</p>
+<p>So I had to implement an automatic migration routine, for converting old scene files (tagged with version 2), to the new scene files, with the right origin values (tagged as version 3).</p>
+<p>I tested this migration process on test-case projects and real, large, projects. And some early adopters helped me by testing their projects. For migrating your project follow these steps:</p>
+<ul>
+<li>Make a backup of your project (Git is great for this 😀)</li>
+<li>Open the project in this version of the editor.</li>
+<li>Check all objects are well placed in the scenes. Pay attention to texts and bitmap texts.</li>
+<li>Compile all the scenes (<code>Ctrl+Alt+B</code>).</li>
+<li>Check there aren’t compilation errors (in case you are using TypeScript).</li>
+<li>Finally, run the game and check it is working well.</li>
+</ul>
+<p>If it fails in your project, please, contact me for supporting you in migrating your scene files.</p>
+<p>Check this issue for getting more context in the bug and the solution:  <a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/150">150</a>.</p>
+<h2>Unlocked property serialization</h2>
+<p>As I explained before, the logic behind including a property value in the compiled code and serialization of the <code>.scene</code> file, is to compare the current value with the default value. If both values are the same, then it is omitted.</p>
+<p>However, in the case of an unlocked property of a prefab instance, it is more consistent to include the property value even if it is equal to the default value. When you unlock a property, you are saying you want to overwrite it, it doesn’t matter if you set the same value again. If you want to keep the default value of the property and omit it in the code, then lock it again. Locking a property means that you want to keep it with the default (prefab) value.</p>
+<p>This means that probably you will see additional code when you compile your old scene files with the new version of the editor. I recommend you keep an eye on this when you do the migration steps I explained before.</p>
+<h2>Other fixes</h2>
+<ul>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/154">#154</a> Incorrect position values passed to super call in a derived class of nested prefab.</li>
+<li>Scene editor: fixes Break Parent command.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/143">#143</a> Fixes bitmap font loading when pasting a bitmap text object from another scene.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/154">#154</a> Incorrect position values passed to super call in a derived class of nested prefab.</li>
+<li>Scene Editor: allows changing the origin of a container prefab instance with an un-locked position.</li>
+<li>Scene Editor: fixes var name of nested prefabs.</li>
+</ul>
+<h2>New Enterprise Tier</h2>
+<p>I added a new tier to the <a href="https://fornaris.gumroad.com/l/phasereditor-backers">Phaser Editor 2D Backers membership</a>.</p>
+<p>This is an Enterprise Tier for is business clients who are looking to the editor as a long-term solution for developing their products. I’m very happy that right now the editor has two subscribers to this tier.</p>
+<p>In general terms, this is what you get as a business:</p>
+<ul>
+<li>You can share the license key (generated by this membership) with your team.</li>
+<li>You can request permanent access to the closed-source parts of the editor.</li>
+<li>You can request permanent access to the scripts for building the final products:
+<ul>
+<li>Phaser Editor 2D Core.</li>
+<li>Phaser Editor 2D All-in-One.</li>
+</ul>
+</li>
+<li>You can modify the editor’s source code and create custom products for the internal use of your business.</li>
+<li>You can ask for including new features or particular bug fixes in the editor’s public development plan.</li>
+<li>You can ask me to support your team in solving a particular editor issue. It does not include Phaser or third-party software issues.</li>
+<li>You can negotiate any other request</li>
+</ul>
+<p>Please, check the whole <a href="https://phasereditor2d.com/pricing/Phaser%20Editor%202D%20Backers%20Membership%20-%20Enterprise%20Tier%20Agreement.pdf">Enterprise Tier Agreement</a>.</p>
+<h2>Welcome Bitcoin!</h2>
+<p>Some days ago, a user asked me for paying a lifetime license with Bitcoin. I know there are a lot of places where people don’t have access to an international bank account or international payment platforms. For example, myself. Cuba is under US sanctions and all of these are banned for the Cuban people.</p>
+<p>If you have BTC and want to pay a Phaser Editor 2D License, please, contact me, cryptocurrencies are welcome!</p>
+<h2>What’s next?</h2>
+<p>I keep working on side projects, developing games with Phaser Editor 2D. Well, I don’t see them as fully side projects, since I’m constantly getting back to the editor for adding small features or fixing bugs. Working on real games (not only demos or jams) is something I always wanted to do and I believe at the end, or at the very beginning, it helps me have a more practical view of the editor and its mission. I feel very happy about it. That’s rewarding when using the editor has a huge impact on completing a job in time and with quality.</p>
+<p>At the same time, I keep close working with the editor’s community. Especially, those of you who are reporting feedback, bugs, and ideas.</p>
+<p>I talked in the previous release of the editor, about the marketplace. I’m working on it. I’m developing a website for the game devs community in Cuba, and I think I will use the same tech stack for making the Phaser Editor 2D Marketplace: static site generators!</p>
+<p>I’m fascinated by how you can integrate a static site generator with a service like GitHub and Netlify. The marketplace is more about the users consuming the resources, and I think this is a solution with a good balance between the efforts for developing it, for consuming it, and for contributing to it.</p>
+<p>Regarding the IDE, I have some subjects in line:</p>
+<ul>
+<li>Simplify the way you make new extensions (like adding new game object types).</li>
+<li>Implement a layout manager.</li>
+<li>Implement the GameObject type. That is like an object you add to the scene that adds logic and behaviors.</li>
+<li>Implement the Geom objects.</li>
+<li>Implement the Polygon shape.</li>
+<li>Allow rendering more in-scene info of an object, like its label or the relation with other objects.</li>
+<li>Add a new type of user property: the Object Reference property.</li>
+</ul>
+<p>Sure, probably all of these are not going to happen soon, but it is what I have in mind and some users are missing in their daily work with the editor (including myself). The next big pending task is to implement the Timeline Animator, but yet it is not the time for it.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/bug-fixes">bug-fixes</a>, <a href="/blog/tag/bug-fixes">bug fixes</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

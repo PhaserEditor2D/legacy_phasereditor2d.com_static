@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Commenting the Sunny Land Woods demo (Tutorial) | Phaser Editor 2D Blog</title>
+  <meta name="description" content="Some thoughts about how we migrated the Sunny Land Woods demo to Phaser 3 and Phaser Editor. Key concepts used in the migration were object-factories and fake assets.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Commenting the Sunny Land Woods demo (Tutorial)</h1>
+        <p class="text-info">March 21, 2019 - Posted in <a href="/blog/category/tutorials">tutorials</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/tutorial-sunny-land-woods/TitleScreen.png" alt="Commenting the Sunny Land Woods demo (Tutorial)"></p>
+        <div class="lead"><p>Hi,</p>
+<p>This article is not a typical step by step tutorial, else a series of comments about how we migrated the Sunny Land Woods demo to Phaser 3, using the Phaser Editor 2D tools. Sunny Land Woods (originally created by <a href="https://ansimuz.itch.io">Luis Zuno</a>) is a beautiful retro-style platformer game that includes a level full of animated enemies and items. Internally, it uses tilemaps, arcade physics, and custom (reusable) objects, so it is a great resource to learn how you can use these techniques in the visual tools of Phaser Editor 2D.</p>
+<p>To see the final result, you can create a project based on the <strong>Sunny Land Woods (Tilemap - Factory - Pixel Art)</strong> template (<strong>File</strong> → <strong>New</strong> → <strong>Phaser Example Project</strong>). You need Phaser Editor v2.0.3.</p>
+<p><a href="https://ansimuz.itch.io/sunnyland-woods">Play or download the original demo</a></p>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/Screenshot.png" alt="Sunny Land Woods in Phaser Editor 2D"></p>
+<h2>Index</h2>
+<ul>
+<li><a href="#the-project-structure">The project structure</a></li>
+<li><a href="#common-files-and-folders-present-all-projects">Common files and folders present in “all” the Phaser Editor 2D projects</a></li>
+<li><a href="#files-and-folders-created-for-demo">Files and folders created for the Sunny Land Woods game</a></li>
+<li><a href="#the-asset-pack-file">The Asset Pack files</a></li>
+<li><a href="#the-animations">The animations</a></li>
+<li><a href="#the-scenes">The scenes</a></li>
+<li><a href="#the-boot-scene">The Boot scene</a></li>
+<li><a href="#the-preload-scene">The Preload scene</a></li>
+<li><a href="#the-titlescreen-scene">The TitleScreen scene</a></li>
+<li><a href="#the-gameoverscreen-scene">The GameOverScreen scene</a></li>
+<li><a href="#the-level-scene">The Level scene</a></li>
+<li><a href="#the-background">Background</a></li>
+<li><a href="#the-map">The map</a></li>
+<li><a href="#the-tree-elements">The tree elements (leaves and branches)</a></li>
+<li><a href="#the-pickable-items">The pickable items</a></li>
+<li><a href="#the-enemies">The enemies</a></li>
+<li><a href="#the-player">The player</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<pre><code class="language-javascript">new Phaser.Sprite();
+</code></pre>
+<h2>The project structure {#the-project-structure}</h2>
+<p>We can split a Phaser Editor game project structure into two groups: the common files and folders that are present in “all” the Phaser Editor 2D projects and the files and folders that are created to implement a particular game.</p>
+<h3>Common files and folders present in “all” the Phaser Editor 2D projects {#common-files-and-folders-present-all-projects}</h3>
+<p>For simplicity, we are describing only the files and folders inside the <code>WebContent</code> folder. The <code>WebContent</code> folder contains all the files of the game, the runtime files. There is another folder, <code>Design</code>, that is not included in the game and contains files used by tools, to create the game assets. For example, images that are packed in an atlas, or SVG files that are exported to PNG images.</p>
+<table>
+<thead>
+<tr>
+<th>Files &amp; Folders under <code>WebContent</code></th>
+<th>Description</th>
+<th style="text-align:center">Include in the Game Production Build</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jsconfig.json</code></td>
+<td>It is a <a href="https://code.visualstudio.com/docs/languages/jsconfig">configuration file</a> used by the Language Server Protocol (LSP), who allows a smart coding experience. The LSP was created by Microsoft and other companies and its reference implementation is Visual Studio Code. In Phaser Editor, we use a third-party plugin (<a href="https://marketplace.eclipse.org/content/eclipse-wild-web-developer-web-development-eclipse-ide">Wild Web Developer</a> who allows using this protocol to edit web files.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td><code>typings/</code></td>
+<td>That folder contains the Phaser TypeScript Definitions (<code>phaser.d.ts</code>). It is a file provided by the Phaser team and is used by the LSP (that is an abstraction of the TypeScript Server) to provides intellisense in the JavaScript editor. You can place other definition files here, especially if you are using other JavaScript libraries.</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td><code>lib/</code></td>
+<td>The folder contains the <code>phaser.js</code> file. You can add other libraries. That folder is excluded in the <code>jsconfig.json</code> file, so the files there are not analyzed by the smart-coding tooling. If the library provides a TypeScript definition file you can place it in the <code>typings</code> folder. This folder has to be included in the production build of the game, but you may want to use a minified (or custom) Phaser runtime. Or probably the better is to point to a Phaser runtime hosted in a CDN. In that case, you can exclude this folder from the production build.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td><code>index.html</code></td>
+<td>The entry point of the game. It loads the Phaser runtime (<code>lib/phaser.js</code>) and the script that creates and start the game (<code>mains.js</code>).</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td><code>main.js</code></td>
+<td>The “boot” JavaScript file that creates a <code>Phaser.Game</code> instance and starts the first scene (<strong>Boot</strong>).</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td><code>assets/</code></td>
+<td>The folder that contains all the resources of the game. Usually, these assets are packed into <code>some-pack.json</code> files and loaded by demand (images, sounds, animations, scripts). For that reason, you can find there JavaScript files, like those generated by the Scene Compiler. You may want to load the levels by demand, and in Phaser Editor the levels are compiled into JavaScript files.</td>
+<td style="text-align:center">Partially</td>
+</tr>
+</tbody>
+</table>
+<h3>Files and folders created for the Sunny Land Woods game {#files-and-folders-created-for-demo}</h3>
+<table>
+<thead>
+<tr>
+<th>Files &amp; Folders under <code>WebContent</code></th>
+<th>Description</th>
+<th style="text-align:center">Include in the Game Production Build</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assets/atlas/</code><br><code>assets/environment/</code><br><code>assets/maps/</code><br><code>assets/sounds/</code><br><code>assets/sprites/</code></td>
+<td>Those folders contains all the images, maps, texture atlas and sound resources. It follows the same layout of the original demo.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td><code>assets/preload-pack.json</code></td>
+<td>It is a standard Phaser Asset Pack file that contains the assets required by the <strong>Preload</strong> scene.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td><code>assets/levels-pack.json</code></td>
+<td>This Pack file contains the keys of all the assets required by the other scenes of the game (<strong>TitleScreen</strong>, <strong>Level</strong> and <strong>GameOverScreen</strong>).</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td><code>animations.json</code></td>
+<td>A standard Phaser Animations Configuration file. It contains all the sprite animations used in the game.</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td><code>assets/scenes/</code></td>
+<td>The Scene (<code>.scene</code>) files and the Scene Compiler output (<code>.js</code>) files. Plus some custom Phaser types like <code>Ant.js</code>, <code>Gator.js</code>, <code>Grasshopper.js</code>, etc…</td>
+<td style="text-align:center">Only the <code>.js</code> files</td>
+</tr>
+<tr>
+<td><code>fake-assets/</code></td>
+<td>In this folder, we place some assets that we use the Scene Editor, but are not needed by the game at runtime.</td>
+<td style="text-align:center">No</td>
+</tr>
+</tbody>
+</table>
+<h2>The Asset Pack files {#the-asset-pack-file}</h2>
+<p>In the original Sunny Land Woods demo, the assets are loaded using the different <code>Phaser.Loader.LoaderPlugin</code> methods:</p>
+<pre><code class="language-javascript">this.load.image('title', 'assets/sprites/title-screen.png');
+this.load.image('game-over', 'assets/sprites/game-over.png');
+this.load.image('enter', 'assets/sprites/press-enter-text.png');
+this.load.image('credits', 'assets/sprites/credits-text.png');
+this.load.image('instructions', 'assets/sprites/instructions.png');
+// environment
+this.load.image('bg-clouds', 'assets/environment/bg-clouds.png');
+this.load.image(&quot;bg-mountains&quot;, 'assets/environment/bg-mountains.png');
+this.load.image(&quot;bg-trees&quot;, 'assets/environment/bg-trees.png');
+// tileset
+this.load.image('tileset', 'assets/environment/tileset.png');
+this.load.tilemap('map', 'assets/maps/map.json', null, Phaser.Tilemap.TILED_JSON);
+// atlas sprite
+this.load.atlasJSONArray('atlas', 'assets/atlas/atlas.png', 'assets/atlas/atlas.json');
+this.load.atlasJSONArray('atlas-props', 'assets/atlas/atlas-props.png', 'assets/atlas/atlas-props.json');
+// audio
+this.load.audio('music', ['assets/sounds/the_valley.ogg']);
+this.load.audio('kill', ['assets/sounds/enemy-death.ogg']);
+this.load.audio('hurt', ['assets/sounds/hurt.ogg']);
+this.load.audio('item', ['assets/sounds/item.ogg']);
+this.load.audio('jump', ['assets/sounds/jump.ogg']);
+</code></pre>
+<p>But in Phaser Editor we use Asset Pack files. An Asset Pack file is a standard Phaser configuration file that allows defining all the asset configurations in a JSON file, so you only need to load that file and all the declared assets are loaded automatically. For this demo, we created the <code>preload-pack.json</code> and <code>levels-pack.json</code> files. The original code was changed to a single line:</p>
+<pre><code class="language-javascript">this.load.pack(&quot;levels-pack&quot;, &quot;assets/levels-pack.json&quot;);
+</code></pre>
+<p>You can create and edit them with the Asset Pack Editor.</p>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/AssetPackEditor.png" alt="Asset Pack editor"></p>
+<h2>The animations {#the-animations}</h2>
+<p>The demo uses Sprite Animations to animate different objects. In the original Phaser 2 code, the animations was created by “hand”, adding some lines of codes. Something like this:</p>
+<pre><code class="language-javascript">temp.animations.add('acorn', Phaser.Animation.generateFrameNames('acorn-', 1, 3, '', 0), 12, true);
+this.animations.add('fly', Phaser.Animation.generateFrameNames('gator-', 1, 4, '', 0), 10, true);
+this.animations.add('idle', Phaser.Animation.generateFrameNames('player-idle-', 1, 8, '', 0), animVel - 4, true);
+this.animations.add('run', Phaser.Animation.generateFrameNames('player-run-', 1, 6, '', 0), animVel + 3, true);
+this.animations.add('jump', Phaser.Animation.generateFrameNames('player-jump-', 1, 4, '', 0), 20, false);
+this.animations.add('hurt', Phaser.Animation.generateFrameNames('player-hurt-', 1, 2, '', 0), animVel, true);
+this.animations.add('duck', Phaser.Animation.generateFrameNames('player-crouch-', 1, 4, '', 0), animVel, true);
+this.animations.add('idle', Phaser.Animation.generateFrameNames('grasshopper-idle-', 1, 4, '', 0), 10, true);
+this.animations.add('jump', Phaser.Animation.generateFrameNames('grasshopper-jump-', 1, 2, '', 0), 10, true);
+this.animations.add('fall', Phaser.Animation.generateFrameNames('grasshopper-fall-', 1, 2, '', 0), 10, true);
+this.animations.add('walk', Phaser.Animation.generateFrameNames('ant-', 1, 8, '', 0), 10, true);
+this.animations.add('fly', Phaser.Animation.generateFrameNames('gator-', 1, 4, '', 0), 10, true);
+var anim = this.animations.add(&quot;death&quot;, Phaser.Animation.generateFrameNames(&quot;enemy-death-&quot;, 1, 4, '', 0), 15, false);
+</code></pre>
+<p>In Phaser 3, you can create the animations using an Animations Configuration file, and in Phaser Editor we did an editor for it.</p>
+<p>The Animations Editor allows you to create the animations very quickly, you only have to drop the textures into the editor and, based on the frame names, it will create the different animations. Then you can select the animations and edit its properties like <strong>Frame Rate</strong>, <strong>Repeat</strong>, etc… You can select many animations and change their settings at the same time.</p>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/AnimationsEditor.png" alt="Animations Editor"></p>
+<p>The animations are saved in the <code>assets/animations.json</code> file and included in the <code>levels-pack.json</code> file, you don’t need to write a single line of code to load and create them.</p>
+<h2>The scenes {#the-scenes}</h2>
+<p>The game is divided in five scenes: <strong>Boot</strong>, <strong>Preload</strong>, <strong>TitleScreen</strong>, <strong>Level</strong> and <strong>GameOver</strong>. Except for the <strong>Boot</strong> scene, all the other scenes are created using the Scene Editor of the IDE. The Scene Editor is a visual tool that allows to layout and set the properties of the game objects. The editor creates custom scene files (<code>*.scene</code>) to store the scene data but compiles it to readable JavaScript source, that the user can extend by inserting user code. It means each scene is formed by <code>.scene</code> file and a <code>.js</code> file (like <code>Level.scene</code> and <code>Level.js</code>). The <code>.scene</code> files are not needed by the game at runtime, you can exclude them from the production build.</p>
+<h3>The Boot scene {#the-boot-scene}</h3>
+<p>The <strong>Boot</strong> scene is the first scene executed by the game. It is in the <code>main.js</code> file, that is loaded via a <code>&lt;script&gt;</code> tag in the <code>index.html</code> file. The purpose of this scene is to load some assets required by the <strong>Preloader</strong> scene: the <code>assets/loading.png</code> image (used to display a progress bar) and the <code>Preload.js</code> file. These assets are packed in the <code>assets/preload-pack.json</code> file.</p>
+<p>In Phaser Editor we pack the scripts, the code of the scenes or any other object, in a Pack file and load them by demand like the other assets. Of course, this is optional, many tools of the editor need the Pack file but you can avoid to load them at runtime and do the loading in your way. Actually, it is a good idea to
+“strip” the pack files in the “build scripts” of your game. You can take all the <code>script</code> and <code>sceneFile</code> files, concatenate them in a single file and minimize it, then generate a new Pack file to load only the minified script file. We are thinking to write a tutorial about it in the future.</p>
+<h3>The Preload scene {#the-preload-scene}</h3>
+<p>The <strong>Preload</strong> scene loads the assets (packed in the <code>levels-pack.json</code> file) needed by the other scenes of the game and shows a bar with the progress of the loading. This is a scene that you will find in a lot of games made with Phaser, and follows a common pattern:</p>
+<ul>
+<li>It loads all the assets needed by the game.</li>
+<li>It shows the loading progress using a sprite with a bar, or a text. That sprite is created in the <code>preload</code> method of the scene and is updated on a <code>progress</code> event emitted by the loader.</li>
+<li>When the loading is done (you can know it when the <code>create</code> or <code>update</code> method is called), it starts the next scene, that use to be a Welcome screen with a <strong>play</strong> button.</li>
+</ul>
+<p>This scene was created by the Scene Editor, so you have the <code>assets/Preload.scene</code> and the <code>assets/Preload.js</code> files. If you open the <code>Preload.scene</code> file, you will see it only has the loading bar. Remember, the <code>Preload.js</code> and the <code>loading.png</code> files as loaded in the previous <strong>Boot</strong> scene.</p>
+<p>By default, the Scene Compiler generates a <code>create</code> method with the code that creates the objects, but in this case, we need to create the objects in the <code>preload</code> method. To solve this, we say to the compiler to use a different method name (<code>_create</code>) and we call it in the <code>preload</code> method:</p>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/PreloadSceneParameters.png" alt="Preload scene parameters"></p>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/PreloadScene.png" alt="Preload scene UI and code"></p>
+<p>Then, in the <code>create</code> method, we start the next scene: <strong>TitleScreen</strong>. The option of saying the compiler to use different names for the methods is simple and powerful, it gives you more freedom to write the layout you wish in your scenes. Even, you have the option to say the compiler to generate only the methods, so you can write the whole code with your own style.</p>
+<h3>The TitleScreen scene {#the-titlescreen-scene}</h3>
+<p>The <strong>TitleScreen</strong> scene is very simple, it shows the name of the game and the instructions. It was created with the Scene Editor, so there are the <code>assets/TitleScreen.scene</code> and <code>assets/TitleScreen.js</code> files. Note there is not any loading code, because all the assets, including the <code>TitleScreen.js</code> file, were loaded in the <strong>Preload</strong> scene. It starts the <strong>Level</strong> scene when you press ENTER.</p>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/TitleScreen.png" alt="TitleScreen scene"></p>
+<h3>The GameOverScreen scene {#the-gameoverscreen-scene}</h3>
+<p>The <strong>GameOverScreen</strong> scene is pretty similar to the <strong>TitleScreen</strong> scene. It is shown when you lose in the <strong>Level</strong> scene and redirects you to the <strong>TittleScreen</strong>.</p>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/GameOverScreen.png" alt="GameOverScreen scene"></p>
+<h3>The Level scene {#the-level-scene}</h3>
+<p>The <strong>Level</strong> scene is where everything happens. It was created with the Scene Editor, so you have two files, the <code>assets/Level.scene</code> and <code>assets/Level.js</code>. However, there are other files involved in this scene, those are the custom Game Object types of some of the level objects: items (<code>Acorn.js</code>), enemies (<code>Gator.js</code>, <code>Ant.js</code>, <code>Grasshopper.js</code>) and the player (<code>Player.js</code>). All these files are packed in the <code>levels-pack.json</code> file and loaded in the <strong>Preload</strong> scene as <code>script</code> keys.</p>
+<p>We can group the <strong>Level</strong> scene objects in this way:</p>
+<ol>
+<li>The background images.</li>
+<li>The tree where the player walks and jumps. It is a map created in Tiled and loaded in the game as a Tilemap object.
+<ul>
+<li>It includes an invisible collision layer.</li>
+</ul>
+</li>
+<li>The tree’s leaves and branches: static images that are not part of the map, but belongs to the tree.</li>
+<li>The pickable items: animated sprites that the player should take.</li>
+<li>The enemies: animated sprites that should be avoided and can be destroyed by the player. There are some different type of enemies: gators, ants and grasshoppers.</li>
+<li>The player.</li>
+</ol>
+<p>Let’s see all of them in more details.</p>
+<h4>Background {#the-background}</h4>
+<p>The background of the level is formed by three images: <strong>bg-clouds</strong>, <strong>bg-montains</strong> and <strong>bg-trees</strong>. The images are scrolled when the camera moves around, simulating a <a href="https://en.m.wikipedia.org/wiki/Parallax_scrolling">parallax effect</a>. In the original version, it creates tile sprite objects, fixed them to the camera, and changes the <code>tilePosition.x</code> property in the <code>update</code> method. In Phaser 3, there is a <code>scrollFactor</code> property that can be used to get the same effect. So, what we do in the editor is:</p>
+<ul>
+<li>The <strong>bg_montains</strong> and <strong>bg_trees</strong> objects are created as tile sprites.</li>
+<li>The tile sprites are resized to fill the whole map width.</li>
+<li>We change the <strong>Scroll Factor X</strong> of the objects.</li>
+</ul>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/SceneBackgroundScrollFactor.png" alt="Background images properties"></p>
+<h4>The map {#the-map}</h4>
+<p>To migrate the map created in the original game is the most interesting part of the demo. The original game uses a tilemap (made in the Tiled editor) to create the world, that, in this case, is a huge tree. It is interesting because the Scene Editor is very basic and yet does not support tilemap objects, but it supports Phaser Factories.</p>
+<p>This is what we did:</p>
+<ul>
+<li>We opened the map in the Tiled editor and exported the <strong>Main Layer</strong> layer as a PNG image (<code>Main Layer.png</code>).
+<img src="/blog/content/images/tutorial-sunny-land-woods/TiledExport.png" alt="Export the Tiled map to a PNG image"></li>
+<li>We added the image (<code>fake-assets/Main Layer.png</code>) to the <code>fake-assets/fake-pack.json</code> file. That is a Pack file that we use only with the purpose of simulating a tilemap in the Scene Editor, but it is never loaded in the game. The whole <code>fake-assets/</code> folder could be excluded in the production build of the game.
+<img src="/blog/content/images/tutorial-sunny-land-woods/FakeAssetsMainLayer.png" alt="Fake Asset Pack"></li>
+<li>We added the <code>Main Layer.png</code> image to the scene, in the same place of the original map, so, it gives us a perfect reference to place the other objects of the level.</li>
+<li>We assigned the factory <strong>myTilemap</strong> to the <strong>Main Layer</strong> image object.</li>
+<li>We registered a custom <strong>myTilemap</strong> factory to the Phaser <strong>GameObjectFacotry</strong>, and in this factory, we create the tilemap and layers.</li>
+</ul>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/SceneEditorTilemapObject.png" alt="Tilemap object in Scene Editor"></p>
+<p>the <strong>myTilemap</strong> factory is registered at the end of the <code>Level.js</code> file:</p>
+<pre><code class="language-javascript">Phaser.GameObjects.GameObjectFactory.register(&quot;myTilemap&quot;, function() {
+    this.scene.createTilemap();
+});
+</code></pre>
+<p>Look it calls the <code>createTilemap()</code> of the scene. In that method, we create the tilemap manually, very similar to how it is written in the original demo. It is the interesting part, the Scene Editor does not support tilemap objects (yet), but we added an image as a reference and create the tilemap manually, via custom Phaser factory. The simulated tilemap in the scene allows us to add the other objects in the right position. You can use this technique to create any other type of game object that is not supported by the Scene Editor, like particles, spine animations, etc…</p>
+<p>In the next sections, we are going to see more about factories. By the way, the IDE provides a wizard to creates factories very quickly: <strong>File</strong> → <strong>New</strong> → <strong>Factory Code File</strong>.</p>
+<p>You can learn more about Phaser factories here: <a href="https://phaser.io/phaser3/devlog/130">Industrial Revolution - Phaser Factories Guide</a></p>
+<h4>The tree elements (leaves and branches) {#the-tree-elements}</h4>
+<p>In the original demo, the tree is created using a tilemap, but there are other parts of the tree that do not fit in a tilemap. A tilemap is a 2D array of tiles with a fixed size, but often you need to add other elements to the map with a different size. In the original Sunny Land Woods demo, the leaves and branches of the tree have different sizes and are added manually to the world:</p>
+<pre><code class="language-javascript">decorWorld: function () {
+    this.addProp(4 * 16, 50 * 16, 'leaves');
+    this.addProp(-3 * 16, 48 * 16, 'leaves');
+    //
+    this.addProp(25 * 16, 52 * 16, 'leaves');
+    //
+    this.addProp(34 * 16, 48 * 16, 'leaves');
+    this.addProp(33 * 16, 53 * 16, 'leaves');
+    //
+    this.addProp(27 * 16, 44 * 16, 'leaves');
+    this.addProp(36 * 16, 32 * 16, 'leaves');
+    // this.addProp(2 * 16, 16 * 16, 'leaves');
+    this.addProp(2 * 16, 5 * 16, 'leaves');
+    this.addProp(3 * 16, 7 * 16, 'leaves');
+    this.addProp(36 * 16, 5 * 16, 'leaves');
+    this.addProp(3 * 16, 0 * 16, 'leaves');
+    this.addProp(12 * 16, 2 * 16, 'leaves');
+    //
+    this.addProp(33 * 16, 33 * 16, 'branch-05', true);
+    //
+    this.addProp(12 * 16, 32 * 16, 'branch-01');
+    this.addProp(31 * 16, 21 * 16, 'branch-01');
+    this.addProp(5 * 16, 7 * 16, 'branch-01');
+    //
+    this.addProp(9 * 16, 40 * 16, 'branch-03');
+}
+
+addProp: function (x, y, item, flip) {
+    var temp = game.add.image(x, y, 'atlas-props', item);
+    if (flip) {
+        temp.anchor.set(0.5);
+        temp.scale.x = -1;
+    }
+}
+</code></pre>
+<p>You have to write a lot of code and have to figure out the exact position of the objects. A tool like Tiled helps a lot, to create maps, but it is just a part of the world. With the Scene Editor, you can place the leaves and branches by dropping the textures in the scene. It is an important productivity boost, especially on large levels.</p>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/SceneEditorLeavesBranches.png" alt="Adding the leaves and branches to the scene"></p>
+<h4>The pickable items {#the-pickable-items}</h4>
+<p>In many games based on tilemap worlds, the pickable items have a fixed size and are part of the tilemap, but in this demo, like the enemies and the player, they have a different size. For that reason, in the original demo, the pickable objects are added manually, written directly on the game code:</p>
+<pre><code class="language-javascript">populate: function () {
+    ...
+    this.createAcorn(37, 46);
+    this.createAcorn(14, 38);
+    this.createAcorn(37, 46);
+    this.createAcorn(35, 21);
+    this.createAcorn(19, 3);
+    this.createAcorn(2, 28);
+    this.createAcorn(2, 36);
+    this.createAcorn(2, 44);
+}
+
+createAcorn: function (x, y) {
+    x *= 16;
+    y *= 16;
+    var temp = game.add.sprite(x, y, 'atlas', 'acorn-1');
+    temp.anchor.setTo(0.5);
+    game.physics.arcade.enable(temp);
+    //add animations
+    temp.animations.add('acorn', Phaser.Animation.generateFrameNames('acorn-', 1, 3, '', 0), 12, true);
+    temp.animations.play('acorn');
+    items_group.add(temp);
+}
+</code></pre>
+<p>Each item is added using a <code>createAcorn()</code> helper method. This method creates a sprite, enables it for physics and creates/play the sprite animation.</p>
+<p>In Phaser Editor we did something similar, we registered an <strong>acorn</strong> factory to create the sprite, add it to the physics system and play the animation (you don’t need to create the animations, Phaser creates them automatically when the <code>animations.json</code> file is loaded):</p>
+<pre><code class="language-javascript">Phaser.GameObjects.GameObjectFactory.register(&quot;acorn&quot;, function (x, y, texture, frame) {
+
+    /** @type {Phaser.Scene} */
+    var scene = this.scene;
+    
+    var sprite = scene.add.sprite(x, y, texture, frame);
+    scene.physics.add.existing(sprite);
+    sprite.play(&quot;acorn&quot;);
+    
+    return sprite;
+});
+</code></pre>
+<p>It is coded in the <code>Acorn.js</code> file, that is added as <code>script</code> to the <code>levels-pack.json</code> file.</p>
+<p>The next step is to add the objects to the scene and set to them the factory <strong>acorn</strong>. In a huge level or in a game with a lot of levels this technique can help a lot.</p>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/SceneEditorPickableItems.png" alt="Pickable items in the Scene Editor"></p>
+<p>Finally, we created a Phaser group named <strong>itemsGroup</strong> to include all the pickable objects. This group is used later to create a physics overlap test between the pickable items and the player:</p>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/SceneEditorItemsGroup.png" alt="Scene Editor: group of pickable items"></p>
+<h4>The enemies {#the-enemies}</h4>
+<p>The enemies objects are similar to the pickable items. In the original demo, they are created manually in the code, without a visual tool to help to position them. In Phaser Editor, we create the objects in the Scene Editor and place them in the right places.</p>
+<p>Each enemy has its own factory, <strong>gator</strong>, <strong>ant</strong> and <strong>grasshoper</strong>. For each factory we create a new JavaScript file and add them to the <code>levels-pack.js</code>, to be loaded automatically. Let’s focus on the <strong>gator</strong> factory.</p>
+<p>The <strong>gator</strong> factory is registered at the end of the file <code>assets/Gator.js</code>:</p>
+<pre><code class="language-javascript">Phaser.GameObjects.GameObjectFactory.register(&quot;gator&quot;, function(x, y, texture, frame) {
+
+    var sprite = new Gator(this.scene, x, y, texture, frame);
+
+    this.scene.sys.updateList.add(sprite);
+    this.scene.sys.displayList.add(sprite);
+        
+    return sprite;
+});
+</code></pre>
+<p>Note it creates a custom sprite named <code>Gator</code>. It is a class that extends <code>Phaser.GameObjects.Sprite</code>. It is a common practice in Phaser games to extends a game object type, to add a custom behavior and initialize custom properties. The <strong>Gator</strong> objects are animated sprites that can fly a certain distance in a horizontal or vertical direction. If you look into the <strong>Gator</strong> code, there are two custom properties: <strong>distance</strong> and <strong>horizontal</strong>. Those properties are used to assign a specific behavior to different instances of <strong>Gator</strong>. As you can see in the game, the gators are moving in different directions.</p>
+<p>In the Scene Editor, there is a way to set custom properties to the objects, using the Data Manager API of Phaser (<code>Phaser.Data.DataManager</code>). Each object has a <strong>DataManager</strong> instance that, if you enable it, allows to set custom data to the object. The Scene Editor, in the <strong>Game Object</strong> section, has a <strong>Data</strong> property where you can add custom data:</p>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/SceneEditorGatorData.png" alt="Scene Editor: custom data"></p>
+<p>And there is another interesting parameter, the <strong>Build Object</strong>. If the <strong>Build Object</strong> button is checked, then a <code>build()</code> method will be applied to the object. This <code>build()</code> method, if used, should be implemented in the class of the object, in this case, in the <strong>Gator</strong> class. If you look in the <strong>Gator</strong> code, in the <code>build()</code> method we get the data from the <strong>Data Manager</strong> and initialize the velocity of the object.</p>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/SceneEditorGatorBuild.png" alt="Scene Editor: build object"></p>
+<p>As you can see, the Scene Compiler generated the code to set the custom data and call the <code>build()</code> method. The <strong>Gator</strong> class access to the custom data using the <code>this.data.values</code> property and initialize its state:</p>
+<pre><code class="language-javascript">class Gator extends Phaser.GameObjects.Sprite {
+
+    ...
+
+    build() {
+        // the Data Manager is in the `data` property.
+        this.horizontal = this.data.values.horizontal;
+        this.distance = this.data.values.distance;
+        
+
+        // set the velocity in relation to the custom data
+        if (this.horizontal) {
+            this.body.velocity.x = this.speed;
+            this.body.velocity.y = 0;
+        } else {
+            this.body.velocity.x = 0;
+            this.body.velocity.y = this.speed;
+        }
+    }
+}
+</code></pre>
+<h4>The player {#the-player}</h4>
+<p>The player is a single object in the scene. To have it as a scene reusable object gives you the advantage to place it in the right place, especially when you have multiple scenes. It is not different from the other objects, it is created using a factory, but there is something new, we set the <strong>Factory Return Type</strong> to <strong>Player</strong>.</p>
+<p><strong>Player</strong> is a custom class that extends <code>Phaser.GameObjects.Sprite</code>, it is together with the factory implementation, in the <code>Player.js</code> file. It is similar to the <strong>Gator</strong> class we commented in the previous section.</p>
+<p>When you set the <strong>Factory Return Type</strong> of an object, the Scene Compiler will annotate with a JSDoc comment the field generated to reference the object, so it helps the JavaScript editor to computes the type of the variables and provides an accurate auto-completion.</p>
+<p><img src="/blog/content/images/tutorial-sunny-land-woods/SceneEditorFactoryRType.png" alt="Scene Editor: factory return type"></p>
+<h2>Conclusion {#conclusion}</h2>
+<p>That’s all. We encourage you to play with the demo and look the code. All details are not covered in this article, we just wanted to show some key features in Phaser Editor that can help you to develop games with Phaser. There are many games similar to the Sunny Land Woods demo, with this article we tried to show the advantages of using a tool like Phaser Editor to target different issues of a game that are not fulfilled by a general purpose tile-map tool.</p>
+<p>Phaser Editor v2 is in active development, there are a lot of missing features, especially the <strong>Prefab</strong> concept, that are present in v1, and really boost the development of games. However, the current <strong>factory</strong> is a very flexible and standard resource and you can do magic with it.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/phaser-editor-v2">phaser-editor-v2</a>, <a href="/blog/tag/phaser-v3">phaser-v3</a>, <a href="/blog/tag/tutorial">tutorial</a>, <a href="/blog/tag/tilemap">tilemap</a>, <a href="/blog/tag/scene-editor">scene-editor</a>, <a href="/blog/tag/phaser-editor-v2">Phaser Editor v2</a>, <a href="/blog/tag/phaser-v3">Phaser v3</a>, <a href="/blog/tag/scene-editor">scene editor</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

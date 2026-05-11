@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor v3-alpha released | Phaser Editor 2D Blog</title>
+  <meta name="description" content="Phaser Editor v3 is here! An alpha version of the new web-based IDE was released to the paid-clients for feedback.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor v3-alpha released</h1>
+        <p class="text-info">February 28, 2020 - Posted in <a href="/blog/category/release">release</a></p>
+        
+        <div class="lead"><p>Hi,</p>
+<p>Today we are releasing Phaser Editor 2D v3!</p>
+<p>This is an Alpha version and it is only available to paid clients. If you purchased a Phaser Editor license, no matter if it expired or not, then, please, <a href="https://gumroad.com/boniatillo_com/p/phaser-editor-v3-released-for-paid-clients">check this post in the Gumroad’s Phaser Editor 2D page</a>, to get access to the files.</p>
+<p>As you may know, this version is a complete re-write of the editor, but using web technologies. This means, now the IDE runs in the browser, with a small backend running in a server (or your localhost).</p>
+<p>In the next sections, we explain some steps to run the editor and perform basic tasks. We assume you have experience with previous versions of the editor, so we are not going to explain in detail.</p>
+<p>If you are not a paid client, please, keep in contact with us, because we want to release a public version in a few weeks. We need to add certain features and write basic documentation.</p>
+<h2>Feedback</h2>
+<p>The code of the editor is versioned in two repositories. One for the backend and other for the frontend. The backend deals with the licenses and its code is private. The frontend is developed in TypeScript and its code is public:</p>
+<p><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/">github.com/PhaserEditor2D/PhaserEditor2D-v3/</a></p>
+<p>Please, use that repository to request features and file bugs. Together with the public release, we should provide a guide to build and contribute to the code.</p>
+<h2>Download</h2>
+<p>This alpha release is only available to paid clients. [<a href="https://gumroad.com/boniatillo_com/p/phaser-editor-v3-released-for-paid-clients">https://gumroad.com/boniatillo_com/p/phaser-editor-v3-released-for-paid-clients</a>).</p>
+<p>Note you should download the file for your platform. Windows, macOS, and Linux are supported.</p>
+<h2>Run the editor</h2>
+<p>The editor is portable, it does not need any special installation process. Just download the distribution file and unzip it in a folder where you have read/write permissions.</p>
+<p>This is the structure of the editor files:</p>
+<pre><code>PhaserEditor2D/
+    PhaserEditor2D.exe
+    editor/
+        ...
+</code></pre>
+<p>The <code>PhaserEditor2D.exe</code> file is the editor server. The <code>editor/</code> folder contains all the client/HTML files.</p>
+<p>To run the editor open the terminal (or <code>cmd</code>) of your OS and write:</p>
+<pre><code>$ cd PhaserEditor2D
+$ PhaserEditor2D.exe -desktop
+</code></pre>
+<p>In macOS and Linux:</p>
+<pre><code>$ cd PhaserEditor2D
+$ ./PhaserEditor2D -desktop
+</code></pre>
+<p>macOS/Linux users: if the file <code>PhaserEditor2D</code> does not run, please, set execution permissions to it:</p>
+<pre><code>$ chmod +x PhaserEditor2D
+$ ./PhaserEditor2D -desktop
+</code></pre>
+<p>The <code>-desktop</code> option tells the editor to enable the integration with the local OS:</p>
+<ul>
+<li>Launches the default browser and open the editor.</li>
+<li>Denies all external connections.</li>
+<li>Allows, in the Files view of the IDE, to open the OS file manager in the selected location.</li>
+</ul>
+<p>If you omit the <code>-desktop</code> option, then it runs the editor server in “public” mode, which means, it assumes may be connections from external hosts.</p>
+<p>To see all the server options, write:</p>
+<pre><code>$ PhaserEditor2D -help
+</code></pre>
+<h2>Select the workspace</h2>
+<p>By default, the editor server creates a workspace folder in the user home: <code>&lt;user-home&gt;/PhaserEditor2D_Projects</code>. This folder is used to store the projects. If you need to store the projects in another folder, then use the <code>-ws</code> option:</p>
+<pre><code>$ PhaserEditor2D -desktop -ws path/to/my/workspace
+</code></pre>
+<p>Please, start with an empty folder. This version of the editor is not compatible with previous versions.</p>
+<h2>Unlock the editor</h2>
+<p>By default, the editor runs in the Free mode. This mode only enables 70 files per project. If you exceed that limit, the IDE will show you no files in the project.</p>
+<p>To removes that limit, you should purchase a license and unlock the editor. When you purchase a license, a key is sent to your email. Use that key to unlock the editor:</p>
+<pre><code>$ PhaserEditor2D -lickey YOUR-KEY-HERE
+
+Phaser Editor 2D - v3.0.0-alpha
+
+Unlocking the editor. This requires an Internet connection...
+
+Congratulations! Phaser Editor 2D was unlocked successfully!
+Note: the generated license file is only for personal use.
+</code></pre>
+<p>That command generates a <code>PhaserEditor2D.lic</code> file that is your license activation file. Don’t delete it, because the editor will check on it each time it starts.</p>
+<h2>Create a new project</h2>
+<p>When you start the server with the <code>-desktop</code> option, it opens the default browser at <code>http://127.0.0.1/editor</code>, the address to the IDE.</p>
+<p>By the way, please, use a modern, updated browser. We test the editor only in the latest version of Opera, Firefox and Google Chrome.</p>
+<p>The first it shows is a dialog to open a project or create a new one. But, because this is your first time and the workspace is empty, it shows the <strong>New Project</strong> dialog:</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/welcome-create-new-project.png" alt="Create New Project"></p>
+<p>This dialog shows the project templates. Select one template and write the name of the project.</p>
+<p>For this guide, we select the <strong>Demo - JavaScript - Flying Dragon</strong> template.</p>
+<p>Press the <strong>Create Project</strong> button and wait for the loading of the IDE.</p>
+<p>The IDE is loaded, navigate in the <strong>Files</strong> view to the file <code>assets/scenes/levels/Level.scene</code> and double click on it to open it in the Scene Editor, that is the most important part of the IDE.</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/welcome-scene-editor.png" alt="Scene Editor"></p>
+<h2>Play the project</h2>
+<p>To see your game in action, click on the <strong>Play</strong> button of the main toolbar or press the <code>F12</code> key:</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/run-project-other-tab.png" alt="Run the project in another tab"></p>
+<p>It opens your game in another tab:</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/game-running-tab.png" alt="Game running in its own tab"></p>
+<p>Another way to run your game is by pressing the <code>F10</code> key. It creates a dialog and runs the game in a frame. This is good for a quick test, but we recommend to run it in another tab, it allows you to open the Developer Console and check if your game is logging any error.</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/game-running-dialog.png" alt="Game running in a dialog"></p>
+<h2>Scene Editor</h2>
+<p>The Scene Editor is similar to the editor in Phaser Editor v2. The <strong>Outline</strong> view shows the hierarchy of the objects. The <strong>Inspector</strong> view shows the properties of the selected objects, or the properties of the scene if no object is selected. The <strong>Blocks</strong> view shows the assets you can drop into the scene. Remember, these assets are defined in an Asset Pack file.</p>
+<p>In v3 there is a new type of asset: the prefabs.</p>
+<h3>Prefabs</h3>
+<p>In this version, we introduced the prefabs. This is a concept present in v1 but not in v2. In this version, the prefabs are more powerful that v1, you can create a prefab of any type of object and you can create prefab variants.</p>
+<p>A prefab is just a scene file that can be used to create a custom object type. This means, that you can instantiate objects of a prefab (custom type).</p>
+<p>Because a prefab file is a scene file, you can add many objects to it, but only the top-most object is used as the “template” object.</p>
+<h3>Create a prefab</h3>
+<p>To create a prefab, click on the <strong>New File</strong> button and select the <strong>Prefab File</strong> option:</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/new-prefab-file-1.png" alt="Select create prefab file"></p>
+<p>It opens the <strong>New Prefab File</strong> dialog. Select the folder and name for the new prefab, and press the <strong>Create</strong> button:</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/new-prefab-file-2.png" alt="Create a prefab file"></p>
+<p>The prefab file is created and opened in the Scene Editor. By default it is empty, so you should add the <em>prefab object</em> to it. Let’s add the <code>dino</code> image present in the <strong>Blocks</strong> view:</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/new-prefab-add-image.png" alt="Add image to prefab"></p>
+<p>Saves the changes (<code>Ctrl+S</code>) and see how the icon of the editor will show the scene image. Try adding another image and save. You will see the icon is updated with the new image. Only the top-most object of the scene is considered as the prefab object.</p>
+<p><strong>WARNING</strong>: Don’t forget to load the prefab’s compiler output file (<code>LogoPrefab.js</code> in this example). You can load it with a <code>script</code> tag in the <code>index.html</code> file or in the Asset Pack file <code>asset-pack.json</code>. For now, we recommend loading it in the <code>index.html</code> file because the pack loader of Phaser loads the scripts in parallel and it can create dependencies errors. This problem will be addressed in the next release, using the <code>scripts</code> loader of Phaser.</p>
+<h3>Create an instance of a prefab</h3>
+<p>To create an object with a prefab, or a prefab instance, just drag the prefab from the <strong>Blocks</strong> view and drop it into the scene:</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/create-prefab-instance.png" alt="Create prefab instance"></p>
+<p>Note the difference between a prefab and a prefab instance. A prefab is a type, a class, and a prefab instance is an instance of that type.</p>
+<p>When you see the object’s properties of a prefab instance in the <strong>Inspector</strong> view, all of them are locked. Only some properties are not locked, those are editor-dedicated properties, like those in the <strong>Variable</strong> section.</p>
+<p>Well, for logic reasons, the <strong>Transformation</strong> properties are not locked either.</p>
+<p>A locked property means that it keeps the same value of the prefab and it cannot be changed. This means, that if that property, let’s say the scale, is changed in the prefab, then all the prefab instances will get the new value.</p>
+<p>To change the value of a locked property you should unlock it, by pressing in the “lock” icon next to the property. Then, the value set to an unlocked property is not updated if the prefab value is changed.</p>
+<p>You can get a better idea of how it works in this video we did some time ago to demonstrate prefabs:</p>
+<p><a href="https://www.youtube.com/watch?v=43T4v5Nj_0I">Prefabs variants are ready!</a></p>
+<p>Also, we recommend seeing the generated code. The code talks by itself. It is something we love from Phaser Editor, there is no black magic, the scenes are compiled to legible JavaScript (or TypeScript) code so you may know exactly how it works at the run-time.</p>
+<h3>Create an object</h3>
+<p>To create an object in the scene, just select an image or prefab in the <strong>Blocks</strong> view and drag it into the scene. If it is an image or atlas frame, it will create an <strong>Image</strong> object. If it is a prefab, it will create a prefab instance.</p>
+<p>Also, you can open the <strong>Add Object</strong> dialog by pressing the <code>A</code> key or selecting the <strong>Add Object</strong> option in the context menu.</p>
+<p>This dialog shows all the supported object types and the prefabs (that are like types, did we say it before?). Select a type press the <strong>Create</strong> button. A new object will be added to the center of the scene.</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/scene-editor-add-object.png" alt="Open the Add Object dialog"></p>
+<h3>Context menu</h3>
+<p>A context menu is something requested by many users. In v2 we don’t provide it but it is back now in v3.</p>
+<p>Just right-click in the scene and take a look at the options available in this menu. By philosophy, we should list here all the operations provided by the Scene Editor. It also displays the keys mapped to an operation.</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/scene-editor-context-menu.png" alt="Context menu"></p>
+<h2>Asset Pack Editor</h2>
+<p>Like in all the previous versions of Phaser Editor, it uses an Asset Pack file to define (or import) all the files (or asset files) required by the game. Phaser has a built-in loader for pack files so you can load them at any part of your game.</p>
+<p>All project templates include an Asset Pack file, generally at <code>assets/asset-pack.json</code>. Open it in the Asset Pack Editor to import the assets of your game.</p>
+<p>It works similarly to v2. The <strong>Blocks</strong> view displays all the files that are not included yet in the Asset Pack file so you can select them and import them using one of the “import buttons” of the <strong>Inspector</strong> view:</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/asset-pack-import-from-blocks.png" alt="Asset Pack Editor"></p>
+<p>In addition, you can press on the <strong>Add File</strong> of the main toolbar of the IDE to open the <strong>Add File</strong> dialog. This dialog displays all the types of files supported by default in Phaser and guides you to import the files.</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/asset-pack-editor-add-file-dialog.png" alt="Add file to pack editor"></p>
+<h3>Add assets to an Asset Pack file in the Files view</h3>
+<p>There is a new method to import the files into an Asset Pack file. When you select a file in the <strong>Files</strong> view, the <strong>Inspector</strong> view shows the <strong>Asset Pack File</strong> section. If the selected file is part of an any Asset Pack, then this section shows a button to open that Asset Pack file:</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/asset-pack-import-from-files-view.png" alt="Open asset pack file of selected file"></p>
+<p>If the selected file is not part of any Asset Pack file, then the <strong>Asset Pack File</strong> section shows a button to add the file to any of the Asset Pack files available in the project:</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/asset-pack-import-from-files-view-2.png" alt="Add file to asset pack file"></p>
+<p>Note that after import the file, it will be displayed in the <strong>Blocks</strong> view of the Scene Editor:</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/asset-pack-import-from-files-view-3.png" alt="Imported file ready to be used in the Scene Editor"></p>
+<h2>Storage concepts</h2>
+<p>As the majority of the web applications, one part of Phaser Editor v3 runs in a server and other in the browser of a remote machine. This forced us to create an abstraction layer of the resources of a project. Let’s see some key concepts about it:</p>
+<ul>
+<li>
+<p>The files are stored in the server, but the editor keeps a memory cache of them in the browser. This cache is created by demand.</p>
+<ul>
+<li>Important: don’t add huge files to your project or a lot of unneeded files. The common is that HTML5 games don’t use too many resources. If other tools related to your game requires a lot of files, keep them in a separate folder, outside the Phaser Editor project.</li>
+</ul>
+</li>
+<li>
+<p>The files in the server are updated each time the IDE modifies a resource in the client.</p>
+</li>
+<li>
+<p>If the files in the server are modified externally, by a tool (like the TypeScript compiler) or manually (like adding new image files), then the client cache will be updated when:</p>
+<ul>
+<li>
+<p>The editor page is focused.</p>
+</li>
+<li>
+<p>The user requests a project reload (<code>Ctrl+Alt+R</code>). This operation is faster than reloading the whole web page because only the project files will be requested (and by demand).</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The files with a name that starts with a dot (<code>.</code>) or are part of a <code>node_modules</code> folder are ignored by the server and the client never displays them.</p>
+</li>
+</ul>
+<h2>Code editor</h2>
+<p>Phaser Editor v3 uses the third-party <a href="https://microsoft.github.io/monaco-editor/ee">Monaco editor</a> to edit the text files. We first tried to provide advance intellisense running the Language Server in the browser but in the end, we decided it is not a good idea.</p>
+<p>This means, what you get is a basic editor. For a richer experience, you should edit the text files (HTML, CSS JavaScript, TypeScript…) in an external editor.</p>
+<p>We recommend Visual Studio Code. Actually, all the project templates include a <code>tsconfig.json</code> (or <code>jsconfig.json</code>) file ready to be used by Visual Studio Code.</p>
+<p>If your server is running in a remote machine, then we recommend using the <a href="https://github.com/cdr/code-server">Visual Studio Code Server</a>.</p>
+<p>Maybe in the future, we can provide a better coding experience by running the Language Server if Visual Studio Code on the server-side, but it is not a priority now. What we maybe will do first is to implement some plugins to Visual Studio Code to help coding Phaser Editor games.</p>
+<h2>Miscellaneous</h2>
+<p>There are a couple of elements of the editor that we will mention here with few details:</p>
+<h3>Files view</h3>
+<p>This view shows the files of the project. You can rename, delete, move or upload files. Take a look at its context menu to get the list of operations you can perform.</p>
+<p>In the editor, we try to show an in-line preview of the objects. In the <strong>Files</strong> view the images and the scenes are in-line previewed. You can zoom in/out the images with the <code>Shift+MouseWheel</code> combination.</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/files-view.png" alt="Files view"></p>
+<h3>Outline view</h3>
+<p>This view shows the hierarchy of objects present in the current editor of the IDE. If the Scene Editor is active it shows the scene objects. If the Asset Pack editor is active it shows the files declared in the Asset Pack file.</p>
+<p>Often, the objects shown in this view are in-previewed, and you can zoom in/out them with the <code>Shift+MouseWheel</code> combination.</p>
+<h3>Inspector view</h3>
+<p>This view is connected with the active part of the IDE (view or editor) and displays the properties of the selected objects. In addition to the properties, it also provides some operations you can perform to the objects.</p>
+<h3>Main toolbar</h3>
+<p>The main toolbar of the IDE is divided into three parts (from left to right):</p>
+<p><img src="/blog/content/images/v3.0.0-alpha/main-toolbar.png" alt="Files view"></p>
+<ul>
+<li>
+<p>At the left it shows buttons to perform global actions like open the <strong>New File dialog</strong> or run the project.</p>
+</li>
+<li>
+<p>At the center, it shows buttons provided by the active editor. In the case of the Scene Editor, these are transformation buttons. In the case of the Asset Pack Editor, it shows a button to open the <strong>Add File dialog</strong>.</p>
+</li>
+<li>
+<p>At the right, it shows the main menu. It shows general operations you can perform, like open a new project, change the color theme of the IDE or open the Command Palette dialog. Just take a look at it.</p>
+</li>
+</ul>
+<p><img src="/blog/content/images/v3.0.0-alpha/dark-theme.png" alt="Dark theme"></p>
+<h2>Bottom line</h2>
+<p>This was a short guide about Phaser Editor v3. There is a lot to explain but if you have previous experience with the editor and Phaser development you will get the idea. The purpose of this Alpha release is to get your appreciated feedback on bugs but what is more important on new (or not so new) ideas.</p>
+<p>We want to add Prefab custom properties and write basic documentation before releasing the editor to the general public.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/v3">v3</a>, <a href="/blog/tag/alpha">alpha</a>, <a href="/blog/tag/paid-clients">paid-clients</a>, <a href="/blog/tag/paid-clients">paid clients</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

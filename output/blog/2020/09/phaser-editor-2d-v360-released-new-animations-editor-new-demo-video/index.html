@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.6.0 released! New Animations Editor. New demo video. | Phaser Editor 2D Blog</title>
+  <meta name="description" content="The v3.6.0 comes with a new Animations Editor. Now, with a few clicks, you can create the sprite animations of the characters of the game.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.6.0 released! New Animations Editor. New demo video.</h1>
+        <p class="text-info">September 07, 2020 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20200907084819-release360.png" alt="Phaser Editor 2D v3.6.0 released! New Animations Editor. New demo video."></p>
+        <div class="lead"><p>Hi!</p>
+<p>We are happy to announce that Phaser Editor 2D v3.6.0 is ready for download (or update).</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.6.0</a></p>
+<p>This new release comes with a new big feature: the Animations Editor!</p>
+<p><a href="https://www.youtube.com/watch?v=eiUQn7h5kic&amp;list=PLB8gI_5U0MvBXAo2SMrxP10kEkxMGDOmv&amp;index=3&amp;t=0s">And a demo video</a>.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eiUQn7h5kic" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor, please, tell us, we will be proud to feature it in our website, newsletter, and social channels.</p>
+<h2>Collaboration</h2>
+<p>A lot is happening in our <a href="https://discord.com/invite/4DdpMMD">Discord server</a>. Join us for collaboration. Ask questions or tell us your ideas. Your feedback is highly appreciated and is key in the process of providing a more friendly and stable IDE.</p>
+<h2>Animations Editor</h2>
+<p>One of the most used techniques to animate the characters in the Phaser games is frame-based animations. Phaser has an <a href="https://photonstorm.github.io/phaser3-docs/Phaser.Types.Animations.html#.JSONAnimation__anchor">Animations format</a> to create this kind of animations, and Phaser Editor 2D v3 now has an editor for it.</p>
+<p><a href="https://help.phasereditor2d.com/v3/animations-editor">Learn more about the Animations Editor</a></p>
+<p>This is how it works:</p>
+<ul>
+<li>You create an Animations JSON file that follows <a href="https://photonstorm.github.io/phaser3-docs/Phaser.Types.Animations.html#.JSONAnimations__anchor">this format</a>.</li>
+<li>With the Animations Editor, you create new animations by selecting the frames defined in an <a href="https://help.phasereditor2d.com/v3/asset-pack-editor/">Asset Pack file</a>. Or you can select all the frames made for the animations and automatically create the animations with a <a href="https://help.phasereditor2d.com/v3/animations-editor/auto-build-animations.html">“smart” algorithm</a>.</li>
+<li>The animations file is loaded using the <a href="https://photonstorm.github.io/phaser3-docs/Phaser.Loader.LoaderPlugin.html#animation__anchor">animation loader</a> or the <a href="https://help.phasereditor2d.com/v3/asset-pack-editor/">asset pack loader</a>.</li>
+<li>You play an animation in a sprite object: <code>enemy.play(&quot;attack&quot;)</code>.</li>
+</ul>
+<p>We think the Animations Editor has three strong features:</p>
+<ul>
+<li>The animations created by this editor can be used in any Phaser project, no matter if it was created with Phaser Editor 2D v3. It does not require any third-party library. This means you may love to code the whole game, but you can pack your assets and animations using Phaser Editor 2D. You will save a lot of time. And you get it for free if your project has less than 70 files.</li>
+<li>The auto-build animations “smart” algorithm allows you to create the animations really fast! It is just a matter of a few clicks.
+<img src="https://phasereditor2d.com/blog/content/images/20200907092550-auto-build-animations.png" alt="Auto build animations"></li>
+<li>You don’t need to run the game to preview the animations. The Animations Editor runs the animations and it is updated dynamically when a new parameter (like frame rate) is modified.</li>
+</ul>
+<p>If you want to see all of these in action, <a href="https://www.youtube.com/watch?v=eiUQn7h5kic&amp;list=PLB8gI_5U0MvBXAo2SMrxP10kEkxMGDOmv&amp;index=3&amp;t=0s">watch the demo video</a>! The source code is available here: <a href="https://github.com/PhaserEditor2D/animations-editor-demo-v3.6.0">animations-editor-demo-v3.6.0</a></p>
+<p>Also, please, <a href="https://help.phasereditor2d.com/v3/animations-editor">take a look at the documentation for more details</a>.</p>
+<h2>Other changes</h2>
+<p>Other minor changes and bug fixes:</p>
+<ul>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/71">#71</a> Files view: fixes files sorting. Folders go first.</li>
+<li>Viewer: fixes scrolling when multiple distant elements are selected.</li>
+<li>Viewers: Pad with <code>0</code> chars the labels of spritesheet frames: <code>001</code>, <code>002</code>,…,<code>126</code>.</li>
+<li>Scene Editor: better scene thumbnail generation.</li>
+</ul>
+<h2>Phaser Editor 2D v2</h2>
+<p>With the new Animations Editor available in Phaser Editor v3, we are thinking on stop the updating of Phaser Editor 2D v2.</p>
+<p>Right now, each time Phaser 3 is released, we update Phaser Editor 2D v2, but we are not adding new features to this version of the editor.</p>
+<p>If you are working with v2 of the editor, we encourage you to migrate to Phaser Editor 2D v3 and contact us for supporting you on this task.</p>
+<h2>What’s next?</h2>
+<p>We want to start working on support tilemaps! First, we want to allow you to add Tiled tilemaps into the Scene Editor. We want to make a nice integration between the Scene Editor and Tiled (or similar tools). We think the prefab and components system of Phaser Editor 2D is a powerful tool and we want to make it easy to be combined with Tilemaps.</p>
+<p>Our final goal is to implement a complete Tilemap Editor, but it is not going to be any time soon.</p>
+<p>Please, report us bugs, new ideas, or any other thoughts you have. We love your feedback!</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/animations">animations</a>, <a href="/blog/tag/sprite-animations">sprite-animations</a>, <a href="/blog/tag/sprite-animations">sprite animations</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

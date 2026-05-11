@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.62.0 released | Phaser Editor 2D Blog</title>
+  <meta name="description" content="A new release with new property types, improved user properties presentation, bug fixes, and more.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.62.0 released</h1>
+        <p class="text-info">June 29, 2023 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20230627214016-release-v3.62.0.jpeg" alt="Phaser Editor 2D v3.62.0 released"></p>
+        <div class="lead"><p>Hi!</p>
+<p>Today I’m releasing a new version of Phaser Editor 2D. This one comes with a couple of additions, improvements, and bug fixes. New Event and KeyCode user property types. The old way of presenting user components and user properties in objects is back, but better.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.62.1</a></p>
+<p><small><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/releases/tag/v3.62.1">v3.62.1: Change log</a></small></p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor 2D, please tell me, and I will be proud to feature it on the website, newsletter, and social channels.</p>
+<h3>Kara’s Cafeteria</h3>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230627220143-karas-cafeteria-game.jpeg" alt="game screenshot"></p>
+<p>Help Kara beautify, expand, and provide the best customer service in the city.</p>
+<p><a href="https://www.gamepix.com/play/kara-s-cafeteria">Play it in GamePix</a></p>
+<h3>The new Event property type</h3>
+<p>We have a new property type: Event. It is a string property but with an event name as a value. It provides a dialog for selecting an event name from a list built on the fly with the static &amp; dynamic Phaser API events, plus event names defined by the user.</p>
+<p>The static Phaser API events are those available in Phaser in the different <code>Events</code> namespaces.</p>
+<p>The dynamic Phaser events are those you get by combining a prefix with a list of values. For example, <code>keydown-SPACE</code>, <code>keyup-ENTER</code>, <code>animationcomplete-Gorilla-Idle</code>, <code>animationcomplete-Gorilla-Run</code>, etc…</p>
+<p>The user-defined events are those declared in the <code>events.txt</code> files.</p>
+<p><img src="https://help-v3.phasereditor2d.com/_images/prefab-user-props-select-event-name-20230626.webp" alt="Event property type"></p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/prefab-user-properties-event-type.html">Learn more about the Event property in the documentation.</a></p>
+<h3>The new KeyCode property type</h3>
+<p>This new property type allows selecting as value one of the constants defined in the <code>Phaser.Input.Keyboard.KeyCodes</code> class. Its primitive type is a number. You can use this property for binding action or behavior with a keyboard key.</p>
+<p><img src="https://help-v3.phasereditor2d.com/_images/prefab-user-props-keycode-2-20230627.webp" alt="keycode dialog"></p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/prefab-user-properties-keycode-type.html">Learn more about the KeyCode user property type in the documentation</a></p>
+<h3>Reviving user components</h3>
+<p>A couple of releases before I changed the way the editor presents user components: as individual nodes in the Outline view. It was the first step in the way of script nodes. But definitively many of you found it confusing and workflow-breaking. I changed it in this release. I listened to you and now the user components are back in the Inspector view, next to the other properties of the editor. You don’t need to go to the Outline view to find the components of an object and select it for edit. Now you select an object and all the user components are there in the Inspector view.</p>
+<p>However, I did a small change. Now every user component is presented in the Inspector view as an individual section. I see it more naturally, now it feels just like any other built-in property section.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230627233336-user-components.png" alt="User components"></p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/user-components.html">Learn more about User Components in the documentation</a></p>
+<p>By the way, <a href="https://help-v3.phasereditor2d.com/scene-editor/script-node-vs-user-component.html">I wrote a small guide</a> about deciding when to use user components or script nodes.</p>
+<h3>Improving the prefab properties presentation</h3>
+<p>Prefab user properties follow the same path. Now the prefab properties of an object appear in its own section in the Inspector view:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230628101428-prefab-properties.jpeg" alt="Prefab instance properties"></p>
+<p>In the picture above it shows the prefab properties of an apple object. The object is an <strong>Apple</strong> prefab instance, that at the same time is a <strong>FoodItem</strong> prefab variant.</p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/prefab-user-properties-prefab-instance.html">Learn more about the prefab instance properties in the documentation</a></p>
+<h3>Others</h3>
+<ul>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/284">#284</a> Fixes hit area rendering for containers.</li>
+<li>A new Add Prefab Property command that shows a dialog.</li>
+<li>Unify all depth/order related commands in the Edit context menu.</li>
+<li>Allows changing prefab properties order with the Edit order commands.</li>
+<li>Allows copy/cut/paste of prefab properties.</li>
+<li>Allows copy/cut/paste keyboard keys.</li>
+<li>Shows Keyboard.Key and Object List objects in the Object Variable user property’s dialog.</li>
+<li>Fixes hit area serialization.</li>
+<li>Renames the Scripts context menu to Scripting and include:
+- Add User Component (<code>M</code> key)
+- Browse User Components (<code>Shift+M</code> key)</li>
+<li>Fixes adding a script node to all selected game objects.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/222">#223</a> Fixed tab-focus on the DOM elements of the user properties.</li>
+</ul>
+<h3>What’s next?</h3>
+<p>I did all this work focused on the tutorial I want to record for using script nodes. I confess making tutorials is harder than writing documentation for me. But I should make it. I’m thinking about how to make it short and effective because I should start working as soon as possible on a new and “secret” task… about hosting the editor in a certain place 🤓.</p>
+<p>I was working on my own games at the same time I was working on the editor. It consumes time and energy but I have to do it. It helps me on improving the editor and also helps me to connect with the people and myself. A week ago I visited a community school in my town, with one of my math games. It was a deep and emotional experience for me working with the kids and helping the kids. It confirms to me again I’m in the right profession and gives me fuel.</p>
+<p>Keep in touch!</p>
+<p>Arian</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230628105215-IMG_20230616_092710.jpg" alt="In a community school"></p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230628105319-IMG_20230616_094108.jpg" alt="In a community school"></p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/event">event</a>, <a href="/blog/tag/keyboard">keyboard</a>, <a href="/blog/tag/property">property</a>, <a href="/blog/tag/prefab">prefab</a>, <a href="/blog/tag/component">component</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

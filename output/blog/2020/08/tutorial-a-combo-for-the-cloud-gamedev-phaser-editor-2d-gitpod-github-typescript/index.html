@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Tutorial] Game development env in the cloud, with Phaser Editor 2D, Gitpod, Github, and TypeScript | Phaser Editor 2D Blog</title>
+  <meta name="description" content="Step by step tutorial to setup a complete Phaser development environment in the cloud. With access to Phaser Editor 2D, GitHub and TypeScript.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>[Tutorial] Game development env in the cloud, with Phaser Editor 2D, Gitpod, Github, and TypeScript</h1>
+        <p class="text-info">August 21, 2020 - Posted in <a href="/blog/category/tutorials">tutorials</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20200821135249-gitpod-and-phaser-editor.png" alt="[Tutorial] Game development env in the cloud, with Phaser Editor 2D, Gitpod, Github, and TypeScript"></p>
+        <div class="lead"><p>Hi!</p>
+<p>Months ago, we released <a href="https://play.phasereditor2d.com">Play Phaser Editor 2D</a>, an online service to make games with Phaser Editor 2D, in the cloud. It can be a nice option for beginners, but not for producing games. One important reason is that you cannot run modern third-party tools often used for Phaser game development, like the TypeScript compiler or Git.</p>
+<p>In this article, we explain step by step how to set up a Phaser game development environment in the cloud, but with no limitations and providing “full access” to the Operating System.</p>
+<p>We are going to help you to create an environment when you can use Phaser Editor 2D, TypeScript, Git, and <a href="https://theia-ide.org">Eclipse Theia</a> (a Visual Studio Code for the cloud).</p>
+<h2>Gitpod</h2>
+<p><a href="https://gitpod.io">Gitpod</a> is a platform that allows creating development environments in the cloud. It is integrated with GitHub, GitLab, and Bitbucket. In a few words, with Gitpod, you can open an online IDE (Theia) in a Docker container and edit the files hosted in a GitHub repository. At the same time, it provides a Terminal to execute commands and setup third-party tools in the container instance.</p>
+<p>It is a perfect solution for our goal. We can download Phaser Editor 2D and run it there, together with Theia.</p>
+<h2>First steps</h2>
+<p>In this article, we are going to integrate Theia with a GitHub repository. It is very simple:</p>
+<ol>
+<li>
+<p>Create a new repository in GitHub. Let’s name it <code>gitpod-demo</code>.</p>
+</li>
+<li>
+<p>In your browser (we recommend a modern and updated browser) open this URL:</p>
+</li>
+</ol>
+<pre><code>https://gitpod.io/#https://github.com/your-user-name/gitpod-demo
+</code></pre>
+<p>(Look you have to write the right user name and repo name)</p>
+<p>Gitpod will open and will ask you to introduce your GitHub credentials. Then, the Theia IDE will open and show the content of the repository. It is that easy!</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20200821100437-open-repo-in-theia.png" alt="Open the repo in Theia"></p>
+<h2>Setup Phaser Editor 2D</h2>
+<p>We have Theia running, now we need to setup Phaser Editor 2D.</p>
+<p>The container created by Gitpod has a <code>/workspace</code> folder that is where you can create the files. Everything in the container can be deleted, but not the <code>/workspace</code> folder.</p>
+<p>When Theia opens, the current directory in the Terminal view is the <code>/workspace</code> folder, we are going to work there.</p>
+<p>You can go to the <a href="https://phasereditor2d.com/downloads">Phaser Editor 2D Downloads</a> can get the link to the Phaser Editor 2D for Linux distribution. It is just a zip file. To download it, run this command in the Terminal:</p>
+<pre><code>$ wget -q https://updates.phasereditor2d.com/v3.5.0/PhaserEditor2D-3.5.0-linux.zip
+</code></pre>
+<p>It takes a few seconds, it just has to downloads ~10MB.</p>
+<p>Then, unzip the download:</p>
+<pre><code>$ unzip -q PhaserEditor2D-3.5.0-linux.zip
+</code></pre>
+<p>It creates a new <code>PhaserEditor2D</code> folder that contains the editor server executable.</p>
+<p>Phaser Editor 2D has the <a href="http://help.phasereditor2d.com/v3/workbench/projects.html">workspace</a> concept. It is a folder where all the projects are stored. By default, it creates a folder in <code>~/PhaserEditor2D_Projects</code>, but in this case, we want to create a folder in the <code>/workspace</code> directory:</p>
+<pre><code>$ mkdir projects
+</code></pre>
+<p>Then, we can execute the editor server and set the workspace path to <code>/workspace/projects</code>:</p>
+<pre><code>$ ./PhaserEditor2D/PhaserEditor2D -public -ws projects
+
+</code></pre>
+<p>Theia detects a new port 1959 is open and asks for action. Select the <strong>Open Browser</strong> option:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20200821101220-setup-and-run-phaser-editor.png" alt="Setup and run Phaser Editor 2D"></p>
+<p>It will open Phaser Editor in a new tab.</p>
+<h2>Creating the game project</h2>
+<p>Because the workspace is empty, Phaser Editor 2D will show the option to create a new project. Select the <strong>Basic TypeScript</strong> template and press the <strong>Create</strong> button:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20200821111038-create-phaser-editor-project.png" alt="Create TypeScript Phaser Editor 2D project "></p>
+<p>When the project is created, it shows a <code>README.txt</code> file with the instructions to install TypeScript. But it is not needed, TypeScript is already present in the default configuration of the container provided by Gitpod.</p>
+<p>To run the TypeScript compiler, open a new Terminal in Theia IDE:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20200821111339-open-new-terminal.png" alt="Open new terminal"></p>
+<p>Change to the <strong>Game</strong> directory and run the TypeScript compiler in watch mode:</p>
+<pre><code>$ cd projects/Game
+$ tsc -w
+</code></pre>
+<p><img src="https://phasereditor2d.com/blog/content/images/20200821111519-typescript-running.png" alt="Run typescript compiler"></p>
+<p>The game is compiled, so we can run it in Phaser Editor 2D:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20200821111733-run-game-in-phaser-editor.png" alt="Run the game in Phaser Editor"></p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20200821111944-game-running.png" alt="Game running"></p>
+<h2>Coding the game in Theia</h2>
+<p>Let’s do a small change to the game. Open the <code>scenes/Level.scene</code> file in Phaser Editor and change the scope of the Dino object to <code>CLASS</code>. We want to access it in the <code>update()</code> method of the scene:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20200821120408-change-object-scope.png" alt="Change the object scope"></p>
+<p>Save the scene, to update the <code>Level.ts</code> file, generated by the <a href="http://help.phasereditor2d.com/v3/scene-editor/scene-compiler.html">Scene Compiler</a>.</p>
+<p>Phaser Editor 2D has a decent JavaScript editor, but not a TypeScript editor. For this reason, we use the Theia IDE.</p>
+<p>Open the <code>scenes/Level.ts</code> file in Theia and write an <code>update()</code> method, to change the angle of the Dino object:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20200821120738-edit-scene-code-in-theia.png" alt="Edit the scene code in Theia"></p>
+<p>You have full intellisense in Theia, just like in Visual Studio Code. That is a really powerful tool.</p>
+<p>Save the <code>Level.ts</code> file and the TypeScript compiler will compile it into JavaScript, automatically. If you look into the <code>tsconfig.json</code> file, all the TypeScript files are compiled into a <code>game.js</code> file.</p>
+<p>Run the game again, now the Dino object will rotate at every frame:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20200821121354-final-game.png" alt="Final game, with rotating object"></p>
+<h2>Conclusion</h2>
+<p>With Gitpod you can do a lot of magic! In this tutorial, we did the basics, but you can configure the whole environment by providing configuration files in the repository. We invite you to read the <a href="https://www.gitpod.io/docs/">Gitpod docs</a>.</p>
+<p>Since the beginning, we developed Phaser Editor 2D v3 with cloud IDEs and the app containerization tech in mind. For that reason, it is important that it can run on Linux, that it has a server/client architecture, and that the whole IDE can run in the browser.</p>
+<p>There are other platforms similar to Gitpod that you can explore:</p>
+<ul>
+<li><a href="https://www.eclipse.org/che/">Eclipse Che</a></li>
+<li><a href="https://github.com/features/codespaces">GitHub Codespaces</a></li>
+<li><a href="https://visualstudio.microsoft.com/services/visual-studio-codespaces/">Visual Studio Codespaces</a></li>
+</ul>
+<p>Hopefully, Phaser Editor 2D is ready for all of them!</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/gitpod">gitpod</a>, <a href="/blog/tag/github">github</a>, <a href="/blog/tag/typescript">typescript</a>, <a href="/blog/tag/cloud">cloud</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

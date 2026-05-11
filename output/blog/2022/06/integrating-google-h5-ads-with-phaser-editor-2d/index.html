@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Tutorial] Integrating Google H5 Ads with Phaser Editor 2D | Phaser Editor 2D Blog</title>
+  <meta name="description" content="How to show interstitial &amp;amp; rewarded Google Ads in a Phaser game. Includes an example.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>[Tutorial] Integrating Google H5 Ads with Phaser Editor 2D</h1>
+        <p class="text-info">June 29, 2022 - Posted in <a href="/blog/category/tutorials">tutorials</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20220629085811-google-ads-phaser-editor.png" alt="[Tutorial] Integrating Google H5 Ads with Phaser Editor 2D"></p>
+        <div class="lead"><p>Hi,</p>
+<p>In this article, I will explain how to show <a href="https://developers.google.com/ad-placement">Google H5 Ads (beta)</a> in a Phaser game.</p>
+<p>The Ad Placement API supports interstitial and rewarded ads. I cover both types in this tutorial.</p>
+<p>I made an example for showing the basic concepts and as a guide for this tutorial. You can <a href="https://github.com/PhaserEditor2D/google-ad-placement-example-webpack">download it from GitHub</a>.</p>
+<h2>Project structure</h2>
+<p>Phaser is a framework and you have multiple ways of setting up the structure of your project. Phaser Editor 2D provides a couple of project templates that allow you a quick setup of your game. For this tutorial (and the underlying example), I used the <a href="https://marketplace.phasereditor2d.com/starters/webpack-ts/">Webpack/TypeScript template</a>. This way you can install dependencies, like Phaser (or even the editor), using NPM.</p>
+<h2>The example</h2>
+<p>The example is very simple, it has a <strong>Preload</strong> scene for loading the game assets and the ads resources.</p>
+<p>When the loading is done, it shows the <strong>Home</strong> scene. This scene shows a play button for starting the gameplay, the <strong>Level</strong> scene. Before starting playing, it shows an interstitial ad.</p>
+<p>The <strong>Level</strong> scene or the gameplay is all about a running character, picking items, and jumping obstacles. If the character touches an obstacle, the game is over, and it shows a dialog for showing the score, continuing playing the level, or going to the <strong>Home</strong> scene.</p>
+<p>If you select to continue playing the game, it shows a rewarded ad that you have to watch until the end, else you are redirected to <strong>Home</strong>.</p>
+<p><a href="https://games.boniatillo.com/google-ad-placement-example/">Play the example here</a></p>
+<h2>Setting up the Google H5 Ads SDK</h2>
+<p>The Google H5 Ads SDK is not installed as a node package else it is loaded into the game directly from the Google servers, using a <code>script</code> tag.</p>
+<p>In the <a href="https://github.com/PhaserEditor2D/google-ad-placement-example-webpack/blob/4318ce0c5d0c3653d38177e8729c63ab697c340c/src/index.html#L9-L18">index.html</a> file of the game, you add the <code>script</code> tag in the <code>head</code> of the document:</p>
+<pre><code>    &lt;script async data-adbreak-test=&quot;on&quot; data-ad-frequency-hint=&quot;30s&quot;
+        src=&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR-PUB-ID-HERE&quot;
+        crossorigin=&quot;anonymous&quot;&gt;
+    &lt;/script&gt;
+</code></pre>
+<p>First, you need to create a <a href="https://www.google.com/adsense/start/">Google AdSense account</a> and get a <a href="https://support.google.com/adsense/answer/105516?hl=en">Publisher ID</a>.</p>
+<p>Note in the previous code, you should replace the <code>YOUR-PUB-ID-HERE</code> text with the Publisher ID you get from your AdSense account.</p>
+<p>Next to the previous <code>script</code> tag, you should initialize the Google H5 Ads SDK:</p>
+<pre><code>&lt;script&gt;
+        window.adsbygoogle = window.adsbygoogle || [];
+        var adBreak = adConfig = function (o) { adsbygoogle.push(o); }
+&lt;/script&gt;
+</code></pre>
+<p>Look it defines the <code>adBreak()</code> and <code>adConfig()</code> functions are used in the game code.</p>
+<p><a href="https://developers.google.com/ad-placement/docs/html5-game-structure">Learn more about setting up the Google H5 Ads SDK</a></p>
+<h2>Preloading the ads</h2>
+<p>The majority of the HTML5 games first do a preloading of the assets at the very beginning of the game. In Phaser games, the common is to use a <strong>Preload</strong> scene for preload and show the progress of the assets loading.</p>
+<p>The Google H5 Ads SDK also allows the downloading and caching of the ads resources. You can force this preloading of the ads in your game. In the example, we do this in the <strong>Preload</strong> scene.</p>
+<p>You can <a href="https://github.com/PhaserEditor2D/google-ad-placement-example-webpack/blob/4318ce0c5d0c3653d38177e8729c63ab697c340c/src/scenes/Preload.ts#L52-L70">force the preload</a> by calling the <code>adConfig()</code> function:</p>
+<pre><code>adConfig({
+	preloadAdBreaks: &quot;on&quot;,
+	onReady: () =&gt; {
+
+		console.log(&quot;Ads preloaded!&quot;);
+
+		this.progressBar.setProgress(1);
+
+		this.scene.start(&quot;Home&quot;);
+	},
+});
+</code></pre>
+<p>The <code>onReady</code> parameter references a callback that is executed when the ads are loaded. In the example above, the <code>onReady</code> callback shows the complete progress of the loading:</p>
+<pre><code>this.progressBar.setProgress(1);
+</code></pre>
+<p>And starts the <strong>Home</strong> scene of the game.</p>
+<p>The <code>this.progressBar</code> variable references an instance of the <strong>ProgressBar</strong> prefab:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20220629101335-progress%20bar%20object.jpeg" alt="the progressBar object"></p>
+<p><a href="https://developers.google.com/ad-placement/docs/preload-ads">Learn more about Google H5 Ads preloading</a>.</p>
+<h2>Interstitial ads</h2>
+<p>What is an interstitial ad?</p>
+<p>From the Google Ad Placement docs:</p>
+<blockquote>
+<p>An interstitial ad is a full-screen ad that can show at different moments within your game, such as when the player starts the game, or after the player completes a level. It pauses the game, covers the entire document, and the player can choose to click the ad (in which case the ad shows in a different tab of their browser) or to dismiss it which allows them to proceed with the game.</p>
+</blockquote>
+<p>In our example, we show an interstitial ad in the <strong>Home</strong> scene, right away when you click the Play button. You can show the ad with this code:</p>
+<pre><code>adBreak({
+	type: &quot;start&quot;,
+	name: &quot;test-interstitial&quot;,
+	adBreakDone: () =&gt; { 
+
+		// go to the Level scene
+		this.start(&quot;Level&quot;);
+	}
+});
+</code></pre>
+<p><a href="https://developers.google.com/ad-placement/docs/placement-types">Learn more about the ad placement types</a>.</p>
+<p>The <code>type</code> parameter indicates the type of ad. The <code>name</code> is optional and contains a description of the ad. The <code>addBreakDone</code> parameter references a callback that is executed when the user closes the ad. So, in the <code>adBreakDone</code> callback you start the <strong>Level</strong> scene.</p>
+<p>However, in the editor, I did it in a slightly different way. I created an <a href="https://github.com/PhaserEditor2D/google-ad-placement-example-webpack/blob/master/src/components/AdButton.ts">AdButton</a> component that you can add to any image.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20220629130518-Play%20button%20with%20AdButton%20comonent.jpeg" alt="Play button with AdButton component"></p>
+<p>The <strong>AdButton</strong> component has an <code>On adBreakDone</code> parameter that accepts verbatim code. That code is executed when the <code>adBreakDone</code> callback of the <code>addBreak()</code> function is called. You can see that behavior in the <strong>AdButton</strong> component implementation:</p>
+<pre><code>// this method is executed when
+// the user touches the gameObject of the component
+private showAdd() {
+
+	adBreak({
+		type: &quot;start&quot;,
+		name: &quot;test-interstitial&quot;,
+		adBreakDone: (placementInfo:any) =&gt; { 
+
+			// When the ad is done, it executes
+			// the callback referenced 
+			// by `onAdBreakDone` parameter
+			
+			if (this.onAdBreakDone) {
+				
+				this.onAdBreakDone();
+			}
+		}
+	});
+}
+</code></pre>
+<p>If you look into the <strong>Home</strong> scene code, the <strong>AdButton</strong> component is created like this:</p>
+<pre><code>editorCreate() {
+	
+	...
+	const btnPlayAdButton = new AdButton(btnPlay);
+	btnPlayAdButton.onAdBreakDone = () =&gt; this.startGame();
+	...
+
+}
+
+private startGame() {
+
+	this.scene.start(&quot;Level&quot;);
+}
+</code></pre>
+<p>This video shows the workflow:</p>
+<video style="width:100%" loop autoplay controls>
+  <source src="/blog/content/images/interstitial-ad-06292022.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<h2>Rewarded ads</h2>
+<p>When the character collides with an obstacle, the game stops. It shows the game over dialog with the score and the options to:</p>
+<ul>
+<li>Go to the Home screen.</li>
+<li>Get an extra life and resume the game.</li>
+</ul>
+<p>The second option requires you to watch a rewarded ad. If you watch the ad until the end, then you get the reward and can continue playing the game at the same point and with the same score you had before you lost. That’s the concept of rewarded ads, if you watch it, you get a reward.</p>
+<p>Rewarded ads are not always available, it depends on the frequency you request them.  So it is possible that the option to continue playing the game is not shown.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20220629143502-game%20over%20dialog.jpeg" alt="Game over dialog"></p>
+<p>To show a rewarded ad, you can the <code>adBreak()</code> function like this:</p>
+<pre><code>adBreak({
+	type: &quot;reward&quot;,
+	name: &quot;test-reward&quot;,
+	beforeReward: (showAdFn: any) =&gt; {
+
+		// set visible the button
+
+		// keep a reference to the showAdFn function		
+	},
+	adViewed: () =&gt; {
+
+		// ad viewed, resume the game!
+	},
+	adDismissed: () =&gt; {
+
+		// ad dismissed, go to the Home screen
+	}
+});
+</code></pre>
+<p>The <code>beforeReward</code> callback provides the <code>showAdFn</code> function that you should call for showing the ad. Also, you should set visible the button and register a listener to the button so you call <code>showAdFn</code> when the button is touched.</p>
+<p>The <code>adViewed</code> callback is executed when you watch the complete ad, so the game provides you a reward, like resume the play.</p>
+<p>The <code>adDismissed</code> callback is executed if you close the ad before it is complete. So you don’t get the reward and are redirected to the Home screen.</p>
+<p>Like I did with the <strong>AdButton</strong>, I encapsulated the rewarded ads logic in a <strong>RewardAdButton</strong> component.</p>
+<p>You can add the component to an image object and provides the <code>On adViewed</code> and <code>On adDismissed</code> callbacks:</p>
+<p>As I did with the interstitial ad, the rewarded ads logic is encapsulated in a <strong>RewardedAdButton</strong> component:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20220629152839-reward-ad-component.jpeg" alt="Reward ad component"></p>
+<p>The dialog is encapsulated in the <strong>GameOverDialog</strong> prefab, and it emits the <code>play-again</code> &amp; <code>go-home</code> events. The <strong>Level</strong> scene listens to these events and performs the final actions.</p>
+<p>These are the most important parts of the <strong>RewardAdComponent</strong> implementation:</p>
+<pre><code>showAdButton() {
+
+	// hide the button (this.gameObject)
+	this.gameObject.visible = false;
+
+	this.showAdFn = undefined;
+
+	adBreak({
+		type: &quot;reward&quot;,
+		name: &quot;test-reward&quot;,
+		beforeReward: (showAdFn: any) =&gt; {
+
+			// gets the showAdFn function and display the &quot;replay&quot; button
+
+			this.gameObject.visible = true;
+
+			this.showAdFn = showAdFn;
+		},
+		adViewed: () =&gt; {
+
+			// ad viewed! execute the onAdViewed callback
+
+			if (this.onAdViewed) {
+
+				this.onAdViewed();
+			}
+		},
+		adDismissed: () =&gt; {
+
+			// ad missed, execute the onAdViewed() callback
+
+			if (this.onAdDismissed) {
+
+				this.onAdDismissed();
+			}
+		},
+		adBreakDone: (placementInfo: any) =&gt; {
+
+			// ad break done, do nothing
+		}
+	});
+}
+
+protected awake(): void {
+
+	// initialize the component
+
+	this.gameObject.visible = false;
+
+	// when the gameObject is touched it executes
+	// the showAdFn set in the adBreak() call
+	this.gameObject.on(&quot;pointerdown&quot;, () =&gt; {
+
+		if (this.showAdFn) {
+
+			this.showAdFn();
+		}
+	});
+}
+</code></pre>
+<p>The following video shows the rewarded ads behavior:</p>
+<video style="width:100%" loop autoplay controls>
+  <source src="/blog/content/images/rewarded-ad-06292022.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<h2>Conclusion</h2>
+<p>Integrating Google H5 Ads into Phaser Editor 2D is not hard. I recommend reading the official documentation of the SDK and playing with the example shown in this tutorial. I plan to create a project template for a quick start with the Google H5 Ads, and who knows, maybe I can create some reusable components or a dedicated plugin.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/ads">ads</a>, <a href="/blog/tag/tutorial">tutorial</a>, <a href="/blog/tag/google">google</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

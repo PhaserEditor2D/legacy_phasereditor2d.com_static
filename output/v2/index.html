@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="og:title" content="Phaser Editor 2D [version 2] | HTML5 Game IDE">
+    <meta name="og:description" content="Version 2 of Phaser Editor 2D. A desktop IDE for HTML5 games creation. Focused on coding and level making.">
+    <meta name="og:image" content="https://phasereditor2d.com/static/images/v2/scene-editor.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@PhaserEditor2D">
+    <meta name="twitter:creator" content="@PhaserEditor2D">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-67206336-2"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-67206336-2');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- website -->
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+    <title>Phaser Editor 2D | HTML5 Game IDE</title>
+    <meta name="description" content="Online IDE for HTML5 games creation.">
+
+    <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+    <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+    <a class="navbar-brand" href="/">
+
+        <img class="logo-icon mr-1" src="/static/images/favicon.png">
+
+        Phaser Editor 2D
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse float-right" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link " href="/downloads">Downloads</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link " href="/pricing">Pricing</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/blog">Blog</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="productsMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Products
+                </a>
+                <div class="dropdown-menu" aria-labelledby="productsMenu">
+                    <a class="dropdown-item" href="/">Phaser Editor 2D v3</a>
+                    <a class="dropdown-item" href="/start">Templates &amp; Online IDE</a>
+                    <a class="dropdown-item" href="https://marketplace.phasereditor2d.com">Marketplace</a>
+                    <a class="dropdown-item" href="https://licmanager.phasereditor2d.com">License Manager</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://phasereditor2d.gumroad.com/l/uPhaserHelpCenter">uPhaserHelpCenter App</a>
+                    <a class="dropdown-item" href="https://chains-phaser2.phasereditor2d.com/">Phaser 2 Chains</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="helpMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Help
+                </a>
+                <div class="dropdown-menu" aria-labelledby="helpMenu">
+                    <a class="dropdown-item" href="https://help-v3.phasereditor2d.com">Phaser Editor 2D v3 Help</a>
+                    <a class="dropdown-item" href="https://help.phasereditor2d.com/v2">Phaser Editor 2D v2 Help</a>
+                    <a class="dropdown-item" href="https://help.phasereditor2d.com/v1">Phaser Editor 2D v1 Help</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.youtube.com/@PhaserEditor2D">YouTube Channel</a>
+                    <a class="dropdown-item" href="/blog/category/tutorials">Tutorials</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/versions">Versions Comparison</a>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="alert alert-danger text-center" style="border-radius: 0px;">
+    <code class="text-white">
+        <strong>Notice:</strong>
+        Phaser Editor has moved! Visit the new site for the latest version and all resources.
+        <a class="" href="https://phaser.io/editor">Click here to explore Phaser Editor at phaser.io</a>
+    </code>
+</div>
+    <div class="p-5">
+
+    </div>
+
+    <div class="container header-section">
+
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="header-logo-section">
+                    <div class="logo float-left">
+                        <a href="https://phasereditor2d.com">
+                            <img class="logo-image" src="/static/images/logo.png" />
+                        </a>
+                    </div>
+
+                    <div class="float-left">
+                        <h1 class="name mb-0">
+                            Phaser Editor 2D
+                        </h1>
+
+                        <div class="lead">
+                            A friendly IDE for HTML5 game development.
+                            <br>
+                            Version 2
+                        </div>
+
+                        <div class="mb-2">
+                            <small class="text-info">Editor 2.1.8 / PHASER 3.24.1</small>
+                        </div>
+
+                        <ul class="social list-inline">
+                            <li class="list-inline-item">
+                                <a class="bg-primary" href="https://twitter.com/PhaserEditor2D" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="bg-primary" href="https://www.facebook.com/PhaserEditor2D" target="_blank"><i class="fab fa-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="bg-primary" href="https://youtube.com/c/PhaserEditor2D" target="_blank"><i class="fab fa-youtube"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="bg-primary" href="https://discord.com/invite/4DdpMMD" target="_blank"><i class="fab fa-discord"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="bg-primary" href="https://github.com/PhaserEditor2D/PhaserEditor/" target="_blank"><i class="fab fa-github"></i></a>
+                            </li>
+                        </ul>
+
+                        <br><br>
+
+                        <div class="container text-center">
+
+                            <p class="container text-center">
+                                <a href="/versions">This version of the editor is not updated anymore.</a>
+                            </p>
+
+                            <div>
+
+                                <h4 class="font-weight-bold">
+                                    <li class="fa fa-download"></li> Phaser Editor 2D v2.1.8                                </h4>
+
+                                <p>
+                                    <span class="text-info">July 15, 2020</span>
+                                    / <a href="https://phasereditor2d.com/blog/2020/07/phaser-editor-2d-v2-updated">Release notes</a>
+                                </p>
+
+                                
+                                    <p>
+                                        <a class="btn bg-transparent border-success text-success text-justify w-100" href="https://phasereditor2d.com/files/v2.1.8/PhaserEditor2D-2.1.8-windows.zip">
+
+                                            <code>PhaserEditor2D-windows-2.1.8.zip</code>
+                                        </a>
+                                    </p>
+
+                                
+                                    <p>
+                                        <a class="btn bg-transparent border-warning text-warning text-justify w-100" href="https://phasereditor2d.com/files/v2.1.8/PhaserEditor2D-2.1.8-linux.zip">
+
+                                            <code>PhaserEditor2D-linux-2.1.8.zip</code>
+                                        </a>
+                                    </p>
+
+                                
+                                    <p>
+                                        <a class="btn bg-transparent border-danger text-danger text-justify w-100" href="https://phasereditor2d.com/files/v2.1.8/PhaserEditor2D-2.1.8-macos.zip">
+
+                                            <code>PhaserEditor2D-macos-2.1.8.zip</code>
+                                        </a>
+                                    </p>
+
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="clearfix mb-4"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="separator"></div>
+
+
+        <!-- features -->
+
+        <div class="container">
+
+            <!-- Scene Editor -->
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <h4 class="text-warning">Scene Editor</h4>
+                    <hr class="bg-warning">
+                    <p class="lead">
+                        Build the levels of your games with a visual tool. Create reusable objects across the scenes.
+                    </p>
+
+                    <p>
+                        <a class="text-warning" href="https://help.phasereditor2d.com/v2/scene-editor.html">
+                            Scene Editor documentation (incomplete)
+                        </a>
+                    </p>
+                    <p>
+                        <a class="text-warning" href="https://phasereditor2d.com/blog/2019/03/commenting-the-sunny-land-woods-demo-tutorial">
+                            Commenting the Sunny Land Woods demo #Tutorial #Tilemap
+                        </a>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-warning">
+                        <div class="card-body">
+                            <img class="img-fluid shadow-lg rounded previewInModal" src="/static/images/v2/scene-editor.png">
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- row -->
+
+
+            <div class="separator"></div>
+            <!-- Animations Editor -->
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <h4 class="text-danger">Animations Editor</h4>
+                    <hr class="bg-warning">
+                    <p class="lead">
+                        Create the sprite animations of your games with an advanced, drag & drop, tool.
+                        Automatically create your animations by importing images, texture maps, and sprite-sheets.
+                    </p>
+
+                    <p>
+                        <a class="text-danger" href="https://help.phasereditor2d.com/v2/animations-editor.html">
+                            Animations Editor documentation
+                        </a>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-danger">
+                        <div class="card-body">
+                            <img class="img-fluid shadow-lg rounded previewInModal" src="/static/images/v2/animations-editor.png">
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- row -->
+
+            <div class="separator"></div>
+            <!-- Asset Pack Editor -->
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <h4 class="text-success">Asset Pack Editor</h4>
+                    <hr class="bg-success">
+                    <p class="lead">
+                        Quickly pack and load the assets of your games. Automatically import a batch of files.
+                        Use the standard Phaser manifest JSON file.
+                    </p>
+
+                    <p>
+                        <a class="text-success" href="https://help.phasereditor2d.com/v2/asset-pack-editor.html">
+                            Asset Pack Editor documentation
+                        </a>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-success">
+                        <div class="card-body">
+                            <img class="img-fluid shadow-lg rounded previewInModal" src="/static/images/v2/asset-pack-editor.png">
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- row -->
+
+            <div class="separator"></div>
+            <!-- Asset Pack Editor -->
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <h4 class="text-info">Texture Packer Editor</h4>
+                    <hr class="bg-info">
+                    <p class="lead">
+                        Easy create texture maps for your games with powerful and flexible algorithms.
+                    </p>
+
+                    <p>
+                        <a class="text-info" href="https://help.phasereditor2d.com/v2/texture-packer-editor.html">
+                            Texture Packer Editor documentation
+                        </a>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-info">
+                        <div class="card-body">
+                            <img class="img-fluid shadow-lg rounded previewInModal" src="/static/images/v2/texture-packer.png">
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- row -->
+
+
+            <div class="separator"></div>
+            <!-- Phaser Labs -->
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <h4 class="text-danger">Phaser Labs</h4>
+                    <hr class="bg-danger">
+                    <p class="lead">
+                        Browse the Phaser documentation and source with a group of advanced tools.
+                        The innovative Phaser Chains tool lets you perform faster and powerful queries.
+                    </p>
+
+                    <p>
+                        <a class="text-danger" href="https://help.phasereditor2d.com/v2/phaser-labs.html">
+                            Phaser Labs documentation (incomplete)
+                        </a>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-danger">
+                        <div class="card-body">
+                            <img class="img-fluid shadow-lg rounded previewInModal" src="/static/images/v2/phaser-labs.png">
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- row -->
+
+            <div class="separator"></div>
+            <!-- Code Editor -->
+
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <h4 class="text-warning">Code Editor</h4>
+                    <hr class="bg-warning">
+                    <p class="lead">
+                        Write the logic of your games with an advanced built-in code editor, or open your game project into Visual Studio Code.
+                    </p>
+
+                    <p>
+                        <a class="text-warning" href="https://help.phasereditor2d.com/v2/code-editors.html">
+                            Code Editor documentation (incomplete)
+                        </a>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-warning">
+                        <div class="card-body">
+                            <img class="img-fluid shadow-lg rounded previewInModal" src="/static/images/v2/code-editor.png">
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- row -->
+
+        </div>
+
+
+        <div class="separator"></div>
+
+        <footer class="footer p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <h5>About</h5>
+                    <p><a href="https://phasereditor2d.com">Phaser Editor 2D</a> is a multi-platform IDE to develop games based on the fast and popular <a href="https://phaser.io">Phaser framework</a>. It is a commercial product made and supported by
+                        <a href="https://twitter.com/boniatillo_com">Arian Fornaris</a>.</p>
+                    <p>Phaser is a free and open source software developed and owned by Richard Davey at
+                        <a href="https://www.photonstorm.com">www.photonstorm.com</a>. You can visit
+                        <a href="https://phaser.io/community/donate">their funding
+                            page</a> and help them to make Phaser even better.</p>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <h5>Connect</h5>
+                    <ul>
+                        <li><a href="https://phasereditor2d.gumroad.com/subscribe">Subscribe to our Newsletter</a></li>
+                        <li> <a href="mailto:developers@phasereditor2d.com">Email us</a></li>
+                        <li><a href="http://www.html5gamedevs.com/profile/8392-phasereditor2d/">Follow us on HTML5GameDevs</a></li>
+                        <li><a href="https://twitter.com/PhaserEditor2D">Follow us on Twitter</a></li>
+                        <li><a href="https://www.facebook.com/PhaserEditor2D">Follow us on Facebook</a></li>
+                        <li><a href="https://gamedevacademy.org/author/boniatillo/">Tutorials on GameDev Academy</a></li>
+                        <li><a href="https://youtube.com/c/PhaserEditor2D">Tutorials on YouTube</a></li>
+                        <li><a href="https://www.google.com/search?as_epq=phaser+editor&as_sitesearch=phaser.io">Search on Phaser.io news</a></li>
+                        <li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/">Fork on GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Copyright &copy; 2022 <a href="https://twitter.com/PhaserEditor2D">Arian Fornaris</a>. Isla de la Juventud, Cuba.
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+
+    <div id="imageModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 90%" role="document">
+    <div class="modal-content border-info">
+      <div class="modal-body text-center">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <img id="imageModal_image" class="img-fluid mt-2 shadow-lg rounded-lg">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener("load", function() {
+    $("img.previewInModal").on("click", function() {
+
+      $("#imageModal_image").attr("src", $(this).attr("src"));
+      $('#imageModal').modal();
+    });
+
+  });
+</script>
+    <!-- mailchimp registration form -->
+    <!--
+    <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us11.list-manage.com","uuid":"573a10942b2f5dd70ae7e3a66","lid":"33ce89bad7"}) })</script>
+    -->
+</body>
+
+</html>

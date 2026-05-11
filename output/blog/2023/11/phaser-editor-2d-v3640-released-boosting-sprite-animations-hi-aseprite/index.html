@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.64.0 released - Boosting sprite animations - Hi Aseprite! | Phaser Editor 2D Blog</title>
+  <meta name="description" content="A new release for boosting sprite animations. Including tools for the Aseprite software.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.64.0 released - Boosting sprite animations - Hi Aseprite!</h1>
+        <p class="text-info">November 09, 2023 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20231107153157-release-v3640.png" alt="Phaser Editor 2D v3.64.0 released - Boosting sprite animations - Hi Aseprite!"></p>
+        <div class="lead"><p>Hi!</p>
+<p>Today I’m releasing a new version of Phaser Editor 2D. This new release includes a couple of new features for boosting your workflow with Sprite animations. It also adds support for Aseprite, a software many of you use for making animations.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.64.0</a></p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor 2D, please tell me, and I will be proud to feature it on the website, newsletter, and social channels.</p>
+<h3>Love Defender</h3>
+<p>Hardcore fast 2D shoot 'em up platformer. This game is too hard and unfair for you, Don’t play it or it will make you cry and break your controller in anger. Your life won’t be the same.</p>
+<p><a href="https://www.iololoi.com/#love-defender">Play it here</a></p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20231020060235-love%20defender.png" alt="Love defender"></p>
+<h3>Game Objects in Phaser Editor 2D. A tutorial by <a href="https://yudiz.com/">Yudiz Solutions</a></h3>
+<blockquote>
+<p>Game Objects is built in PhaserEditor2D. A game object is a building block used to create entities in the game world. Game objects have various types, such as sprites, shapes, text, images, groups, containers, and more. It is a basic unit of gameplay that can be used to represent anything in your game.</p>
+</blockquote>
+<p><a href="https://medium.com/yudiz-solutions/game-objects-in-phasereditor2d-d65562f16ae4">Read the full article here</a></p>
+<h2>Animations</h2>
+<p>Animations are an essential part of a game. Phaser provides different alternatives for animating objects in the game. At Phaser Editor 2D I am making tools for improving the workflow of making animations with the Phaser API. In a previous version of the editor, I added support for the Spine animations. Today, I am improving the editor’s workflow for working with the sprite-based animations. Also, I included support for the <a href="https://www.aseprite.org">Aseprite animations</a>.</p>
+<h3>Animations preview</h3>
+<p>Now you can preview the animations imported in an Asset Pack file. You can select an animation key from the Outline view of the Asset Pack editor, then the Inspector view shows the info of the animation and a button for opening the Preview dialog:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20231107231749-preview-animation-1.jpeg" alt="Preview animation 1"></p>
+<p>If you click the <strong>Preview</strong> button, it opens the preview dialog:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20231107232030-preview-animation-dialog.jpeg" alt="Animation preview dialog"></p>
+<p>The dialog shows buttons to play the animation or force the repeat of the animation.</p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/sprite-animations-preview.html">Learn more about previewing the animations</a></p>
+<h3>Animation blocks</h3>
+<p>This version introduces the Animation block for the Scene Editor. It means, now the Blocks view shows the animations and Aseprite animations.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20231107232459-animation-blocks.png" alt="Animation blocks"></p>
+<p>You can select an animation and preview it, but also you can drag it and drop it on the scene. When you drop an Animation block in the scene, it creates a Sprite object and configures it to play the animation.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20231107233039-create-sprite-with-anim-block.jpeg" alt="Creating a Sprite object in the scene"></p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/sprite-object.html">Learn more about the Animation block</a></p>
+<h3>Animation section</h3>
+<p>The Sprite game object now has a new Animation section in the Inspector view.</p>
+<p>This Animation section contains the parameters to play an animation in a sprite object:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20231107233447-animation-section.jpeg" alt="Animation section"></p>
+<p>In this section, you can select an animation to auto-play in a sprite. Also, you can provide a custom configuration for the animation to play.</p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/animations-properties.html">Learn more about the Animation properties</a></p>
+<h3>Aseprite</h3>
+<p>Aseprite is a popular software for making sprite animations. Now Phaser Editor 2D supports it!</p>
+<p>You can select the Aseprite files in the Files view and import them into an Asset Pack file. Once the Aseprite animations are in the asset pack then you can use them as regular animations.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20231107234045-import-aseprite-1.png" alt="Importing aseprite files">
+<img src="https://phasereditor2d.com/blog/content/images/20231107234247-import-aseprite-2.png" alt="Import aseprite 22"></p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/sprite-animations-aseprite.html">Learn more about the Aseprite support</a></p>
+<h2>Other</h2>
+<ul>
+<li>Improves importing multiple files from the Files view.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/251">#251</a> Fixes sprite positioning in the Animations Editor.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/209">#209</a> Improves scene border painting.</li>
+<li>Optimizes pooling of WEBGL contexts. It now re-uses the canvases in dialogs and editors.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/295">#295</a> Fixes tilemapLayer nullable method factory.</li>
+</ul>
+<h2>What’s next?</h2>
+<p>I moved from Cuba to the United States, with the whole family. I want to talk more about this later. I have to keep busy with different issues, but I hope to back to the editor development soon. It is all exciting!</p>
+<p>Keep in touch,</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/aseprite">aseprite</a>, <a href="/blog/tag/sprite">sprite</a>, <a href="/blog/tag/animation">animation</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Tutorial] A day in the beach. A demo of buttons based on components. | Phaser Editor 2D Blog</title>
+  <meta name="description" content="How User Components were used to create the buttons of the A day in the beach demo game.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>[Tutorial] A day in the beach. A demo of buttons based on components.</h1>
+        <p class="text-info">August 19, 2020 - Posted in <a href="/blog/category/tutorials">tutorials</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20200818130633-Aday-beach-tutorial.png" alt="[Tutorial] A day in the beach. A demo of buttons based on components."></p>
+        <div class="lead"><p>Hi,</p>
+<p><strong>A day in the beach</strong> is a very simple point-and-click game. Some starfishes pop into the screen and you have to click on them.</p>
+<p><a href="https://phasereditor2d.com/demos/day-in-the-beach/">Play A day in the beach</a></p>
+<p>We did this game to demonstrate how you can create some common buttons in the game by using reusable components. These components can be reused in different places of the game or even in different games.</p>
+<p>User Components is a recently added feature of Phaser Editor 2D. It allows you to create parametrized behaviors and connect them to objects of different types. For example, the <strong>OpenURLOnClick</strong> behavior can be set to an Image object, a Text object, or multiple objects with different URLs. Another advantage of components is that you can add a different combination of components to an object, without the need to create a complicated class hierarchy, like could be the case of <a href="https://help.phasereditor2d.com/v3/scene-editor/prefabs.html">prefabs</a>. In an ideal project, it may be possible to allow the level designer to build the game levels only dragging images and setting user components.</p>
+<p><a href="https://help.phasereditor2d.com/v3/scene-editor/user-components.html">Learn more about User Components</a></p>
+<p>In this very short article, we are going to explain, in general, how we used components to make the buttons of the game. This is not a step by step, fully explained tutorial. This is just about to motivate you to do a deeper study of the User Components feature.</p>
+<h2>Running the demo project</h2>
+<p>The game code is hosed in the repository <a href="https://github.com/PhaserEditor2D/one-day-in-the-beach-demo-button-components/">github.com/PhaserEditor2D/one-day-in-the-beach-demo-button-components</a>. Clone it and copy its content in the Phaser Editor 2D workspace. By default, the workspace is in the <code>{HOME}/PhaserEditor2D_Projects</code> folder.</p>
+<p>The quickest way to see and play with the files of the game is by creating an account in <a href="https://play.phasereditor2d.com">Play Phaser Editor 2D</a>. It is an online service that allows you to run Phaser Editor 2D without the need to install it on your PC. It contains the <strong>A day in the beach</strong> project template, so select it and create a project. This online service is perfect for taking the first look to the editor, but for professional game development, we recommend to use the <a href="https://phasereditor2d.com/downloads">offline version</a>.</p>
+<h2>Overview of the game</h2>
+<p>As we explained, the game is very basic. It has a first Welcome (or menu) screen that shows a couple of options: mute the background music or the sound effects, click on a social network link or start the game.</p>
+<p><img src="/blog/content/images/tutorial-button-components/welcome-screen.png" alt="Welcome screen"></p>
+<p>The other screen is the level, where the action happens. It shows an underwater scene where the starfishes are popping from time to time and you can click on them. When you click on a starfish it disappears and plays a water effect sound.</p>
+<p>Also, this scene shows a button to pause the game and a button to return to the welcome screen.</p>
+<p><img src="/blog/content/images/tutorial-button-components/level-screen.png" alt="Level screen"></p>
+<h2>Overview of the project structure</h2>
+<p>The structure of a project in Phaser Editor 2D is very similar to the structure of any other <a href="https://phaser.io">Phaser</a> project. You can use any project structure. The only important recommendation is to keep in the project only the files that are relevant to the game. It means you should avoid placing server files or any other file that is not used directly by the editor tools or the game, like the un-packed, original images of a textures map. Phaser Editor 2D loads all the (or many) project resources in memory so it is important to process a relatively low number of files.</p>
+<p><a href="https://help.phasereditor2d.com/v3/misc/resources-filtering.html">Learn more about resources filtering</a></p>
+<p>In the next table we do a brief explanation of each folder and files:</p>
+<p><strong><code>/index.html</code></strong> Is the entry point of the game.</p>
+<p><strong><code>/assets/</code></strong> This folder contains all the game assets, like images, sounds, and scenes.</p>
+<p><strong><code>/assets/asset-pack.json</code></strong> This is the <a href="https://help.phasereditor2d.com/v3/asset-pack-editor/">Asset Pack File</a> of the project. It is a manifest file used by Phaser to load the files used in the game.</p>
+<p><strong><code>/assets/atlas/</code></strong> Contains the texture maps.</p>
+<p><strong><code>/assets/audio/</code></strong> Contains the audio files.</p>
+<p><strong><code>/assets/fonts/</code></strong> Contains the Bitmap Font files.</p>
+<p><strong><code>/assets/images/</code></strong> Contains the images.</p>
+<p><strong><code>/assets/scenes/</code></strong> Contains the scene files (<code>*.scene</code>) used by the <a href="https://help.phasereditor2d.com/v3/scene-editor/">Scene Editor</a>. It also contains the JavaScript files created by the <a href="https://help.phasereditor2d.com/v3/scene-editor/scene-compiler.html">scene compiler</a>.</p>
+<p><strong><code>/assets/components</code></strong> Contains the <a href="https://help.phasereditor2d.com/v3/scene-editor/user-components.html">User Components</a> file (like <strong><code>Behaviors.components</code></strong>). This file has a definition of the components. The folder also contains the JavaScript files compiled by the User Components compiler.</p>
+<p><strong><code>/lib/</code></strong> This folder contains the Phaser runtime (<strong><code>phaser.js</code></strong>).</p>
+<p><strong><code>/types/</code></strong> This folder contains the <strong><code>phaser.d.ts</code></strong> and <strong><code>matter.d.ts</code></strong> files. It is used by the editor (or external editors like Visual Studio Code) to provide intellisense when editing the JavaScript/TypeScript files.</p>
+<p><strong><code>/jsconfig.json</code></strong> A Visual Studio Code configuration file. Added to the project for better integration with VS Code. We recommend using that third party editor to write the game code.</p>
+<h2>The social buttons case</h2>
+<p>Let’s focus on the social buttons to get a better idea of the problem. The problem is that we want to create a small framework of components that allows us to assign buttons-like behaviors to the images of the social buttons. A social button is a logo image that, when is clicked (or touched) it opens in the browser the URL of an account on Twitter or Facebook.</p>
+<p><img src="/blog/content/images/tutorial-button-components/social-buttons.png" alt="Social buttons"></p>
+<p>To do this, we created an <strong>OpenURLOnClick</strong> user component. This component has an <strong>URL</strong> parameter (or better said, a property) that contains the value of the URL we want to open.</p>
+<p>This is the definition of the <strong>OpenURLOnClick</strong> component, in the <strong>Behaviors.components</strong> file:</p>
+<p><img src="/blog/content/images/tutorial-button-components/OpenURLOnClick-component.png" alt="Social buttons"></p>
+<p>This is the code generated by the User Components compiler. As you can see, in the constructor, the component registers a <code>&quot;pointerup&quot;</code> event listener to the object, that opens the <strong>URL</strong> set by the user:</p>
+<pre><code class="language-javascript">
+class OpenURLOnClick {
+    
+    constructor(gameObject) {
+        gameObject[&quot;__OpenURLOnClick&quot;] = this;
+        
+        /** @type {Phaser.GameObjects.GameObject} */
+        this.gameObject = gameObject;
+        /** @type {string} */
+        this.url = &quot;&quot;;
+        
+        /* START-USER-CTR-CODE */
+        
+        this.gameObject.on(&quot;pointerup&quot;, () =&gt; {
+
+            open(this.url);
+        });
+
+        /* END-USER-CTR-CODE */
+    }
+    
+    /** @returns {OpenURLOnClick} */
+    static getComponent(gameObject) {
+        return gameObject[&quot;__OpenURLOnClick&quot;];
+    }   
+}
+</code></pre>
+<p>So, we add the <strong>OpenURLOnClick</strong> component to the Facebook button, and set the <strong>URL</strong> property to <code>https://twitter.com/PhaserEditor2D</code>. With the Twitter button it is the same, but setting the <strong>URL</strong> property to <code>https://facebook.com/PhaserEditor2D</code>.</p>
+<p>The following image shows the Facebook button properties in the Inspector view. Look the <strong>User Components</strong> section contains the <strong>OpenURLOnClick</strong> component but also the <strong>InteractiveObject</strong> and <strong>PushOnClick</strong> components, that are used here but also in another type of buttons.</p>
+<p><img src="/blog/content/images/tutorial-button-components/OpenURLOnClick-facebook-button.png" alt="Social buttons"></p>
+<p>The Scene compiler will generate the code to create an instance of the component and set the value to the properties:</p>
+<pre><code class="language-javascript">
+const facebookBtnOpenURLOnClick = new OpenURLOnClick(facebookBtn);
+facebookBtnOpenURLOnClick.url = &quot;https://facebook.com/PhaserEditor2D&quot;;
+        
+</code></pre>
+<p>We can do the same with a prefab. We can create a prefab with an <strong>URL</strong> user property and an object with an image. Then, we create the prefab instances and override the texture and <strong>URL</strong>. However, what about if we want to create a button that is just a Text object? You cannot do it with the same prefab because it is an Image.</p>
+<p>However, you can add an <strong>OpenURLOnClick</strong> component to a Text object, like is the case of the “link” in the top/left corner of the Welcome scene:</p>
+<p><img src="/blog/content/images/tutorial-button-components/OpenURLOnClick-text-link.png" alt="A Text link with the OpenURLOnClick component"></p>
+<h2>The components used in the game</h2>
+<p>The User Components of the game are in the <strong>Behaviors.components</strong> file. You can open it in the User Components Editor.</p>
+<p>The editor shows the components so you can select them and see the properties in the Inspector view:</p>
+<p><img src="/blog/content/images/tutorial-button-components/user-components.png" alt="User Components Editor"></p>
+<p>(Each component is compiled into JavaScript code, so you can open the generated file by double-clicking in the component)</p>
+<p>Following there is a table with the User Components we created for the game and a small explanation about it. You can see the code for a better understanding of how they work.</p>
+<h3>Checkbox</h3>
+<p>This component adds a checkbox-like behavior to an image object: it has an ON/OFF state and displays an image when it is ON and another image when it is OFF.</p>
+<p><em>Properties</em></p>
+<ul>
+<li><strong>Checked</strong>: It is a boolean property to keep the ON/OFF state.</li>
+<li><strong>Atlas Texture Key</strong>: it is a texture atlas key. This atlas contains the images to be used by the button.</li>
+<li><strong>Checked Texture Frame</strong>: it is the name of the atlas frame to be shown when the button is ON.</li>
+<li><strong>Unchecked Texture Frame</strong>: it is the name of the atlas frame to be shown when the button is OFF.</li>
+</ul>
+<p><em>References</em></p>
+<p>This component is used by the Music and Sound Effects buttons of the Welcome scene:</p>
+<p><img src="/blog/content/images/tutorial-button-components/sound-buttons.png" alt="User Components Editor"></p>
+<p>It is also used in the Level scene, in the pause/play button:</p>
+<p><img src="/blog/content/images/tutorial-button-components/pause-play-button.png" alt="Pause button"></p>
+<h3>ClickHandler</h3>
+<p>This component adds a clickable (touchable) behavior to an object. It registers a <code>&quot;pointerup&quot;</code> event to the object, and when it is fired, the component calls a user <strong>callback</strong>.</p>
+<p><em>Properties</em></p>
+<p><strong>Callback</strong>: Allows the user to write the code to handle the <code>pointerup</code> event. For example, the Music button sets the <code>() =&gt; GameSounds.toggleMusic()</code> code:</p>
+<p><img src="/blog/content/images/tutorial-button-components/click-handler-in-music-button.png" alt="Music button callback"></p>
+<p><em>References</em></p>
+<p>In the Welcome scene, the Music and Sound Effects buttons use it to call a method in the <strong>GameSounds</strong> global class.</p>
+<p>In the Level scene, it is used in the Pause button to call a <code>onPauseClicked()</code> routine of the scene.</p>
+<h3>FloatingObject</h3>
+<p>This component adds a floating behavior to an object. It means, the object is moved vertically at a certain given distance or <strong>offset</strong>.</p>
+<p><em>Properties</em></p>
+<p><strong>Offset</strong>: the distance to move the object.</p>
+<p><em>References</em></p>
+<p>It is used by the “A day in the beach!” text on the welcome screen. It is a BitmapText instance.</p>
+<p>Also, in the Level scene, it is used in the Pause and Home buttons.</p>
+<p>Note that this component is connected to objects of different types, BitmapText, and Image.</p>
+<h3>Interactive Object</h3>
+<p>This is a simple component with the only purpose of enabling the input (<code>gameObject.setInteractive()</code>) in the object. It is applied to all buttons.</p>
+<h3>OpenURLOnClick</h3>
+<p>This component has the behavior of open an URL in the browser, when the object is clicked (touched). The URL is set in the <strong>URL</strong> property.</p>
+<p><em>Properties</em></p>
+<p><strong>URL</strong>: the URL to be opened when the object is clicked.</p>
+<p><strong>References</strong></p>
+<p>Used by the Facebook and Twitter buttons. And by the “text link” at the top/left corner of the Welcome scene.</p>
+<h3>PushOnClick</h3>
+<p>A simple component with no properties, that scales down the object when it is clicked, simulating a pushing visual effect. It is used by all buttons based on images.</p>
+<h3>StartSceneOnClick</h3>
+<p>This component starts a new Phaser scene when it is clicked. The scene key is set in the <strong>Scene Key</strong> property.</p>
+<p><em>Properties</em></p>
+<p><strong>Scene Key</strong>: has the scene key to be started when the object is clicked.</p>
+<p><em>References</em></p>
+<p>This object is used by the Play button of the Welcome scene (to go to the Level scene) and the Home button in the Level scene (to return to the Welcome scene).</p>
+<h2>Bottom line</h2>
+<p>That’s all. We invite you to look into the code of each component and scene. We recommend you to read the <a href="https://help.phasereditor2d.com/v3">documentation</a> and contact us in the <a href="https://discord.com/invite/4DdpMMD">Phaser Editor 2D Discord server</a> if you have any doubt or question.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/demo">demo</a>, <a href="/blog/tag/v3">v3</a>, <a href="/blog/tag/button">button</a>, <a href="/blog/tag/component">component</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

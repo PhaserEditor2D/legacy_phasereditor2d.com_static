@@ -1,0 +1,28 @@
+body {
+    font-family: Roboto !important;
+}
+
+.post h1, 
+.post h2, 
+.post h3, 
+.post h4, 
+.post h5, 
+.post h6 {
+    padding: 0.5em 0 0.5em 0 !important;
+} 
+
+.post a {    
+    font-weight: bold;
+}
+
+.post-body.lead {
+    margin-top: 1em;
+}
+
+.name {
+    font-family: Roboto-Bold;
+}
+
+blockquote {
+    font-style: italic;
+}

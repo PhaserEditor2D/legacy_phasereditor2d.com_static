@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor v2 development progress (report 1) | Phaser Editor 2D Blog</title>
+  <meta name="description" content="Report 1 about the progress of the Phaser Editor v2 development.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor v2 development progress (report 1)</h1>
+        <p class="text-info">June 26, 2018 - Posted in <a href="/blog/category/phaser-editor-v2">phaser-editor-v2</a></p>
+        
+        <div class="lead"><p>Hello,</p>
+<p>Many users contacted us to know about the release date of Phaser Editor v2. We are working on it! But yet we do not have a date for the release.</p>
+<p>However, we want to do a series of development reports to keep you updated on the progress and the features implemented.</p>
+<p>This is the first report.</p>
+<h2>Phaser 3 metadata</h2>
+<p><strong>100% complete</strong></p>
+<p>The Phaser metadata is an in-memory model with the Phaser API, documentation and examples. We use this data to implement many components, like Project wizards, Chains, Canvas tooltips, Asset Pack tooltips, etc…</p>
+<p>This metadata is extracted from the Phaser sources, jsdoc and examples.</p>
+<h2>Phaser Example Project wizard</h2>
+<p><strong>100% complete</strong></p>
+<p>The Phaser Example Project wizard allows the user to quickly create a project based on one of the official Phaser examples. This is a great resource to learn Phaser by messing with the examples.</p>
+<h2>Examples local website</h2>
+<p><strong>90% complete</strong></p>
+<p>This is a local website that is launched when you run an example. This is a lightweight website with a quick navigation, that we believe is faster than access the online-official Phaser examples.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20180626134557-local%20website.png" alt="Local website with examples"></p>
+<p>What is missing here is a better styling.</p>
+<h2>Phaser Lab perspective</h2>
+<p><strong>100% complete</strong></p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20180626135739-Phaser%20Lab%20perspective.png" alt="Phaser Lab perspective"></p>
+<p>Phaser Editor inherits from the Eclipse IDE the option of provides many perspectives. In general terms, a perspective is a windows layout, and you can switch from one perspective to other. Phaser Editor v1 provides one Phaser perspective, but in this new version, we are providing two perspectives: Phaser and Phaser Lab.</p>
+<p>The Phaser Lab perspective contains tools to help learn Phaser or experiment with it, something that you (we) really need and more now that Phaser 3 is so fresh and there is a lack of tutorials and books. Let’s see them one by one.</p>
+<h3>Phaser Chains</h3>
+<p>This is a popular tool for Phaser. Here you can type a piece of code and it will search the matching elements on the Phaser API and examples.</p>
+<p>In this new version there are some changes:</p>
+<ul>
+<li>There is only one table with the list of Phaser API members and Phaser examples lines of code.</li>
+<li>You can show only the Phaser API, only the Phaser examples or both.</li>
+<li>The search is executed in a second thread so now the UI is not frozen in a low-end hardware.</li>
+<li>All colors used are customizable.</li>
+<li>From a Phaser API element you can:</li>
+<li>Show it in the JavaScript editor.</li>
+<li>Show it in a separate documentation (Jsdoc) window.</li>
+<li>Show it in the Phaser Types window.</li>
+<li>Show it in the Phaser Hierarchy window.</li>
+<li>From a Phaser example you can:</li>
+<li>Show it in the Phaser Examples window.</li>
+<li>Run it in a local browser.</li>
+<li>Quickly create a project with the selected example.</li>
+<li>The lines of the examples code are syntax-colored with the same colors as the JavaScript editor.</li>
+</ul>
+<p><img src="https://phasereditor2d.com/blog/content/images/20180626142329-Chains.png" alt="Phaser Chains"></p>
+<h3>Phaser Types</h3>
+<p>This is a window where you can browse all the types of the Phaser API. It is like a Documentation navigator with some plus you can do:</p>
+<ul>
+<li>Quick searches on namespaces, classes, methods, properties, etc…</li>
+<li>To open the selected element in the JavaScript editor.</li>
+<li>To show the documentation in the Jsdoc window.</li>
+<li>It is synchronized with the other Phaser windows like Phaser Chains, Phaser Files and Phaser Hierarchy.</li>
+</ul>
+<p><img src="https://phasereditor2d.com/blog/content/images/20180627105357-Phaser%20Types.png" alt="Phaser Types"></p>
+<h3>Phaser Hierarchy</h3>
+<p>This window shows the hierarchy of a Phaser API type. When you select a Phaser API element in any other window, like in Phaser Chains, Phaser Type or Phaser Files, this window shows the complete hierarchy of the containing type.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20180627105749-Phaser%20Hierarchy.png" alt="Phaser Hierarchy"></p>
+<h3>Phaser Files</h3>
+<p>This tool allows you to navigate the Phaser source files, and open them in the JavaScript editor. In addition, it shows all the Phaser API elements defined in each file. This helps you understand how Phaser is coded and probably will be a good tool to create custom Phaser builds.</p>
+<p>As the other windows, this one is synchronized with the workbench selection.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20180627110413-Phaser%20Files.png" alt="Phaser Files"></p>
+<h3>Phaser Examples</h3>
+<p>This window shows the official Phaser examples. You can navigate them or do quick searches. If you select an example you can:</p>
+<ul>
+<li>Open it in the JavaScript editor.</li>
+<li>Run it in the browser.</li>
+<li>Quickly create a project with it, so you can modify it and test it.</li>
+</ul>
+<p><img src="https://phasereditor2d.com/blog/content/images/20180627111040-Phaser%20Examples.png" alt="Phaser Examples"></p>
+<h2>JavaScript and TypeScript editors</h2>
+<p><strong>50% complete</strong></p>
+<p>In this version of Phaser Editor, we provide support for editing JavaScript and TypeScript. These editors are based on the VS Code language server protocol. The editors are not implemented by us, else by the Eclipse community, under the project Eclipse BlueSky. It is an experimental project yet but we believe the future of the Web editing in Eclipse and is getting a lot of attention.</p>
+<p>As usual, Phaser API auto-completion will be ready out of the box.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20180627111923-JS%20Editor.png" alt="JS editor"></p>
+<h2>Bottom line</h2>
+<p>The first changes on Phaser Editor v2 where 3 months ago. It is a long time compared with the current progress, but at the same time, we did other stuff like a Phaser Editor v1.5.1 release (that we recommend) and some Phaser 3 learning. Some personal issues were interfering with our time but in general terms, we are satisfied with the current progress. To be honest, we do not feel a lot of rush on delivering Phaser Editor v2, Phaser 3 is very fresh and needs its time to get stable. We feel the editor needs a more or less stable and documented Phaser. The good news is that we think Phaser 3 is moving fast and key components are available and well documented, so it allows us to move faster. This Phaser Lab perspective we did helps us to learn Phaser and develop the other editor features.</p>
+<p>The next in line is the Atlas Generator editor (to support multi-atlas), a new Sprite Animations editor (to support the new Phaser animations format) and the Asset Pack editor, to support new asset types introduced in Phaser 3.</p>
+<p>We are working full time on this. Often I have family issues that force me to travel a lot, from this little and isolated Isla de la Juventud island to Havana, and I lose some time on it, but besides that, we are working hard on the editor.</p>
+<p>If you want a real-time indicator of the development progress you can follow us on our <a href="https://github.com/PhaserEditor2D/PhaserEditor">GitHub repo</a>.</p>
+<p>Keep in touch!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/lab">lab</a>, <a href="/blog/tag/learn">learn</a>, <a href="/blog/tag/reflection">reflection</a>, <a href="/blog/tag/phaser-v3">phaser-v3</a>, <a href="/blog/tag/phaser-v3">Phaser v3</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

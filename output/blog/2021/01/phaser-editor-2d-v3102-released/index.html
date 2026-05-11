@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.10.2 released | Phaser Editor 2D Blog</title>
+  <meta name="description" content="A new minor release to update to the latest Phaser 3.52.0. Configure external editor and other minor features. Bug fixes.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.10.2 released</h1>
+        <p class="text-info">January 17, 2021 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20210117120824-release3.10.2.png" alt="Phaser Editor 2D v3.10.2 released"></p>
+        <div class="lead"><p>Hi!</p>
+<p>A new version of Phaser Editor 2D is ready for download!</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.10.2</a></p>
+<p>In this minor release, we update the editor to the latest Phaser version (3.52.0). Also, we added some small features (like configuring the external code editor) and fixed some bugs.</p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor, please, tell us, and we will be proud to feature it in our website, newsletter, and social channels.</p>
+<h2>Collaboration</h2>
+<p>A lot is happening in our <a href="https://discord.com/invite/4DdpMMD">Discord server</a>. Join us for collaboration. Ask questions or tell us your ideas. Your feedback is highly appreciated and is essential in providing a more friendly and stable IDE.</p>
+<h2>Phaser v3.52.0</h2>
+<p>We include in this release the latest version of Phaser.</p>
+<p><a href="https://github.com/photonstorm/phaser/releases/tag/v3.52.0">Read the Phaser v3.52.0 release notes</a></p>
+<h2>Configuring the external code editor</h2>
+<p>The primary focus of Phaser Editor 2D is providing visual tools for design scenes and gameplay. It also includes a basic JavaScript editor, but we always recommend, if possible, to use Visual Studio Code for editing your JavaScript/TypeScript files.</p>
+<p>From the main menu of the editor, you can open the current project in Visual Studio Code:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210117100349-open-project-in-vs-code.png" alt="Open VS Code"></p>
+<p>In this version, we added the option to configure a different external code editor. It is similar to the way you configure a different browser. When running the editor server:</p>
+<pre><code>$ PhaserEditor2D -external-editor-command &quot;'C:\path\to\atom.exe' '$LOC'&quot; -external-editor-name &quot;Atom&quot;
+</code></pre>
+<p>The <code>-external-editor-command</code> sets the command to execute the editor. The <code>$LOC</code> variable is expanded with the full path to the project.</p>
+<p>The <code>-external-editor-name</code> option sets the display name of the editor:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210117101500-open-atom-editor.png" alt="Open Atom editor"></p>
+<p>If you want to set these options by default, you can <a href="https://help.phasereditor2d.com/v3/misc/server-options.html#getting-the-options-from-a-file">modify the flags file</a>.</p>
+<p><a href="https://help.phasereditor2d.com/v3/misc/server-options.html">Learn more about setting server options</a></p>
+<h2>Minor updates</h2>
+<p>The <strong>Go To File</strong> (<code>Ctrl+P</code>) dialog now shows the full path of the files:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210117102312-go-to-file-dialog.png" alt="Go to file dialog"></p>
+<p>The String User Properties now support multi-line values:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210117102539-multi-line-user-property.png" alt="Multi-line string user property"></p>
+<h2>Bug fixes</h2>
+<ul>
+<li>Scene Editor: Fixes scene creation when a BitmapText font key is missing in a pack file.</li>
+<li>Files view: fixes bug on opening the context menu for files without a registered editor.</li>
+</ul>
+<h2>What’s next?</h2>
+<p>We keep working on the new Help Center and the issues reported on GitHub.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/phaser">phaser</a>, <a href="/blog/tag/bug-fix">bug-fix</a>, <a href="/blog/tag/bug-fix">bug fix</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

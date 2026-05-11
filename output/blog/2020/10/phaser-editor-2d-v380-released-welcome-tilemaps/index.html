@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.8.0 released! Welcome Tilemaps! | Phaser Editor 2D Blog</title>
+  <meta name="description" content="In this new version are introduced a couple of important features, like the Tilemap support in the Scene Editor and the default Application mode.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.8.0 released! Welcome Tilemaps!</h1>
+        <p class="text-info">October 30, 2020 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/v3.8.0/title.png" alt="Phaser Editor 2D v3.8.0 released! Welcome Tilemaps!"></p>
+        <div class="lead"><p><em>Update 11-01-2020: <a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/releases/tag/v3.8.1">v3.8.1 hotfix released</a></em></p>
+<p>Hi!</p>
+<p>This is a huge release! Phaser Editor 2D v3.8.0 includes support for Tilemap objects in the Scene Editor, better OS integration (getting closer to a desktop application), a new demo as a project template, and much more.</p>
+<p><a href="https://phasereditor2d.com/downloads">Get Phaser Editor 2D v3.8.0</a></p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor, please, tell us, we will be proud to feature it in our website, newsletter, and social channels.</p>
+<h3>[Game] City Hero</h3>
+<p><a href="https://phasereditor2d.com/blog/2020/10/city-hero-a-facebook-instant-game">City Hero</a> is a game made by <a href="https://www.weveana.com">Weveana Studio</a> for the Facebook Instant Game platform.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20201001082509-CityHeroWeveana.png" alt="City Hero"></p>
+<h3>[Tutorial] Memory Match in Phaser Editor 2D - A Mario Party-style Memory Game</h3>
+<p>A <a href="https://phasereditor2d.com/blog/2020/09/tutorial-memory-match-in-phaser-editor-2d-a-mario-party-style-memory-game">complete video tutorial series</a> from <a href="https://ourcade.co/">Ourcade</a>.</p>
+<p>We also recommend the <a href="https://phasereditor2d.com/blog/2020/10/tutorial-preloader-scene-in-phaser-editor-2d">Preloader Scene in Phaser Editor 2D</a> tutorial.</p>
+<h3>[Tutorial] Introducción a <a href="http://Phaser.IO">Phaser.IO</a>, moviendo el fondo del escenario infinitamente</h3>
+<p>A <a href="https://phasereditor2d.com/blog/2020/10/tutorial-spanish-introduccion-a-phaserio-moviendo-el-fondo-del-escenario-infinitamente">tutorial to introduce Phaser Editor 2D</a>, from <a href="https://www.weveana.com">Weveana Studio</a>.</p>
+<h3>[Tutorial] Duck hunting game (devlog from Rod Antunes)</h3>
+<p>Rod Antunes is sharing how he is making a Duck Hunting game with Phaser Editor 2D and Phaser.</p>
+<p><a href="https://phasereditor2d.com/blog/2020/10/duck-hunting-game-devlog-from-rod-antunes">Criando jogos com javaScript</a></p>
+<p>The video is in Portuguese, but he just created an <a href="https://www.youtube.com/channel/UC_j9j48jN3U0jARrMVSOYFA">English channel</a>.</p>
+<h2>Collaboration</h2>
+<p>A lot is happening in our <a href="https://discord.com/invite/4DdpMMD">Discord server</a>. Join us for collaboration. Ask questions or tell us your ideas. Your feedback is highly appreciated and is key in the process of providing a more friendly and stable IDE.</p>
+<h2>Running Phaser Editor 2D as a local application</h2>
+<p>Phaser Editor 2D has traditional web-application architecture: it has a server program and a client application that runs in a local or remote browser. However, we see most of the users expect the editor to work as a local application. For that reason, in this version, we introduced some changes to make the default experience closer to a desktop application workflow.</p>
+<p><strong>WARNING</strong>, we did some breaking changes in the arguments (flags) of the <code>PhaserEditor2D.exe</code> server program. We recommend reading the following topics.</p>
+<h3>Application mode</h3>
+<p>We removed the <code>-desktop</code> option. Now the server starts in desktop (or application) mode by default.</p>
+<p>If you need to run the editor on a remote machine (in “public mode”), you can use the new <code>-public</code> option. It allows remote connections and disables the integration with the local browsers, VS Code, and the file manager.</p>
+<h3>Configuring the default browser</h3>
+<p>When the server starts in application mode, it opens the OS default browser. But maybe you want to use another browser with the editor. If it is the case, you can use the new <code>-browser-command</code> option. For example, you can configure the server to open the Google Chrome browser:</p>
+<pre><code>$ PhaserEditor2D -browser-command &quot;'C:\Program Files\Google\Chrome\Application\chrome.exe' '$URL'&quot;
+</code></pre>
+<p>Note you should quote the argument value. Also, the <code>$URL</code> variable is expanded with the URL value of the editor. Usually, it is <code>http://127.0.0.1:1959/editor</code>.</p>
+<p>Something interesting about Google Chrome is that you can run it in application mode:</p>
+<pre><code>$ PhaserEditor2D -browser-command &quot;'C:\Program Files\Google\Chrome\Application\chrome.exe' '-app=$URL'&quot;
+</code></pre>
+<p>If you like to run the editor as a desktop application, Chrome’s application mode is very convenient. It disables tabs, does not catch certain keystrokes, and shows an application-like window:</p>
+<p><img src="/blog/content/images/v3.8.0/chrome-application-mode.png" alt="Chrome application mode"></p>
+<p>Ok, it is a lot to write when you run the editor. But there is good news, you can set the editor options in a configuration file.</p>
+<h3>Configuration file (flags.txt)</h3>
+<p>In this version, we introduced the <code>flags.txt</code> file. You can use it to set the default configuration of the editor. It is pretty simple. In each line of the file, you write a program argument. For example, if you want to start the editor in public mode and at port <code>8080</code>, you can write this in the <code>flags.txt</code> file:</p>
+<pre><code>flags.txt:
+
+-public
+-port
+8080
+</code></pre>
+<p>It is the same as <code>PhaserEditor2D.exe -public -port 8080</code>.</p>
+<p>This file is located in the root of the editor installation  (next to the <code>PhaserEditor2D.exe</code> file). We added some comments to help you in adding useful options. Let’s go back to the Google Chrome configuration. If you write the following lines in the <code>flags.txt</code> file, each time you run the Phaser Editor 2D server, it automatically launches Google Chrome in application mode and loads a workspace in a different location.</p>
+<pre><code>flags.txt:
+
+-browser-command
+&quot;C:\Program Files\Google\Chrome\Application\chrome.exe&quot; &quot;--app=$URL&quot;
+
+-ws
+&quot;D:\HTML5 Games\My PhaserEditor2D Projects&quot;
+
+</code></pre>
+<p>You can learn more about the <code>flags.txt</code> file in the <a href="https://help.phasereditor2d.com/v3/misc/server-options.html#getting-the-options-from-a-file">documentation</a>.</p>
+<h3>Server icon in Windows</h3>
+<p>We added an icon to the <code>PhaserEditor2D.exe</code> file in Windows. This small change is very useful if you want to run the editor as a desktop application. It allows you to pin the <code>PhaserEditor2D.exe</code> file in the taskbar:</p>
+<p><img src="/blog/content/images/v3.8.0/pin-to-taskbar.png" alt="Pin Phaser Editor 2D to taskbar"></p>
+<p>After that, to run the editor you only need to click on the taskbar shortcut:</p>
+<p><img src="/blog/content/images/v3.8.0/launch-from-taskbar.png" alt="Run Phaser Editor 2D from the taskbar"></p>
+<h3>Single server instance</h3>
+<p>By default, the server listens for connections on port <code>1959</code>. Now, if you run a second instance of the server, in the same port, the second instance will send a message to the first server instance and will exit. Then, the first instance will re-launch the configured browser. This means, each time you run the server, a browser will be launched to open the editor. This feature is not available if the server is started in public mode.</p>
+<h3>Advanced JavaScript tooling by default</h3>
+<p>We removed the <code>-enable-advanced-js-editor</code> option. Now the editor loads the JavaScript advanced tooling by default. If you are working with TypeScript or prefer to code JavaScript with a third-party editor (we recommend VS Code), then you can disable the advanced JavaScript tooling with the new <code>-disable-advanced-js-editor</code> option.</p>
+<h2>Scene Editor: built-in types as blocks in the Blocks view</h2>
+<p>In this version, we removed the <strong>Add Object dialog</strong>. Now, all the types supported by the Scene Editor are listed in the Blocks view, and you can create an instance by dragging the type-block and dropping it in the scene:</p>
+<p><img src="/blog/content/images/v3.8.0/create-built-in-type-instance.png" alt="Built-in type block"></p>
+<h2>Tiled integration</h2>
+<p><a href="https://mapeditor.org">Tiled</a> is probably the most popular editor for tilemaps. Phaser has built-in support for it and now the Scene Editor of Phaser Editor 2D, too.</p>
+<p>This means, now you can create your maps with Tiled and import them into the Scene Editor.</p>
+<p>The workflow is similar to other file formats:</p>
+<ul>
+<li>Import the Tiled JSON files and tileset images into an Asset Pack file.</li>
+<li>Create a Tilemap object in the Scene Editor.</li>
+<li>Create a StaticTilemapLayer or DynamicTilemapLayer in the Scene Editor.</li>
+</ul>
+<h3>Importing the Tiled files</h3>
+<p>Tiled can export the maps to different formats. We added support only for the JSON format. In addition to the map data, you should import the tileset images, as simple images or sprite-sheets.</p>
+<p>You can import the tilemap data using the <a href="https://help.phasereditor2d.com/v3/asset-pack-editor">Asset Pack Editor</a> or <a href="https://help.phasereditor2d.com/v3/asset-pack-editor/import-from-files-view.html">selecting it in the Files view</a>:</p>
+<p><img src="/blog/content/images/v3.8.0/import-tilemap-data.png" alt="Importing the map data"></p>
+<p>If you look at a Tiled tilemap file in the Asset Pack Editor, it shows some of the properties in the Inspector view:</p>
+<p><img src="/blog/content/images/v3.8.0/import-tilemap-data-2.png" alt="Tilemap data in Asset Pack Editor"></p>
+<p>You should do the same with the tileset images.</p>
+<h3>Creating the Tilemap object in the Scene Editor</h3>
+<p>To create a Tilemap object in the Scene Editor, drop a <strong>Tilemap</strong> block into the scene:</p>
+<p><img src="/blog/content/images/v3.8.0/create-tilemap-1.png" alt="Drop a tilemap block into the scene"></p>
+<p>It opens a <strong>Tilemap Configuration</strong> wizard where you can:</p>
+<ul>
+<li>Select the Tilemap data key, previously imported in an Asset Pack file:<br>
+<img src="/blog/content/images/v3.8.0/create-tilemap-2.png" alt="Drop a tilemap block into the scene"><br></li>
+<li>Associate each tileset with an image in an Asset Pack file:<br>
+<img src="/blog/content/images/v3.8.0/create-tilemap-3.png" alt="Select the images for each tileset"><br>You should select the tileset and click on the <strong>Set Tileset Image</strong> button. It opens a dialog with all possible images. Pick one.</li>
+<li>If you press the <strong>Finish</strong> button, it will create a new Tilemap object. But you can continue to the next page of the wizard and select a Tilemap Layer to be added to the scene:<br>
+<img src="/blog/content/images/v3.8.0/create-tilemap-4.png" alt="Select a tilemap layer"><br></li>
+</ul>
+<p>A Tilemap is not a display object, it is not shown in the scene, but in the Outline view, under the Tilemap folder:</p>
+<p><img src="/blog/content/images/v3.8.0/tilemap-in-outline.png" alt="Tilemap in Outline"></p>
+<p>Note it also shows the tilesets of the map, you can select them and change the image in the Inspector view.</p>
+<p>The Tilemap layers are display-objects and are shown in the scene and the Outline view:</p>
+<p><img src="/blog/content/images/v3.8.0/tilemap-layer-in-outline.png" alt="Tilemap in Outline"></p>
+<p><a href="https://help.phasereditor2d.com/v3/scene-editor/tilemap-object.html">Learn more about the Tilemap object in the documentation</a></p>
+<h3>Creating a Tilemap layer in the Scene Editor</h3>
+<p>The faster way to create a Tilemap Layer is by using the <strong>Tilemap Configuration</strong> wizard. However, there are maps with more than one layer and maybe you would like to add extra layers to the scene. To do this, you can drop a <strong>StaticTilemapLayer</strong> or <strong>DynamicTilemapLayer</strong> block into the scene:</p>
+<p><img src="/blog/content/images/v3.8.0/create-layer-1.png" alt="Creating a tilemap layer"></p>
+<p>If there is only one Tilemap object in the scene with only one Tilemap layer defined, then a new layer will be created. Else, it will show a dialog to select the exact Tilemap and Tilemap Layer to be added to the scene:</p>
+<p><img src="/blog/content/images/v3.8.0/create-layer-2.png" alt="Select the tilemap layer"></p>
+<p>Click on the <strong>Select</strong> button and a new layer will be created:</p>
+<p><img src="/blog/content/images/v3.8.0/create-layer-3.png" alt="New tilemap layer"></p>
+<h3>Tilemap and Tilemap Layer code generation</h3>
+<p>The Tilemap and Tilemap Layer objects are compiled into JavaScript code in this way:</p>
+<p><img src="/blog/content/images/v3.8.0/tilemap-code.png" alt="Tilemap generated code"></p>
+<p>In Phaser, when you create a Tilemap Layer, you have to set the name of the tilesets used by the layer. In Phaser Editor, these names are computed automatically by scanning the tilemap data.</p>
+<h3>Tilemap and Tilemap Layer prefabs</h3>
+<p>You cannot create a prefab of a Tilemap or Tilemap Layer. It is complicated because the Tilemap is not a display object, and the Tilemap Layer depends on a Tilemap. Maybe in the future, we can find a solution for this but we think it is not a priority now, and honestly, it is something that probably you will never use.</p>
+<h2>New demo as a project template</h2>
+<p>We ported the Sunny Land demo game to Phaser Editor 2D v3 and included it as a project template. This is a great resource for learning how to create tilemap based games with Phaser Editor 2D and Tiled.</p>
+<p>The original <a href="https://ansimuz.itch.io/sunny-land-pixel-game-art">Sunny Land demo</a> was created (code and assets) by <a href="https://ansimuz.com">Luis Zuno</a>.</p>
+<p><img src="/blog/content/images/v3.8.0/sunny-land.png" alt="Sunny Land preview"></p>
+<h2>Other changes</h2>
+<h3>Texture preview in User Properties</h3>
+<p>The <strong>Texture Config</strong> and <strong>Animation Key</strong> user properties show a preview image in the “search button”:</p>
+<p><img src="/blog/content/images/v3.8.0/user-property-icon.png" alt="User property icon"></p>
+<h3>Math expressions in the Scene Editor property fields</h3>
+<p>Now you can write math expressions in the numeric fields. The expressions are evaluated and the result value is set to the properties:</p>
+<p><img src="/blog/content/images/v3.8.0/eval-math-expression.png" alt="Evaluate math expressions"></p>
+<h3>Open files in default editor</h3>
+<p>Files with an unknown content type or without a dedicated editor will be opened in a default Text Editor.</p>
+<h3>Select the editor to open a file</h3>
+<p>Now you can select an editor to open a file. Right-click in the file and select an editor in the <strong>Open With…</strong> menu:</p>
+<p><img src="/blog/content/images/v3.8.0/open-with-editor.png" alt="Open With menu in the Files view"></p>
+<h3>Complete Change Log</h3>
+<p>Read the complete change log in the GitHub repository:</p>
+<p><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/blob/master/CHANGELOG.MD">Change Log</a></p>
+<h2>What’s next?</h2>
+<p>We all are waiting for the next release of Phaser 3, which comes with a lot of new features. As soon as it is released we are going to publish a new version of the editor, to support it. In the meantime, we should continue working on the Scene Editor, to support more types of objects, like Zone, Geometric, and Shape.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/tiled">tiled</a>, <a href="/blog/tag/tilemap">tilemap</a>, <a href="/blog/tag/scene-editor">scene-editor</a>, <a href="/blog/tag/release">release</a>, <a href="/blog/tag/application">application</a>, <a href="/blog/tag/scene-editor">scene editor</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

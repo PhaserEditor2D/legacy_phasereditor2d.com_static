@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.60 is ready! | Phaser Editor 2D Blog</title>
+  <meta name="description" content="Phaser 3.60 is finally out, and the editor for it, too.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.60 is ready!</h1>
+        <p class="text-info">April 16, 2023 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20230416165420-release360.jpeg" alt="Phaser Editor 2D v3.60 is ready!"></p>
+        <div class="lead"><p><small><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/releases/tag/v3.60.1">Phaser Editor 2D v3.60.1 release notes</a></small></p>
+<p>Hi!</p>
+<p>Phaser 3.60 is out! As the author of Phaser said, it is the biggest release ever of this framework. I recommend you to go through this release because it provides many new features and what is for me the most important, it is performing way better on mobile platforms.</p>
+<p>And today, I’m releasing Phaser Editor 2D v3.60! As you may imagine, it is a release about to support Phaser 3.60.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.60.0</a></p>
+<h2>Celebration</h2>
+<p>The Phaser team selected day April 12 for releasing Phaser 3.60 because it is the date of its 10th Anniversary.</p>
+<p>Congratulations Phaser! See you in the next 10 years!</p>
+<h2>Phaser Editor 2D License is 60% off</h2>
+<p>Is not this date a good moment for promoting the editor? I think it is. Get a Phaser Editor 2D Lifetime License with a 60% off! Not every year do I provide a promo with such a huge discount. Don’t miss it!</p>
+<p><a href="https://fornaris.gumroad.com/l/phasereditor/phaser-10th-celebration">Get a Phaser Editor 2D Lifetime License with 60% off</a></p>
+<p>The promo is valid until April 20.</p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor 2D, please tell me, and I will be proud to feature it on the website, newsletter, and social channels.</p>
+<h3>Gorilla vs Yeti</h3>
+<p>Matandile Games released <a href="https://matandile.videojuegoscuba.org/gorila-vs-yeti/">Gorila vs Yeti</a>. It is a simple game for training the multiplication tables. It is in Spanish.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230416171405-gorila-vs-yeti-3.jpeg" alt="enter image description here"></p>
+<h2>Phaser Editor 2D v3.60 compatibility</h2>
+<p>Phaser v3.60 introduces a few breaking changes, but in general, it is compatible with games made with Phaser 3.55. It is the same with the editor. Phaser Editor 2D 3.60.0 is compatible with projects made with previous versions of the editor. I migrated some games to the new Phaser and editor with a few efforts. If you find any issues, please, let me know. I can help you on migrating your games.</p>
+<h2>NineSlice game object</h2>
+<p>Phaser 3.60 introduces a couple of new game object types. The NineSlice is one of them, and now Phaser Editor 2D supports it.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230210093601-scene-editor-nineslice-create-5-20230208.png" alt="NineSlice game object"></p>
+<p><a href="http://help-v3.phasereditor2d.com/scene-editor/nine-slice-object.html">Learn more about NineSlice</a></p>
+<p>Previously, I implemented a plugin for making nine-patch objects. It is now deprecated and I encourage you to migrate to the new NineSlice object.</p>
+<h2>Script Nodes</h2>
+<p>The ScriptNode is a new object type. It is a Phaser Editor 2D-only concept. A script node is an object you can add to the scene, a game object, or another script node, but it only contains logic or data. It is similar in its goals to the User Components but more powerful. In general, the advantages of a Script Node over a User Component are:</p>
+<ul>
+<li>You can add to an object many script nodes of the same type.</li>
+<li>You can add script nodes to a scene.</li>
+<li>You can create a hierarchy (a tree) of script nodes and express complex behaviors.</li>
+<li>You can declare a script node as a variable or field.</li>
+<li>You create a script node in the same way you create a game object prefab. It means you can create script node prefabs, nested prefabs, and prefab variants.</li>
+</ul>
+<p>With the Script Nodes, you can create a custom framework of logic objects and provide them to the level designers. It reduces the need for coding because now you can compose the logic (or an important part of the logic) of your game by dragging nodes into the scene.</p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/script-node.html">Learn more about Script Nodes</a></p>
+<h2>Project templates</h2>
+<p>I updated the Phaser Editor 2D All-in-One built-in project templates for using Phaser 3.60 and the script nodes instead of the user components.</p>
+<p>I will be migrating the other project templates available on the Phaser Editor 2D Marketplace.</p>
+<h2>Other changes</h2>
+<ul>
+<li>Fixes labels of the Size section in the Inspector view.</li>
+<li>Improves folder icons.</li>
+<li>Adds command for <a href="http://help-v3.phasereditor2d.com/scene-editor/troubleshooting.html#disable-pixel-art-rendering">enable/disable pixel art rendering mode</a>.</li>
+<li>Scene compiler: fixes class-field declaration.</li>
+<li>Scene compiler: fixes nested prefab var-name resolution.</li>
+<li>Improves folder icons.</li>
+<li>Removes Parent section.</li>
+</ul>
+<h2>What’s next</h2>
+<p>I have to work on the Phaser Editor 2D Marketplace. Most of the content is for Phaser 3.55. I should update them or deprecate them.</p>
+<p>Right now I’m working on supporting the new FX available in Phaser 3.60. I hope to finish it in a few weeks.</p>
+<p>I plan to support Spine and make a video tutorial about the script nodes.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+<p>P.S.: Did you see <a href="https://fornaris.gumroad.com/p/new-version-of-uphaserhelpcenter-targets-phaser-3-60-0">I updated the uPhaserHelpCenter</a>?</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/script-nodes">script-nodes</a>, <a href="/blog/tag/nine-slice">nine-slice</a>, <a href="/blog/tag/phaser360">phaser360</a>, <a href="/blog/tag/script-nodes">script nodes</a>, <a href="/blog/tag/nine-slice">nine slice</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

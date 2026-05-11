@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.67.0 is released | Phaser Editor 2D Blog</title>
+  <meta name="description" content="Discover the latest Phaser Editor 2D v3.67.0 update, featuring Shader Effects for game objects, improved numeric input editing for properties, and the latest Phaser 3.80.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.67.0 is released</h1>
+        <p class="text-info">February 22, 2024 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20240221173424-3.67.0.jpg" alt="Phaser Editor 2D v3.67.0 is released"></p>
+        <div class="lead"><p>The latest version of Phaser Editor 2D has just rolled out! This release includes an exciting new feature: the Shader Effects! It also adds support to new ways of editing numeric inputs in the properties and the latest version of Phaser, 3.80.0.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.67.0</a></p>
+<h2>Shader Effects</h2>
+<p>Since version 3.60, Phaser has provided a selection of built-in special FX that can be applied to Game Objects and Cameras. Support for applying and manipulating these effects directly from within Phaser Editor has begun, and we’re pleased to announce the availability of the first two effects: Glow and Shadow. Keep an eye on the Phaser site for details about further updates.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20240214125544-richard-editor.jpg" alt="The Glow and Shadow effects"></p>
+<h3>Adding an FX to a Game Object</h3>
+<p>To add an FX to a Game Object, select the object in the Scene Editor and click the “Add” button in the <strong>FX Shaders</strong> section of the Inspector view:</p>
+<p><img src="/blog/content/images/add-fx-button-20240213.png" alt="Add FX button"></p>
+<p>It opens a dialog where you can select the FX to apply:</p>
+<p><img src="/blog/content/images/add-fx-dialog-20240213.png" alt="Add FX dialog"></p>
+<p>Or you can add the effects right from the context menu:</p>
+<p><img src="/blog/content/images/add-fx-context-menu-20240213.png" alt="Add FX from the context menu"></p>
+<p>Once added, the FX object is selected and the Inspector view shows its properties so you can tweak them:</p>
+<p><img src="/blog/content/images/glow-properties-20240213.png" alt="Glow FX properties"></p>
+<p>All effects of a game object are shown as children of the game object in the Outline view. You can select them, edit their properties, change the rendering order, and apply operations like copy/paste or delete.</p>
+<p><img src="/blog/content/images/fx-objects-outline-view-20240213.png" alt="FX objects in the Outline view"></p>
+<p>You can assign an FX object to a variable and manipulate it from your scripts. In the <strong>Variable</strong> section, you can change the variable name and scope:</p>
+<p><img src="/blog/content/images/fx-variable-props-20240213.png" alt="Variable properties"></p>
+<p>Here is a demo of the code the Scene compiler generates for the FX object.</p>
+<p>As part of the <code>editorCreate()</code> method, the compiler generates the code to create the FX object and to assign it to a variable:</p>
+<p><img src="/blog/content/images/editor-create-glow-20240213.png" alt="Variable declaration"></p>
+<p>In the <code>create()</code> method, you can write the code to tween the Glow’s strength:</p>
+<p><img src="/blog/content/images/fx-variable-create-20240213.png" alt="Variable section"></p>
+<p>Following the same logic, you can declare the Glow effect as a nested prefab and reuse the same effect in different scenes.</p>
+<p><a href="http://TODO">Learn more about the Shader Effects in the Phaser Editor 2D documentation</a></p>
+<h2>Numeric Inputs</h2>
+<p>The properties that accept numeric values now have a new way of editing them. Now you can increment/decrement the value by doing this:</p>
+<ul>
+<li>Click on the input, and roll the mouse wheel up and down.</li>
+<li>Click on the input’s label, hold the mouse and drag it to the left and the right.</li>
+<li>Click on the input and use the arrow keys (Up and Down).</li>
+</ul>
+<p>It also applies to the font size input. We hope you like this new feature as much as we do. Many other tools follow this pattern, so probably you are already familiar with it.</p>
+<video controls style="width:100%">
+  <source src="/blog/content/images/numeric-inputs.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<h2>Other changes</h2>
+<ul>
+<li>Updates to latest CodeMirror 5.66.16.</li>
+<li>Save all editors when the user executes the Play commands.</li>
+<li>Depth order commands now work with a Mac keyboard with a numeric pad, in its default config.</li>
+<li>Fixes bug with opening multiple context menus.</li>
+<li>The Color Picker control shows a real-time preview of the color.</li>
+</ul>
+<h2>Promote your Games and Tutorials</h2>
+<p>If you have created a game, tutorial, or other content with Phaser Editor 2D and would like us to promote it for free, please get in touch! We can feature it on our website, newsletter, and social channels. Email <code>arian@phaser.io</code>.</p>
+<p>Keep in contact!</p>
+<p>Phaser Studio Team</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/fx">fx</a>, <a href="/blog/tag/input">input</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

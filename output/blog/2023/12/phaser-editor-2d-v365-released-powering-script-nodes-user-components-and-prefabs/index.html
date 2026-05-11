@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.65 released. Powering script nodes, user components, and prefabs. | Phaser Editor 2D Blog</title>
+  <meta name="description" content="We are introducing a groundbreaking update with script libraries, a major step towards a visual programming language. Explore the new tutorial on creating HTML5 projects using Phaser Editor 2D, Webpack, and TypeScript. Additionally, discover enhanced features like Scene Display Name and Object Display Format, along with script node libraries.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.65 released. Powering script nodes, user components, and prefabs.</h1>
+        <p class="text-info">December 13, 2023 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20231211081025-release%203.65%20Large.jpeg" alt="Phaser Editor 2D v3.65 released. Powering script nodes, user components, and prefabs."></p>
+        <div class="lead"><p>Hi!</p>
+<p>I’m glad to announce the latest release of Phaser Editor 2D. This update is a significant milestone as it includes script libraries, bringing us one step closer to implementing a visual programming language.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.65.0</a></p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor 2D, please tell me, and I will be proud to feature it on the website, newsletter, and social channels.</p>
+<h3>Your first HTML5 project using Phaser Editor 2D, Webpack and TypeScript</h3>
+<p><img src="https://phasereditor2d.com/blog/content/images/20231130101513-Emanuele%20Feronato%20tutorial%201.png" alt="tutorial emanuel feronato"></p>
+<p>A new tutorial from Emanuele Feronato:</p>
+<blockquote>
+<p>If you are into HTML5 game development, especially if you are using Phaser, you should already know Phaser Editor 2D, an awesome IDE to create HTML5 2D games based on the popular Phaser framework. Although it allows to build simple basic JavaScript games, Phaser Editor 2D gives its best using Webpack and TypeScript. Let’s see a step-by-step tutorial to build this iconic Phaser example…</p>
+</blockquote>
+<p><a href="https://www.emanueleferonato.com/2023/11/30/your-first-html5-project-using-phaser-editor-2d-webpack-and-typescript/">Take me to the tutorial</a></p>
+<h2>The new script libraries</h2>
+<p>I had been working on the script nodes for the whole of 2023. Today is landing a new exciting feature: the script node libraries!</p>
+<p>A script node library is a NodeJS module containing script nodes and user components. A script node (and user components) are building blocks you can combine to create behaviors or complex actions. It encourages you to use no-code techniques for making certain parts of your game, but also makes it easy to code new script nodes.</p>
+<p>At this moment, I implemented a few libraries you can install in your projects:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/@phasereditor2d/scripts-core">@phasereditor2d/script-core</a>: Contains the bases of the script nodes and user components.</li>
+<li><a href="https://www.npmjs.com/package/@phasereditor2d/scripts-simple-animations">@phasereditor2d/simple-animations-scripts</a>:  Provides scripts for making simple animations, like a push-button effect or a fade-in effect.</li>
+<li><a href="https://www.npmjs.com/package/@phasereditor2d/scripts-camera">@phasereditor2d/scripts-camera</a>: Gives you scripts to manipulate the camera, perform camera effects like a shake or flash, or set the camera to follow an object.</li>
+<li><a href="https://www.npmjs.com/package/@phasereditor2d/scripts-audio">@phasereditor2d/scripts-audio</a>: Includes the scripts for the audio playback.</li>
+<li><a href="https://www.npmjs.com/package/@phasereditor2d/scripts-arcade">@phasereditor2d/scripts-arcade</a>: Provides scripts for changing the physics body of the objects and to catch physics events.</li>
+<li><a href="https://www.npmjs.com/package/@phasereditor2d/scripts-timer">@phasereditor2d/scripts-timer</a>: A few timer implementations, for repeating or delaying actions.</li>
+</ul>
+<p>The above libraries are very basic. I plan to extend them with more options and make new libraries targeting different fields of game development.</p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/script-node-libraries.html">Learn more about the script libraries</a></p>
+<h2>Scene, prefab, and user component display name</h2>
+<p>Now that we are going to make a lot of script nodes and user components, we need a more visual style for presenting the scripts. There is room for a lot of improvements. For this version, I implemented the Scene Display Name and the User Component Display Name.</p>
+<p>Until now, prefab scenes and user components are displayed in the editor’s UI using the class name of the scenes and components. But starting today you can set a different name to be used in the editor’s UI.</p>
+<p>You can change the Scene Display Name property of a scene:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20231211232416-scene-editor-scene-display-name-properties.jpeg" alt="Scene Display Name"></p>
+<p>If this name is present, then the UI will use it instead of the class name:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20231211232531-scene-editor-display-name-viewers.jpeg" alt="The scene's display name in action"></p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/display-properties.html">Learn more about the Scene Display Name</a></p>
+<p>With the user components, it is the same, you can set the Display Name and the editor UI will use it instead.</p>
+<h3>Prefab object display name</h3>
+<p>In addition to the Scene Display Name, you can set the <strong>Object Display Format</strong>. This parameter contains an expression for formatting the display name of prefab instances in the Outline view.</p>
+<p>There is a new <strong>Prefab Display</strong> with the <strong>Object Display Format</strong> parameter.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20231211233216-scene-editor-prefabs-display-name-definition.jpeg" alt="Object display format"></p>
+<p>There you can set a string-formatting expression to this parameter, that will be used to show the labels of the objects in the Outline view.</p>
+<p>You can use the <code>${...}</code> syntax as a placeholder for the value of any of the prefab user properties. The following image is an example of some of the script nodes formatting:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20231213042808-scene-editor-prefabs-display-name-script.jpeg" alt="Script node formatting"></p>
+<p>You can use this technique with the script nodes but also with your asset prefabs. The next image shows the formatting of controller button prefab instances. The format is <code>Button - ${action}</code>, where <code>action</code> is the name of a user property of type <strong>Option</strong>, with the possible values of <code>DOWN</code>, <code>UP</code>, and <code>FIRE</code>:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20231213043123-scene-editor-prefabs-display-name-outline.jpeg" alt="Button prefab instances formatting"></p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/prefab-display-properties.html">Learn more about the Object Display Format parameter</a></p>
+<h2>Other changes</h2>
+<ul>
+<li>Now the Blocks view doesn’t show the script nodes unless the scene is a script node prefab. In that case, it shows the script prefabs grouped by library and folder:
+<img src="https://phasereditor2d.com/blog/content/images/20231213044011-blocks-view-script-nodes.jpeg" alt="Script nodes in the Blocks view"></li>
+<li>The Add Script dialog gets a similar structure to the Blocks view, it groups the scripts by libraries and folder:
+<img src="https://phasereditor2d.com/blog/content/images/20231213045443-add-script-dialog.jpeg" alt="Add script dialog"></li>
+<li>The Add User Component dialog highlights the owner library of the component:
+<img src="https://phasereditor2d.com/blog/content/images/20231213050048-add-user-component-dialog.jpg" alt="Add user component dialog"></li>
+<li>Adds the On World Bounds parameter to the Arcade Physics Body Collection section of a game object.</li>
+</ul>
+<h2>What’s next</h2>
+<p>First, I want to try including assets in the script libraries. It will be very handy if I can include assets together with scripts. For example, you will be able to create a UI toolkit for all your products and distribute it as a Node module.</p>
+<p>My goal with the script nodes and user components is to create a visual -but flexible enough- language for programming behaviors. Gameplay behaviors or UI behaviors.  Yet I’m figuring out how I will present the “visual script blocks” in the scene editor, but the basis is ready.</p>
+<p>Also, I should make a video about the new script libraries and a tutorial about how to create your script libraries.</p>
+<p>Keep in touch!</p>
+<p>Arian</p>
+<p>P.S. Did you read the latest news? <a href="https://opencoreventures.com/blog/2023-12-phaser-studio-launched/">Phaser creator Richard Davey launches Phaser Studio 🚀</a></p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/script-nodes">script-nodes</a>, <a href="/blog/tag/component">component</a>, <a href="/blog/tag/prefab">prefab</a>, <a href="/blog/tag/library">library.</a>, <a href="/blog/tag/script-nodes">script nodes</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

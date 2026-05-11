@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2.0.1 released | Phaser Editor 2D Blog</title>
+  <meta name="description" content="Phaser Editor 2.0.1 released. Scene object factory. Loader sceneFile. Phaser v3.16.2 support.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2.0.1 released</h1>
+        <p class="text-info">February 19, 2019 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20190219121007-Release201.png" alt="Phaser Editor 2.0.1 released"></p>
+        <div class="lead"><p>Hi! Today we are publishing the second version of Phaser Editor v2! We wanted to do more stuff, but, after months of work, the Phaser team released Phaser 3.16. That version of Phaser is huge, with a lot of features and improvements, so we decided to include it in the editor as soon as possible. However, this IDE update arrives with a lot of very useful features, with special mention to the support of game object factories (<code>Phaser.GameObjects.GameObjectFactory</code>) in the scene editor and the assets navigation between editors and views.</p>
+<p><a href="/blog/downloads">Download Phaser Editor v2.0.1</a></p>
+<p><em>If you already have a previous version of the editor you can update it in <strong>Help &gt; Check For Updates</strong></em>.</p>
+<p>In this version we open a new path in the editor: the migration to a hybrid UI, with a merge of HTML5 (WebView) and native controls. We did a first tiny step, we replaced the previous LibGDX-based audio player by an HTML5-based player. In the future, we should migrate other more important parts of the IDE, like the Animations editor and the Scene editor, and implement new HTML5/Phaser based editors, like a Particles editor and a Skeletal Animations editor. As we mentioned in other articles, we have two main (and huge) challenges:</p>
+<ul>
+<li>To provide visual editors based on Phaser, so you will see in the game the same you see in the editor.</li>
+<li>To provide an API and platform that enable you to use your HTML5 and Phaser skills to extend important parts of the IDE.</li>
+</ul>
+<p>From a technical point of view, we have another important challenge: cross-platform compatibility. The Eclipse WebView uses an embedded Internet Explorer on Windows, and WebKit on macOS and Linux. However, there is a promising third-party project to embed Chromium (CEF) on all platforms, that we plan to include in the next major release. Probably, the best way to interface the WebView-based UI with the native UI is by using WebSocket messages. This architecture has the huge benefits of allowing to open the editors inside a local or remote browser, but that’s OK, now is not the right moment to spend energies and time on it.</p>
+<h2>Support for Phaser 3.16.2</h2>
+<p>The Phaser Editor built-in Phaser runtime was updated to its latest version 3.16.2. This means that when you create a new project, this version of Phaser will be included in it. If you have an older project, you can replace the <code>phaser.js</code> file manually.</p>
+<p>Some new features in Phaser 3.16 did an impact on the editor, like the work made with the events and the new loader Scene File Type (<code>load.sceneFile(...)</code>). In the next sections, we talk more about these changes.</p>
+<p>The plugins to support the Phaser Official Examples were updated too. We did extra work and removed all the assets that are not used by the examples. That assets cleaning is done by a program, that loads all the examples and “catch” the assets used by the examples, so at the end, all the assets that were not used are removed from the plugins.</p>
+<p>A minor change we did in the UI is to show the Phaser and IDE versions in the status bar.</p>
+<p><img src="/blog/content/images/PhaserVersionStatusBar.png" alt="Phaser and IDE versions"></p>
+<h2>Jsdoc view update</h2>
+<p>The Jsdoc view received a nice update. The code used in the documentation is colored with the same colors of the JavaScript editor:</p>
+<p><img src="/blog/content/images/JsdocViewSyntaxColoring.png" alt="Documentation code highlighting"></p>
+<p>A new <strong>Emitters</strong> section was added at the end of the documentation of event constants. That section contains all the methods and properties that fires that event. You can press on the links to display the documentation of them. And as usual, you can navigate back and forward in the history, or show the selected member in the other API related views, like Phaser Types, Type Hierarchy, Phaser Files, or open the source code.</p>
+<p><img src="/blog/content/images/JsdocViewEventEmitters.png" alt="New Emitters section in the docs"></p>
+<p>In addition, a new <strong>Fires</strong> section was added too, to the documentation of methods or properties that fires events.</p>
+<p><img src="/blog/content/images/JsdocViewEventSection.png" alt="New Events section in the docs"></p>
+<h2>Phaser Chains view update</h2>
+<p>We did a small improvement to the Phaser Chains view query syntax. Now you can use a blank space <code>&quot; &quot;</code> as an alias to the <code>&quot;*&quot;</code> wildcard.</p>
+<p>The Phaser Chains view now shows  Use the space char (&quot; &quot;) as a wildcard. For example, a query to search all the events related to the tween timeline can be written in these two equivalent ways: <code>tween*event*time</code> or <code>tween event time</code>.</p>
+<p><img src="/blog/content/images/ChainsQuerySpaces.png" alt="Chains can use spaces as wildcards"></p>
+<h2>“Show object in its editor” shortcuts</h2>
+<p>The Properties view of the IDE is connected to the current part (editor or view) to show the properties of the selected object. Some times, the selected object has references to other objects created in other editors. In this release, we added a couple of shortcuts (or buttons) to open an object in its own editor. These shortcuts are:</p>
+<ul>
+<li>Show the asset key in the Asset Pack editor.</li>
+<li>Show the animation key in the Animations editor.</li>
+<li>Show the texture key in the Texture Packer editor.</li>
+</ul>
+<p>Here are some screenshots of places where you can find those shortcuts.</p>
+<p>In the Texture section of the Properties of the Scene editor, when a sprite is selected:</p>
+<p><img src="/blog/content/images/ShortcutsInSceneEditor.png" alt="Show the object texture in the asset pack editor"></p>
+<p>In the Properties sections of an animation selected in the Assets view:</p>
+<p><img src="/blog/content/images/ShortcusInAssetsView.png" alt="Show an animation in the asset pack editor"></p>
+<h2>Asset Pack editor</h2>
+<p>In Phaser 3.16 a new type of file was introduced: the Scene File. Please, do not confuse it with the Phaser Editor <code>.scene</code> files. In Phaser, a scene file is a loader method (<code>this.load.sceneFile(...)</code>) to load a JavaScript file (like <code>Level.js</code>) that contains a class with the code of a scene. It is an evolution of the Script File (<code>this.load.script(...)</code>), that allows to load the source file of a scene and automatically add it to the scene manager. You can read more about it here <a href="https://photonstorm.github.io/phaser3-docs/Phaser.Loader.LoaderPlugin.html#sceneFile__anchor">LoaderPlugin.sceneFile</a>.</p>
+<p>In this version of the editor, we added support to that type of asset. You can add a Scene File key to the pack in the same way you do with the other types, click on the <strong>plus</strong> icon and select <strong>Scene File (JavaScript)</strong>. It opens a dialog where you can select the JavaScript file. When you select it, a new Scene File key is added.</p>
+<p><img src="/blog/content/images/AssetPackAddSceneFile.png" alt="Add a scene file key to the pack."></p>
+<p>If that file was generated by a Phaser Editor scene, then a screenshot of that scene is shown as an icon.</p>
+<p><img src="/blog/content/images/AssetPackSceneFile.png" alt="The scene file key"></p>
+<p>When Phaser loads the pack, it looks for a class named <code>Level</code> (note the key of the scene file and the name of the class should be the same), it creates a new instance of that class and adds it to the Scene Manager. The Scene Manager identifies a scene using a key, that is set by the scene class when it is created. We follow (and encourage you to follow) the convention of assign the same name to the scene class and the scene key.</p>
+<p>You are not forced to use the <code>sceneFile</code> key to load your scenes. You can load the scenes using a <code>script</code> tag in your <code>index.html</code> or you can load it as a <code>script</code> key in the Asset Pack. However, if you create your levels with the Scene editor, then, the New Scene wizard will add automatically a <code>sceneFile</code> key into the pack, so you don’t have to open this Asset Pack editor. Before this version, it added a <code>script</code> key, but a <code>sceneFile</code> is more convenient because it automatically adds the scene to the Scene Manager, so you don’t have to write something like <code>this.scene.add(&quot;Level&quot;, Level)</code>.</p>
+<p>The templates to create a new Phaser Project were updated to use the <code>sceneFile</code> key. Just create a project with the <strong>Flying Dragon</strong> example and take a look.</p>
+<h2>Scene editor</h2>
+<p>The Scene editor received a nice update: bug fixes, some new features requested by the users (especially paid users) and other features that add more flexibility to the editor.</p>
+<h3>Scene Key parameter</h3>
+<p>The new <code>sceneFile</code> loader method, that we explained before, needs that the scene class set the scene key in its constructor. For this reason, we introduced a new <strong>Scene Key</strong> field in the Compiler section. If you set a value to the Scene Key, then a constructor is generated by the compiler, but if the <strong>Scene Key</strong> value is empty, no constructor is generated.</p>
+<p>By default, when you create a new Scene file, the <strong>Scene Key</strong> is set to the name of the file (without the extension).</p>
+<p><img src="/blog/content/images/SceneEditorSceneKeyParameter.png" alt="The Scene Key parameter"></p>
+<h3>Methods Context Type parameter</h3>
+<p>The code generated by the scene compiler uses a <code>Phaser.GameObjects.GameObjectFactory</code> to create the objects. However, depending on the context of the <code>create</code> method, the  <code>GameObjectFactory</code> could be accessed in different ways. There are two possible contexts, a <code>SCENE</code> context (default) and an <code>OBJECT</code> context. The <code>SCENE</code> context means that the methods belong to a <code>Phaser.Scene</code> subclass, so, the <code>GameObjectFactory</code> is available in the <code>this.add</code> property. The <code>OBJECT</code> context means that the methods belong to a <code>Phaser.GameObjects.GameObject</code> subclass, so, the <code>GameObjectFactory</code> is available in the <code>this.scene.add</code> property. This allows you to create new types of game objects using the Scene editor. You only need to set the <strong>Methods Context Type</strong> parameter to <code>OBJECT</code> and the <strong>Super Class</strong> parameter to the type you want to subclass (i.e: <code>Phaser.GameObjects.Container</code>). Or you can enable the <strong>Only Generate Methods</strong> and write the whole class yourself.</p>
+<p>Example using the <code>OBJECT</code> context:</p>
+<pre><code>create() {	
+	var up = this.scene.add.image(640.5179, 378.75363, 'Objects', 'Button Up');
+	up.setScale(0.5, 0.5);
+	this.add(up);
+	
+	var flame = this.scene.add.image(80.0, 378.75363, 'Objects', 'Button Flame');
+	flame.setScale(0.40251637, 0.3830197);
+	this.add(flame);
+	
+	var down = this.scene.add.image(739.939, 378.75363, 'Objects', 'Button Down');
+	down.setScale(0.5, 0.5);
+	this.add(down);	
+}
+</code></pre>
+<h3>The Game Object Factory parameter</h3>
+<p>Phaser uses a <code>GameObjectFactory</code> instance to create the objects of a scene. By default, there are registered a couple of factories to create images, sprites, bitmap texts, etc… However, you can register other factories. For example, you can register a <code>dragon</code> factory and create new dragons in this way: <code>this.add.dragon(...)</code>. You can learn more about Phaser factories here: <a href="https://phaser.io/phaser3/devlog/130">Industrial Revolution - Phaser Factories Guide</a></p>
+<p>In the Scene editor, we added a new parameter called <strong>Factory</strong>, placed in a new <strong>Game Object</strong> section. It allows you to set the name of the <code>GameObjectFactory</code> method you want to use to create the object. Now you can write your custom objects and re-use them in different Scene editors, by registering it as a Phaser game object factory. Or it enables you to use factories created by third-party libraries.</p>
+<p><img src="/blog/content/images/SceneEditorFactoryParameter.png" alt="Set object factory"></p>
+<p>Note that next to the <strong>Factory</strong> text field there is a menu. That menu provides shortcuts to set values already presents in the scene, and the option to select all objects with the same factory.</p>
+<p><img src="/blog/content/images/SceneEditorFactoryParameterMenu.png" alt="Game object factory menu"></p>
+<p>We should write a mini tutorial about object factories in the next days.</p>
+<p>It is important to highlight that this is an alternative technique to create reusable objects in Phaser Editor. Yet is missing the implementation of the powerful Prefab concept already present in Phaser Editor v1.</p>
+<h3>The Game Object Data (user custom parameters)</h3>
+<p>Phaser 3 has an API (<code>Phaser.Data.DataManager</code>) to add user data to game objects. Basically, it allows you to attach key/value data to objects and register data change event listeners. You can learn more about it here.</p>
+<p>In this update of the editor we implemented the <strong>Data</strong> parameter, that is placed in the <strong>Game Object</strong> section. To add new key/value data, you can press the <strong>plus</strong> icon and write the name of the new key:</p>
+<p><img src="/blog/content/images/SceneEditorSetData.png" alt="Game object add key/value data"></p>
+<p>If you added key/value data to other objects in the scene, then when you click the <strong>plus</strong> icon a menu is shown with shortcuts to add those pre-defined keys.</p>
+<p><img src="/blog/content/images/SceneEditorSetData_AddPredefinedKey.png" alt="Game object data: add an existant key"></p>
+<p>All keys are listed below the <strong>Data</strong> parameter. Next to the key name is placed a text field with the value. The value is verbatim written in the generated code. It means, if you want to set a string value you should write it as a literal (<code>'My string value'</code>). This allows you to use constants or any expression as the value.</p>
+<p>Each key/value pair is placed in a row. At the end of the row, there is a menu with options to delete the data or select objects with the same data or the same key.</p>
+<p><img src="/blog/content/images/SceneEditorSetData_RowMenu.png" alt="Game object data: key/value menu"></p>
+<h3>Other Scene editor changes</h3>
+<ul>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor/issues/94">#94</a>: Keep pressed space bar to drag the scene.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor/issues/93">#93</a>: Global preferences for scene size.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor/issues/98">#98</a>: Command (<code>Ctrl+D</code>) to duplicate an object.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor/issues/98">#101</a>: Allow JavaScript expressions in number fields.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor/issues/98">#96</a>: <strong>Visible</strong> and <strong>Active</strong> parameters.</li>
+<li>Change the texture of an object by double-clicking on it.</li>
+<li>Change the animation of a sprite by double-clicking on it.</li>
+</ul>
+<h2>Texture packer</h2>
+<p>We fixed some issues with the Texture Packer:</p>
+<ul>
+<li>Fixed drop files in macOS.</li>
+<li>Fixed bug when load an atlas created in other PC (remove absolute references to input files).</li>
+</ul>
+<p>The Texture Packer editor is the oldest piece of the IDE. It really needs a complete re-write. From time to time we discover a bug caused because we do not have full control of the packing algorithm. This Texture Packer editor is based on the LibGDX texture packer tool, it works great, but we have to parse the output file and use temporal files. Anyway, an editor needs certain features that are not present in a “command line tool”, as the use of in-memory images or algorithm tweaks. At a certain point in the future, we should get the code of this LibGDX tool and adapt it better to Phaser Editor.</p>
+<h2>Animations editor</h2>
+<p>Fixed a bug when a single image key is added to the animation.</p>
+<h2>Refactorings</h2>
+<p>There is a lot to do in terms of refactorings. In this update we implemented the operations to be performed when you rename or move a file:</p>
+<ul>
+<li>Move/rename a file that is referenced by any Asset Pack key: it updates the related parameter with the new URL.</li>
+<li>Move/rename a Scene file: it renames/moves the compiled JavaScript file.</li>
+<li>Move/rename a Texture Packer file: it renames/moves the generated atlas <code>JSON</code> and the packed textures.</li>
+</ul>
+<h2>Update to the Free edition limits</h2>
+<p>As you may know, Phaser Editor has two editions or modes: Free and Premium. The Free mode provides all the features present in the IDE, but it puts some limits on the number of assets you can use. In this update, we changed those limits to:</p>
+<ul>
+<li>10 images keys in the Asset Pack.</li>
+<li>3 atlas textures in the Asset Pack. Multi-atlas counts for all the textures it maps.</li>
+<li>5 tilemaps keys.</li>
+<li>5 scene (<code>.scene</code>) files.</li>
+</ul>
+<p>This limits may change again when the Prefabs are ready. The Prefabs are “small” scene files so we should allow using 15 scenes files, like in Phaser Editor v1.</p>
+<p>You can see these limits if you hold the mouse in the Phaser Editor label in the status bar:</p>
+<p><img src="/blog/content/images/FreeLimitsTooltip.png" alt="Free edition limits"></p>
+<h2>Other updates</h2>
+<ul>
+<li>Synchronize an editor and its file if the file’s content is modified by another editor in the IDE, or outside the IDE, for example, after a Git merge or update.</li>
+<li>The Audio Sprite editor is deprecated. We never get issues or feedback about this editor, so we think it is not used too much. Of course, you will be able to add audio sprites (made by other tools) to the Asset Pack editor.</li>
+<li>As we mentioned in the introduction, we replaced the LibGDX-based audio player by an HTML5-based audio player.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor/issues/97">#97</a>: Fix bug when the user data folder is a soft link.</li>
+</ul>
+<h2>What’s next?</h2>
+<p>This is our current plan.</p>
+<p>In all versions:</p>
+<ul>
+<li>Keep updating to the latest Phaser version.</li>
+<li>Keep fixing bugs reported by users.</li>
+<li>Keep adding features requested by paid users.</li>
+</ul>
+<p>In <code>2.0.2</code>:</p>
+<ul>
+<li>A mini tutorial about factories and custom data.</li>
+<li>Implement a new Layer concept in the Scene editor.</li>
+</ul>
+<p>P.S. The way Phaser Containers work is going to be changed by the Phaser team, so we are not going to work on this until it is ready.</p>
+<p>In <code>2.0.3</code>:</p>
+<ul>
+<li>A Particles editor made with Phaser, using a WebView. These are things we can do to get some experience merging the two worlds, Eclipse and HTML5. The final goal is to migrate the Scene editor’s renderer to an HTML5/Phaser implementation.</li>
+<li>Yes, we should start writing the Phaser Editor v2 documentation.</li>
+</ul>
+<br>
+<p>Best Regards,</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/scene">scene</a>, <a href="/blog/tag/factory">factory</a>, <a href="/blog/tag/asset-pack">asset-pack</a>, <a href="/blog/tag/asset-pack">asset pack</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

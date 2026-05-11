@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor v2.1.4 released | Phaser Editor 2D Blog</title>
+  <meta name="description" content="A new minor version of Phaser Editor 2D. Bug fixes, minor features. Support the latest Phaser and Eclipse versions.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor v2.1.4 released</h1>
+        <p class="text-info">October 17, 2019 - Posted in <a href="/blog/category/release">release</a></p>
+        
+        <div class="lead"><p>Hi,</p>
+<p>Today we are releasing Phaser Editor 2D version 2.1.4.</p>
+<p><a href="/blog/downloads/">Download Phaser Editor 2D v2.1.4</a></p>
+<p>This is a minor update to synchronize the project with the latest versions of <a href="https://github.com/photonstorm/phaser/releases/tag/v3.20.0">Phaser (v3.20.1)</a> and <a href="https://www.eclipse.org/eclipse/news/4.13/platform.php">Eclipse (v2019-09)</a> -including the <a href="https://github.com/eclipse/wildwebdeveloper">JavaScript tooling</a>-. But, as usual, there are some new features and fixes.</p>
+<!-- index-start -->
+<ul>
+<li><a href="#games-and-tutorials">Games and tutorials</a></li>
+<li><a href="#documentation-progress">Documentation progress</a></li>
+<li><a href="#phaser-editor-v3">Phaser Editor v3</a></li>
+<li><a href="#phaser-3-20-1">Phaser 3.20.1</a></li>
+<li><a href="#scene-editor">Scene Editor</a></li>
+<li><a href="#wizards">Wizards</a></li>
+<li><a href="#animations-editor">Animations Editor</a></li>
+<li><a href="#asset-pack-editor">Asset Pack Editor</a></li>
+<li><a href="#online-phaser-chains">Online Phaser Chains</a></li>
+<li><a href="#other-changes">Other changes</a></li>
+</ul>
+<!-- index-end -->
+<h2>Games and tutorials {#games-and-tutorials}</h2>
+<p>If you are creating games, tutorials or any other content (no matter if it is your first project) with Phaser Editor, please, tell us, we will be proud to feature it in our website, newsletter and social channels.</p>
+<h2>Documentation progress {#documentation-progress}</h2>
+<p>We keep writing the <a href="/docs/v2">Phaser Editor v2 Documentation</a>, but we are doing that task together with another that is equally important (see the next section).
+Since the last release, we worked on the <a href="/docs/v2/scene-editor.html">Scene Editor chapter</a>. Take a look.</p>
+<h2>Phaser Editor v3 {#phaser-editor-v3}</h2>
+<p><img src="/blog/content/images/v2.1.4/phaser-editor-v3-preview.png" alt="Phaser Editor v3 Preview"></p>
+<p>The Phaser team <a href="https://www.patreon.com/posts/phaser-4-process-29671934">announced the next major Phaser version (v4)</a>. It is very soon to know the direction of that Phaser version, but here at Phaser Editor, we decided to support Phaser v4 with a brand new editor.</p>
+<p>We started working on Phaser Editor v3. A new editor? Again? Yes, we are saying good-bye to our beloved Eclipse platform and saying hello to the browser: Phaser Editor v3 will be implemented completely as a web-based IDE and will be:</p>
+<ul>
+<li>Lightweight, focused mainly on level/scene design and asset management. For coding, there is Visual Studio Code.</li>
+<li>Cross-platform: available as a local application in Windows, macOS, and Linux. In theory, the server back-end is very small so it can be ported to Android or other platforms at a reasonable cost.</li>
+<li>At a certain point, we should implement a cloud version, that can be deployed on private or public clouds.</li>
+<li>Completely coded in TypeScript. So it will be easier for you to contribute to the code. Only the server back-end will be implemented on <a href="http://golang.org/">Go</a>.</li>
+<li>Extensible. We are building the IDE on top of a simple extension framework.</li>
+<li>We have to decide if provide the Phaser Labs (Phaser examples browsing and cloning, Phaser API browser, Phaser  Chains, etc…) as a separated product.</li>
+</ul>
+<p>This is yet a secret project, <a href="https://twitter.com/PhaserEditor2D/status/1166039969825247232">we mentioned it</a> and posted a <a href="https://twitter.com/PhaserEditor2D/status/1180311547987599360">preview video</a> but yet we are not officially announcing it. The development is going fast. We had our reasons to build the first version of Phaser Editor on top of a huge, Java-based IDE like Eclipse, but today we have the opportunity to implement it using the same Phaser technology: the browser, and it boosts everything. We don’t have to fight anymore with a native, broken WebView and websocket communication. Now everything, the Phaser scene, and the IDE parts can communicate and run smoothly in the same place.</p>
+<p>By the way, it is a new Phaser Editor version, it means, all licenses still valid.</p>
+<h2>Phaser 3.20.1 {#phaser-3-20-1}</h2>
+<p>We updated the <strong>project templates</strong>, <strong>Phaser Labs</strong> tools and the <strong>Scene Editor</strong> to <strong><code>Phaser v3.19.0</code></strong>.</p>
+<p>The Phaser runtime files of your old projects are not updated. If you wish to update your game runtime to the new Phaser version you should do it manually. <a href="/docs/v2/workbench.html#phaser-version-update">Learn more about it in the docs</a>.</p>
+<p>If you created a project in a previous version of the editor, and you want to update to the new Phaser runtime, you should do it manually, by replacing the <code>WebContent/lib/phaser.js</code> file.</p>
+<h2>Scene Editor {#scene-editor}</h2>
+<p>Some changes we did in the Scene Editor:</p>
+<ul>
+<li>
+<p>Updated to the latest Chromium-SWT WebView. Now it works much better on Linux. In Windows 10 it is closer to be stable. We recommend to test it if you are using that platform. <a href="/docs/v2/workbench.html#webview-preferences">Learn how to change the WebView implementation</a>.</p>
+</li>
+<li>
+<p>Fixes the Add Object menu, it now shows images.</p>
+</li>
+<li>
+<p>The Add Object menu shows the option to create a Group.
+<img src="/blog/content/images/v2.1.4/scene-editor-add-object-menu-group.png" alt="Add Object menu shows Group option"></p>
+</li>
+<li>
+<p>Fixes the TypeScript compiler, now it does not generate type-annotation comments.</p>
+</li>
+</ul>
+<h2>Wizards {#wizards}</h2>
+<ul>
+<li>The New Factory Class File wizard now includes the option to generate a TypeScript file.</li>
+</ul>
+<p><img src="/blog/content/images/v2.1.4/wizard-new-object-factory-typescript.png" alt="TypeScript option in the New Factory Class File"></p>
+<p>A TypeScript factory uses an interface to “extends” the <code>GameObjectFactory</code> class and add the new factory method to the prototype <code>GameObjectFactory</code>:</p>
+<pre><code>namespace Phaser.GameObjects {
+    
+    export interface GameObjectFactory {
+        enemy(x: number, y: number, texture: string, frame?: string | number) : PlayerFactory;
+    }
+    
+}
+
+class EnemyFactory extends Phaser.GameObjects.Sprite {
+
+    constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame: string | integer = null) {
+        super(scene, x, y, texture, frame);
+    }
+
+}
+
+Phaser.GameObjects.GameObjectFactory.prototype.enemy = function (x: number, y: number, texture: string, frame: string | integer = null) : PlayerFactory {
+    const scene = this.scene;
+
+    const sprite = new EnemyFactory(scene, x, y, texture, frame);
+
+    scene.sys.displayList.add(sprite);
+    scene.sys.updateList.add(sprite);
+
+    return sprite;
+};
+</code></pre>
+<h2>Animations Editor {#animations-editor}</h2>
+<ul>
+<li>Now you can set a prefix to the animations created automatically by dropping frames into the editor. <a href="/docs/v2/animations-editor.html#automatic-creation-of-animations">Learn more in the documentation</a></li>
+<li>We added a button to the Properties view to automatically create the animations selected in the Blocks view. <a href="/docs/v2/animations-editor.html#creating-the-animations-with-the-create-animations-button">Learn more in the documentation</a>.
+<img src="/blog/content/images/v2.1.4/animations-create-animations-button.png" alt="The Create Animations button"></li>
+<li>Added the tool-tips to the animation fields of the Properties view.
+<img src="/blog/content/images/v2.1.4/animations-editor-property-hint.png" alt="Animation's fields tooltip"></li>
+</ul>
+<h2>Asset Pack Editor {#asset-pack-editor}</h2>
+<ul>
+<li>Added the tool-tips to the Properties fields.
+<img src="/blog/content/images/v2.1.4/asset-pack-editor-help-hints.png" alt="Help hints in the Properties of the Asset Pack Editor"></li>
+</ul>
+<h2>Online Phaser Chains {#online-phaser-chains}</h2>
+<p>We updated the online version of Phaser Chains with the latest Phaser v3.20.1 data.</p>
+<p><a href="https://phasereditor2d.com/chains/">phasereditor2d.com/chains</a></p>
+<h2>Other changes {#other-changes}</h2>
+<ul>
+<li>
+<p>We added a <strong>New Window</strong> item to the perspective switcher button. You can create multiple windows to perform different tasks. For example, a window for coding and designs and a window to browse the Phaser help and examples.
+<img src="/blog/content/images/v2.1.4/workbench-open-new-window.png" alt="New Window option in perspective button"></p>
+</li>
+<li>
+<p>The files or folders <code>__MACOSX</code> and <code>.DS_Store</code> are hidden in the Project view by default. <a href="/docs/v2/workbench.html#resource-filters">Learn more about resource filtering</a>.</p>
+</li>
+</ul>
+<p><a href="/blog/downloads/">Download Phaser Editor 2D v2.1.4</a></p>
+<p>Keep in touch!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/blocks">blocks</a>, <a href="/blog/tag/scene-editor">scene-editor</a>, <a href="/blog/tag/asset-pack">asset-pack</a>, <a href="/blog/tag/animations">animations</a>, <a href="/blog/tag/wizard">wizard</a>, <a href="/blog/tag/scene-editor">scene editor</a>, <a href="/blog/tag/asset-pack">asset pack</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

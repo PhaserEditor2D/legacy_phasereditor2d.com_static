@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.9.1 hotfix released | Phaser Editor 2D Blog</title>
+  <meta name="description" content="A release with fixes for the Electron-based distribution on macOS. Includes small features.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.9.1 hotfix released</h1>
+        <p class="text-info">December 01, 2020 - Posted in <a href="/blog/category/release">release</a></p>
+        
+        <div class="lead"><p>Hi,</p>
+<p>Phaser Editor 2D v3.9.1 is available to download or update. This is a hotfix release for <a href="https://phasereditor2d.com/blog/2020/11/phaser-editor-2d-v390-released-black-friday-50-off-sales-electronjs">previous v3.9.0</a>, but there are also small improvements.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.9.1</a></p>
+<h2>Electron-based editor</h2>
+<p>Some users reported the Cut, Copy, and Paste commands are not available in macOS. We fixed it. We included the whole Edit menu in Electron’s application menu.</p>
+<h2>Update notifications</h2>
+<p>The editor shows a notification if there is a new version available:</p>
+<p><img src="/blog/content/images/v3.9.1/update-notification.png" alt="Update notification"></p>
+<p>Also, the main menu shows an option to check for updates:</p>
+<p><img src="/blog/content/images/v3.9.1/check-for-updates.png" alt="Check for updates"></p>
+<p>Other changes about the updating:</p>
+<ul>
+<li>The <code>flags.txt</code> is preserved after an update.</li>
+<li>The <code>-force-update</code> flag forces to update the editor even if there isn’t a new version.</li>
+</ul>
+<h2>Resource filtering (skip files)</h2>
+<p>We improved the way you can exclude files from your project. Now you can add glob patterns to the <code>.skip</code> files. This means, you can exclude particular files and even you can create a single <code>.skip</code> file in the root of the project, and write the patterns to exclude the files at any location. For backward compatibility, an empty <code>.skip</code> file is converted to the <code>*</code> rules, to exclude all the folder’s content.</p>
+<p><a href="https://help.phasereditor2d.com/v3/misc/resources-filtering.html">Learn more about resource filtering</a></p>
+<h2>What’s next</h2>
+<p>We want to do a bit of cleaning in the GitHub issues. But what is really important, is that we will start adding support for some of the new features included in Phaser v3.50.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/hotfix">hotfix</a>, <a href="/blog/tag/update">update</a>, <a href="/blog/tag/electron">electron</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

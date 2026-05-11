@@ -1,0 +1,14 @@
+{
+  "name": "main-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "migrate:phasereditor3": "node ./scripts/migrate-phasereditor3.mjs",
+    "build:blog": "node ./scripts/build-blog.mjs",
+    "build": "npm run build:blog"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0"
+  }
+}

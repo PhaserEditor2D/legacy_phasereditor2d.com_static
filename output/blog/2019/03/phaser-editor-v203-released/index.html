@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor v2.0.3 released | Phaser Editor 2D Blog</title>
+  <meta name="description" content="Hi, Today we are publishing the version 2.0.3 of Phaser Editor 2D. The initial goal was to build a release to support the latest Phaser version">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor v2.0.3 released</h1>
+        <p class="text-info">March 20, 2019 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/v2.0.3/GameObjectBuildParameter.png" alt="Phaser Editor v2.0.3 released"></p>
+        <div class="lead"><p>Hi,</p>
+<p>Today we are publishing the version <code>2.0.3</code> of Phaser Editor 2D. The initial goal was to build a release to support the latest Phaser version (<code>3.17.0</code>), but that version is delaying and, in the meantime, we added some nice features to the editor. By the way, some weeks ago we did a small release (<code>v2.0.2</code>), to fix an issue with the license validation. It was available only as an automatic update.</p>
+<p><a href="/blog/downloads">Download v2.0.3</a> or check for updates (<strong>Help</strong> → <strong>Check for Updates</strong>).</p>
+<h2>Learning Phaser Editor v2</h2>
+<p>Many users contact us requesting for learning materials about Phaser Editor v2. We feel this is not the moment to spent a huge amount of time and energies on it. First, we want to reach the state of v1, or a closed state, with the major features implemented. Probably, the only big feature that is missing is the Prefab objects. In addition, we should migrate the current Scene renderer to a Phaser powered renderer. See the last section of this article.</p>
+<p>However, you can scroll this blog and check all the release notes and some tutorials about v2 of the editor. In each release notes, we explain the new features in detail, so it can help you a lot. Another good resource you have to learn the editor is the included demos. Right now we have two demos, <strong>Flying Dragon</strong> and <strong>Sunny Land Woods</strong>. To mess with the demos you can create a project with them in the wizard <strong>File</strong> → <strong>New</strong> → <strong>Phaser Example Project</strong>. From time to time we publish some videos in our <a href="https://www.youtube.com/playlist?list=PLB8gI_5U0MvC9NcEAkcjxoccDd9MQx2yL">YouTube channel</a>. And finally, if you have any doubt, please, contact us on any social channel, this blog or via email (<code>developers@phasereditor2d.com</code>).</p>
+<p><strong>Update</strong>: See the <a href="https://phasereditor2d.com/blog/2019/03/commenting-the-sunny-land-woods-demo-tutorial">latest tutorial</a> about how we migrated the Sunny Land Woods demo.</p>
+<h2>Games made with Phaser Editor</h2>
+<p>You can see in this blog some short articles where we feature a game made with the editor. We love to do that, but the reality is that you create the games but never share it with us ;-). Please, if you are making something with the editor, we are more than happy to feature it and follow you on our social channels.</p>
+<h3>Moonshine Run, by JomoGames</h3>
+<p><img src="/blog/content/images/v2.0.3/MoonshineRunGame.png" alt="Moonshine Run"></p>
+<p>It’s 1945 and deep in the mountains lives the Buckley clan. The family patriarch Duke Buckley must provide vittles for his kin…</p>
+<p><a href="https://phasereditor2d.com/blog/2019/03/moonshine-run-game-by-jomogames">Read more</a></p>
+<h2>Project Templates</h2>
+<h3>Phaser Examples</h3>
+<p>We improved the scripts to build the Phaser Official Examples and include them in the IDE. In Phaser Editor you can browse the Phaser examples, test them locally or create a new project with the example’s code and assets. However, there are examples that do not work, because the originals are broken or because we did not pack them well in the editor. Now, with the new build scripts, we have less broken examples. If you find an example is broken, please contact us.</p>
+<h3>Default Phaser Project</h3>
+<p>We simplified the default Phaser Project. Now it is a completely empty project, without any image. Only a <code>pack.json</code>, <code>animations.json</code> and <code>Level.scene</code> files are included, but empty. You can take a look at the Phaser Editor Demos project templates to see a more complex project.</p>
+<p>In addition, we added two new parameters to the wizard (feature request <a href="https://github.com/PhaserEditor2D/PhaserEditor/issues/111">#108</a>): <strong>Scale Mode</strong> and <strong>Scale Auto Center</strong>.</p>
+<p><img src="/blog/content/images/v2.0.3/PhaserProjectWizardScaleParameters.png" alt="Phaser Project wizard Scale parameters"></p>
+<h3>Sunny Land Woods Demo</h3>
+<p>We added a new Phaser Editor demo, based on one of the great works of Luis Zuno (@ansimuz): Sunny Land Woods. This demo shows you how you can create reusable objects by registering custom <code>GameObjectFactory</code> methods and referencing them in the Scene editor. And another interesting thing is that with these factories and “fake” assets, you can add objects to the Scene editor that are not supported yet, like tilemaps. We are going to create a tutorial about this as soon as possible. Object factories is a good mechanism to create custom objects, but yet we have to implement the Prefab concept, that is already present in v1 of the editor.</p>
+<h2>Asset Pack editor</h2>
+<p>As you may know, we use an Asset Pack file (<code>pack.json</code>) to declare the keys of the assets of the game. That Pack file is a Phaser format and you can load the assets defined in it in this way: <code>this.load.pack('pack-key', 'assets/pack.json')</code>, or <code>this.load.pack('pack-key', 'assets/pack.json', 'data-key')</code>. If the <code>data-key</code> is set, it means that only will be loaded a section (the <code>data-key</code> section) of the pack. We were doing this wrong, using the <code>data-key</code> as the first parameter (we were doing like in Phaser v2, but in Phaser v3 it is different). Probably you did not note it, because if not <code>data-key</code> is set, Phaser loads the whole pack. In this release we fixed that, and, in addition, we recommend to create different asset pack files instead of different sections in the same asset pack. It has more sense, because you may like to load the pack files by demand, in the same way, you want to load all the other assets by demand. In a few words, now, instead of having a <code>preload</code> and <code>levels</code> sections in the asset pack, you will create a <code>preload-pack.json</code> and <code>levels-pack.json</code> files.</p>
+<p>So, now that we are not using the sections (or the <strong>Data Key</strong>) there is no need to show them in the UI. We modified the Asset Pack editor and the Assets view (and all other asset viewers) to only show the asset keys grouped by the asset type. It means, now we are not grouping by sections. See how looks the new Asset Pack editor:</p>
+<p><img src="/blog/content/images/v2.0.3/NewAssetPackEditor.png" alt="New Asset Pack editor layout"></p>
+<p>In the Sunny Land Woods demo, look we use a <code>preload-pack.json</code> to load the assets needed by the <strong>Preload</strong> scene, and a <code>levels-pack.json</code> file to load the assets needed by all the other scenes of the game. There is also a <code>fake-pack.json</code>, that is never loaded by the game, because we use it to create custom objects in the scene, that is not supported yet but are created by custom factories.</p>
+<p><img src="/blog/content/images/v2.0.3/NewAssetsView.png" alt="Assets view of the Sunny Land Woods"></p>
+<p>The code to load an asset pack is:</p>
+<pre><code class="language-javascript">
+var key = &quot;levels-pack&quot;;
+var url = &quot;assets/levels-pack.json&quot;;
+this.load.pack(key, url);
+
+</code></pre>
+<p>It will load all the files defined in <code>levels-pack.json</code> file. We recommend to use as key the same name of the file, you cannot use the same key for different files. That key is used to store the data in the cache.</p>
+<h2>Scene editor</h2>
+<h3>Scene File wizard</h3>
+<p>We reworked the <strong>Loading</strong> page of the <strong>New Scene File</strong> wizard. In this page, you can select an Asset Pack file and a section inside it to include the new Scene file as a key. You have the option of adding the Scene file as a <strong>script</strong> or <strong>sceneFile</strong> key (by default), or do not add the file to a pack.</p>
+<p><img src="/blog/content/images/v2.0.3/PhaserProjectLoadingPage.png" alt="Phaser Project wizard Loading parameters"></p>
+<h3>Factory File wizard</h3>
+<p>We included a wizard to help you create a Phaser Game Object Factory method with just clicks. It is just a JavaScript file with a class that extends <code>Phaser.GameObjects.Sprite</code> and register a new factory method. We recommend using factories to create reusable objects in your game. It is a Phaser practice and is supported by the Scene editor of the IDE.</p>
+<p>To launch the wizard, click <strong>New</strong> → <strong>Factory Code File</strong>. Enter the name of the file, for example, <code>Dragon</code>, and press <strong>Finish</strong>. Then a new file will be created, like this one:</p>
+<p><img src="/blog/content/images/v2.0.3/NewFactoryWizardCode.png" alt="Code generated by the Factory wizard"></p>
+<p>Note it registers a <code>dragon</code> factory that creates a <code>Dragon</code> object and adds it to the Display and Update lists. It is just a start, you can change or add more code.</p>
+<h3>New Game Object parameters</h3>
+<p>We added some new parameters to the <strong>Game Object</strong> section: <strong>Factory Return Type</strong>, <strong>Build Object</strong> and <strong>Name</strong>.</p>
+<h4>Factory Return Type parameter</h4>
+<p>In v2.0.1 we introduced the Game Object <strong>Factory</strong> parameter, that is used by the scene compiler when generates the expression that creates an object. The new <strong>Factory Return Type</strong> parameter is used to set a type to that expression. Since JavaScript does not support static typing of variables, what we do is to annotate the variable with the <code>@type</code> tag of the JSDoc comment. This can help you to get a better intellisense in the JavaScript editor of Phaser Editor or any other external editor. Note this parameter is enabled only if a <strong>Factory</strong> is set.</p>
+<p>In the Sunny Land Woods demo, you can see how the <strong>player</strong> object has a <strong>player</strong> factory that returns a <strong>Player</strong> object.</p>
+<p><img src="/blog/content/images/v2.0.3/GameObjectFactoryTypeParameter.png" alt="Factory Return Type parameter"></p>
+<p>As we do in other parameters, next to the <strong>Factory R. Type</strong> field there is a menu with some value shortcuts. However, if you set a factory, it automatically looks for other objects that use the same factory and check if all of them use the same return type, and if it is the case, then it set that type by default.</p>
+<p><img src="/blog/content/images/v2.0.3/GameObjectFactoryTypeMenu.png" alt="Factory Return Type parameter"></p>
+<h4>Build Object parameter</h4>
+<p>Usually, custom objects (like enemies, items, players) needs custom data or custom parameters that are used by the object to perform certain behavior or “build” other private objects or data. The scene compiler uses the <strong>Build Object</strong> flag to generate a <code>obj.build()</code> call at the end of the object creation. If you create a custom object type, you can implement a <strong>build</strong> method that takes all the custom data or any other parameter of the object and create the initial state of the object. In the Sunny Land Woods demo, look the <strong>Gator</strong> implementation. It has a <strong>build</strong> method that gets the values (<strong>distance</strong> and <strong>horizontal</strong>) in the <strong>Data Manager</strong> of the object and computes the velocity and range of movements.</p>
+<p><img src="/blog/content/images/v2.0.3/GameObjectBuildParameter.png" alt="Build parameter"></p>
+<h3>Scroll Factor parameters</h3>
+<p>We added a new section with the <strong>Scroll Factor</strong> parameters. We used this parameter in the Sunny Land Woods demo to get a parallax effect. Check the background images in the <strong>Level</strong> file of that demo.</p>
+<p><img src="/blog/content/images/v2.0.3/ScrollFactorParameters.png" alt="Scroll Factor parameters"></p>
+<h3>Compiler parameters</h3>
+<p>We removed some parameters from the <strong>Compiler</strong> section settings: <strong>Generate Method Events</strong> and <strong>Auto Load Assets</strong>.</p>
+<p>The <strong>Generate Method Events</strong> is used by the compiler to generate a code that emits events at the start and end of the methods. In this release, we removed it from the UI. We included that events to allow the user to insert custom code (or actions) before and after the scene is created, but we find that using a custom name in for the <strong>Create Method</strong> is a good solution, so we don’t need an extra mechanism.</p>
+<p>The <strong>Auto Load Assets</strong> parameter was used by the compiler to know if it should generate the <strong>preload</strong> method of the scene. We removed that parameter, and now the compiler will generate the <strong>preload</strong> method only if you set the value of the <strong>Preload Method</strong> parameter.</p>
+<p><img src="/blog/content/images/v2.0.3/PreloadMethodParameter.png" alt="Preload Method parameter"></p>
+<h4>Name parameter</h4>
+<p>The <strong>Name</strong> parameter is a flag that is unchecked by default, but if you check it, the compiler will set the <strong>name</strong> property of the object, with the same value of the <strong>Variable Name</strong>. (Feature request <a href="https://github.com/PhaserEditor2D/PhaserEditor/issues/111">#111</a>).</p>
+<p><img src="/blog/content/images/v2.0.3/GameObjectNameParameter.png" alt="Game Object name parameter"></p>
+<h3>Compile and Go To Code buttons</h3>
+<p>In the <strong>Compiler</strong> section we added two buttons: <strong>Compile Scene</strong> and <strong>Go To Code</strong>. Those buttons do the same of the other little buttons in the section’s toolbar but are more user-friendly (bigger).</p>
+<p><img src="/blog/content/images/v2.0.3/CompilerSectionButtons.png" alt="Compiler section buttons"></p>
+<p>In addition, we added a <strong>Go To Code</strong> button in the <strong>Variable</strong> section. That section is shown when you select an object in the scene, so, if you press the <strong>Go To Code</strong> button it will open the compiled JavaScript file and will scroll to the position of the code where the object is created. I can help you to understand how an object is created.</p>
+<p><img src="/blog/content/images/v2.0.3/VariableGoToCodeButton.png" alt="Go To Code button in the Variable section"></p>
+<h2>Other Features and Bug Fixes</h2>
+<ul>
+<li>You can set the default size of the scenes of a project. Right click on the project and select <strong>Properties</strong>. In the <strong>Phaser</strong> section, you can set the <strong>Default Scene Width</strong> and <strong>Default Scene Height</strong>. These values are used when you create a new Scene file, to set the border size.
+<img src="/blog/content/images/v2.0.3/DefaultSceneSize.png" alt="Default Scene's Size parameter"></li>
+<li><a href="(https://github.com/PhaserEditor2D/PhaserEditor/issues/110)">#110</a> Characters color blends poorly with background in Dark Theme.</li>
+<li>The <strong>New JavaScript Class</strong> wizard now creates a file with JS6 “class” syntax.</li>
+<li>Now <strong>audio</strong> keys are well serialized in the Asset Pack editor. Before we generated a wrong <strong>audio</strong> entry in the asset pack file (<code>pack.js</code>), so Phaser did not load the audio files.</li>
+</ul>
+<h2>What’s next?</h2>
+<p>We are thinking to split the v2 development into two branches. One public branch (<code>1.0.*</code>) to fix bugs and add minor features, and another development branch (<code>1.1.*</code>) to create a new Scene editor renderer (we really need it!). The new Scene renderer will be implemented in Phaser, running in a WebView. There are a couple of objects that you cannot create in the current Scene editor, like Container, Text, Tilemap, Particles, etc… and we want to include all of them, but using the new Phaser-powered renderer. We do not have an idea of how much time we need to implement it, we hope to do that in two months if we do not have huge interruptions with bugs or family issues.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/scene">scene</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

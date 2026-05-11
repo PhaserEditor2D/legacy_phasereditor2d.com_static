@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Phaser Editor 2D Blog | HTML5 games IDE</title>
+    <link>https://phasereditor2d.com/blog/</link>
+    <description>Latest news about Phaser Editor 2D tutorials, releases, user games and content.</description>
+    <item>
+      <title>Candy Bear, a game made by Weveana studio</title>
+      <link>https://phasereditor2d.com/blog/2020/05/candy-bear-a-game-made-by-weveana-studio</link>
+      <description>Hey! Look at Weveana! It is a small studio from Ecuador and is making games with Phaser and Phaser Editor 2D. Candy Bear is the latest they released. ...</description>
+      <category domain="https://phasereditor2d.com/blog/category/madewithphasereditor">MadewithPhaserEditor</category>
+      <pubDate>Fri, 29 May 2020 21:01:22 -0500</pubDate>
+    </item>
+    <item>
+      <title>Phaser Editor v3.1.1 released. Hotfix.</title>
+      <link>https://phasereditor2d.com/blog/2020/05/phaser-editor-v311-released-hotfix</link>
+      <description>Hi! This is a hotfix release! A client reported a bug with the BitmapText default origin, which is on 0,0 and not 0.5, 0.5 as many other object types: #33: Wrong BitmapText by default Another user...</description>
+      <category domain="https://phasereditor2d.com/blog/category/release">Release</category>
+      <pubDate>Tue, 26 May 2020 00:00:00 -0500</pubDate>
+    </item>
+    <item>
+      <title>Phaser Editor v3.1.0 released</title>
+      <link>https://phasereditor2d.com/blog/2020/05/phaser-editor-v310-released</link>
+      <description>Hi! A new release of the web-based IDE for Phaser game creation is here: v3.1.0. UPDATE 26/5/2020: We released a hotfix, v3.1.1 This is the third release in this month, with bug fixes and some new...</description>
+      <category domain="https://phasereditor2d.com/blog/category/release">Release</category>
+      <pubDate>Sun, 24 May 2020 16:42:03 -0500</pubDate>
+    </item>
+    <item>
+      <title>[User Review] Phaser Editor 2D is the web-based IDE you need for HTML5 game development. Let’s build a game with it.</title>
+      <link>https://phasereditor2d.com/blog/2020/05/user-review-phaser-editor-2d-is-the-web-based-ide-you-need-for-html5-game-development-lets-build-a-game-with-it</link>
+      <description>Hi! Emanuele Feronato, one of the most active users of Phaser, and author of popular Phaser books, recently did a review of the latest version of Phaser Editor 2D v3: I already blogged about Phaser...</description>
+      <category domain="https://phasereditor2d.com/blog/category/tutorials">Tutorials</category>
+      <pubDate>Mon, 18 May 2020 22:21:17 -0500</pubDate>
+    </item>
+    <item>
+      <title>Phaser Editor v3.0.1 released</title>
+      <link>https://phasereditor2d.com/blog/2020/05/phaser-editor-v301-released</link>
+      <description>Hi, A new version of Phaser Editor 2D v3 is public: v3.0.1. It comes with support for HiDPI displays and some bug fixes. Download Phaser Editor v3.0.1 Games and tutorials If you are creating games,...</description>
+      <category domain="https://phasereditor2d.com/blog/category/release">Release</category>
+      <pubDate>Sat, 16 May 2020 16:09:43 -0500</pubDate>
+    </item>
+    <item>
+      <title>Phaser Editor v3 released for the public. New online service Play Phaser Editor 2D.</title>
+      <link>https://phasereditor2d.com/blog/2020/05/phaser-editor-v3-released-for-the-public-new-online-service-play-phaser-editor-2d</link>
+      <description>[Update] Phaser Editor 2D v3.0.1 was released. Hey! Today we are releasing Phaser Editor 2D v3 for the public! Two months ago we released an alpha version for paid clients, but today it is available...</description>
+      <category domain="https://phasereditor2d.com/blog/category/release">Release</category>
+      <pubDate>Mon, 11 May 2020 20:58:41 -0500</pubDate>
+    </item>
+    <item>
+      <title>Phaser Editor v2.1.7 released</title>
+      <link>https://phasereditor2d.com/blog/2020/04/phaser-editor-v217-released</link>
+      <description>Hi! Today we are releasing Phaser Editor 2D v2.1.7. This is a very small release, the only purpose is to update to Phaser v3.23.0. Download Phaser Editor v2.1.7 Also, at the end of the article, we...</description>
+      <category domain="https://phasereditor2d.com/blog/category/release">Release</category>
+      <pubDate>Wed, 29 Apr 2020 20:10:59 -0500</pubDate>
+    </item>
+    <item>
+      <title>Phaser Editor v3-alpha released</title>
+      <link>https://phasereditor2d.com/blog/2020/02/phaser-editor-v3-alpha-released</link>
+      <description>Hi, Today we are releasing Phaser Editor 2D v3! This is an Alpha version and it is only available to paid clients. If you purchased a Phaser Editor license, no matter if it expired or not, then,...</description>
+      <category domain="https://phasereditor2d.com/blog/category/release">Release</category>
+      <pubDate>Fri, 28 Feb 2020 10:06:47 -0600</pubDate>
+    </item>
+    <item>
+      <title>[User review] Phaser Editor, an excellent game editor for ... um... Phaser</title>
+      <link>https://phasereditor2d.com/blog/2020/01/user-review-phaser-editor-an-excellent-game-editor-for-um-phaser</link>
+      <description>GameFromScratch says: PhaserEditor is an Eclipse based open source commercial game editor that is built on top off (and for) the Phaser HTML5 game framework. Create game engines using a WYSWYG style...</description>
+      <category domain="https://phasereditor2d.com/blog/category/tutorials">Tutorials</category>
+      <pubDate>Fri, 24 Jan 2020 21:16:12 -0600</pubDate>
+    </item>
+    <item>
+      <title>Phaser Editor v2.1.6 released</title>
+      <link>https://phasereditor2d.com/blog/2020/01/phaser-editor-v216-released</link>
+      <description>Hi! Phaser released its 3.22.0 version and as usual, we are updating Phaser Editor v2 to keep it in synchronization with Phaser. Download Phaser Editor v2.1.6 Also, this new release includes some bug...</description>
+      <category domain="https://phasereditor2d.com/blog/category/release">Release</category>
+      <pubDate>Tue, 21 Jan 2020 11:08:54 -0600</pubDate>
+    </item>
+  </channel>
+</rss>

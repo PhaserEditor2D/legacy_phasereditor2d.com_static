@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2.1.2 released (important bug fixes) | Phaser Editor 2D Blog</title>
+  <meta name="description" content="Phaser Editor v2.1.2 release for important bug fixes related to the Scene Editor.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2.1.2 released (important bug fixes)</h1>
+        <p class="text-info">July 06, 2019 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/v2.1.2/multiple-windows.png" alt="Phaser Editor 2.1.2 released (important bug fixes)"></p>
+        <div class="lead"><p>Hi,</p>
+<p>Today we are releasing Phaser Editor v2.1.2 with important fixes.</p>
+<p><a href="/blog/downloads/">Download Phaser Editor 2D v2.1.2</a></p>
+<!-- index-start -->
+<ul>
+<li><a href="#games-and-tutorials">Games and tutorials</a></li>
+<li><a href="#scene-editor">Scene Editor</a></li>
+<li><a href="#paint-loop">Paint loop</a></li>
+<li><a href="#keys-processing">Keys processing</a></li>
+<li><a href="#optimizing-hit-tests">Optimizing hit tests</a></li>
+<li><a href="#multiple-windows">Multiple windows</a></li>
+<li><a href="#filtering-node-modules-and-git-folders">Filtering node_modules and git folders</a></li>
+<li><a href="#asset-pack-editor">Asset Pack Editor</a></li>
+<li><a href="#start-view-links">Start view links</a></li>
+<li><a href="#whats-next">What’s next</a></li>
+</ul>
+<!-- index-end -->
+<h2>Games and tutorials {#games-and-tutorials}</h2>
+<p>If you are creating games, tutorials or any other content (no matter if it is your first project) with Phaser Editor, please, tell us, we are more than happy to feature it in our website, newsletter and social channels.</p>
+<h2>Scene Editor {#scene-editor}</h2>
+<h3>Paint loop {#paint-loop}</h3>
+<p>Thanks to the Github user <a href="https://github.com/j2l">@j2l</a>, who found the Scene Editor was consuming all the CPU and GPU: <a href="https://github.com/PhaserEditor2D/PhaserEditor/issues/127">#127: I noticed the GPU went loco with PhaserEditor</a>.</p>
+<p>We fixed an important part of the bug, and we need you to test the fix and report if you notice a high consumption of your CPU/GPU. The Scene Editor runs Phaser inside an embedded browser to render the scene. By default, Phaser runs an update/render loop at a high FPS. We stop that loop and update the screen only when it is needed. But this bug was starting the loop after a new image was loaded in the scene. A huge canvas (like that used by the Scene Editor) running at 60 FPS is a big problem.</p>
+<p>We added a new <strong>Debug Paint Calls</strong> parameter in the WebView section. When it is enabled, the Scene Editor shows the number of paints. You can keep an eye to that number, that should be incremented only by demand when you move the camera or change the scene content. If you see it is incremented too fast and does not stop, please, report it in our <a href="https://github.com/PhaserEditor2D/PhaserEditor/issues">GitHub Issues</a>.</p>
+<p><img src="/blog/content/images/v2.1.2/debug-paint-calls.png" alt="Debug paint calls"></p>
+<p>If you experience a wrong behavior a browser refresh could be a workaround, but please, report it.</p>
+<p><img src="/blog/content/images/v2.1.2/refresh-scene-editor.png" alt="Refresh Scene Editor"></p>
+<h3>Keys processing {#keys-processing}</h3>
+<p>The embedded browser technique (WebView) we use in the Scene Editor presents some challenges. Not all keys pressed in the browser are propagated to the IDE. For example, <code>Ctrl+A</code>, <code>Ctrl-X</code>, <code>Ctrl+Y</code>, etc… Before we implemented a listen-all-system-keys strategy, to catch all the keys, but it never worked 100%. Now we implemented a new strategy, we catch these special keys in the browser and send it to the IDE via websocket. It is working better now. If you find any bug here, please, report it.</p>
+<h3>Optimizing hit tests {#optimizing-hit-tests}</h3>
+<p>When you have interactive game objects, Phaser runs hit tests each time you move the mouse. We implemented a way to perform the hit tests by demand (when you click on the scene). This way should reduce the resources consuming of the Scene Editor.</p>
+<h2>Multiple windows {#multiple-windows}</h2>
+<p>Do you know you can open many windows in Phaser Editor? It is a feature inherited from Eclipse IDE. This could be a nice practice, especially for those who work with multiple monitors. You can show the Scene perspective in a window and the Phaser Labs perspective in another window (without the need to run two instances of the editor). We are thinking about how to get more advantage of this feature, but for now, we fixed some related bugs:</p>
+<ul>
+<li>We fixed a “Widget disposed” error when you close a window. That error is emitted by the main toolbar we introduced in the last release.</li>
+<li>We use a hidden WebView to create snapshots of the scene files, that is created as a child of a window. Now if you close that window a new hidden browser is created in any other available window.</li>
+</ul>
+<p><img src="/blog/content/images/v2.1.2/multiple-windows.png" alt="Multiple windows"></p>
+<h2>Filtering node_modules and git folders {#filtering-node-modules-and-git-folders}</h2>
+<p>We noticed in a video from a user that Phaser Editor delays a lot opening a project. After investigating the issue, we found the user included a <code>node_modules</code> folder in the <code>WebContent</code> folder. That’s not good. Phaser Editor scans all the files of the <code>WebContent</code> folder looking for asset pack files, scene files, atlas files, etc… Sometimes, to detect the content type of a file, it has to read the whole file, so, if you have a lot of files that process will take a lot.</p>
+<p>The practice we recommend is to create a project for the server-side (where nodejs runs) and another project for the game (client-side). Or you can create resource filters, to exclude the <code>node_modules</code> from the Phaser Editor project. By the way, you should exclude <code>.git</code> folders too.</p>
+<p>The good news is that now new projects are created with those filters by default. This means, <code>node_modules</code> and <code>.git</code> folders will be excluded from the project.</p>
+<p><img src="/blog/content/images/v2.1.2/create-resource-filters.png" alt="Resource filters"></p>
+<h2>Asset Pack Editor {#asset-pack-editor}</h2>
+<p>We removed a confusing copyright message in the Asset Pack Editor files <a href="https://github.com/PhaserEditor2D/PhaserEditor/issues/128">#128</a>.</p>
+<h2>Start view links {#start-view-links}</h2>
+<p>Fixed the URL of the links to open the Phaser Editor website.</p>
+<h2>What’s next {#whats-next}</h2>
+<p>This release was not in the plan, but the CPU/GPU related bug is an important one, and we had to spend time to fix it. If everything going well, we will continue writing the Phaser Editor v2 documentation. We just finished the first chapter: <a href="https://phasereditor2d.com/docs/v2/first-steps.html">First Steps</a>. You can read our <a href="https://phasereditor2d.com/blog/2019/06/phaser-editor-211-released#whats-next">main roadmap</a> in the notes of the previous release.</p>
+<p>Keep in contact!
+<br>
+Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/bug-fixes">bug-fixes</a>, <a href="/blog/tag/bug-fixes">bug fixes</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

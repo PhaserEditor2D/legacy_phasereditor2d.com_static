@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.33.2 released &amp;amp; plugins updates. | Phaser Editor 2D Blog</title>
+  <meta name="description" content="A new version with bug fixes and improvements for better supporting plugins. NinePatch &amp;amp; RoundedRectangle plugins updates.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.33.2 released &amp;amp; plugins updates.</h1>
+        <p class="text-info">June 01, 2022 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20220601090539-release3.33.2-20220601.jpeg" alt="Phaser Editor 2D v3.33.2 released &amp;amp; plugins updates."></p>
+        <div class="lead"><p>Hi!</p>
+<p>A new Phaser Editor 2D version is available. This is a minor release, with bug fixes and small changes for better supporting third-party plugins.</p>
+<p>At the same time, I’m publishing new versions of the NinePatch and RoundedRectangle plugins.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.33.2</a></p>
+<h2>Bug fixes &amp; improvements</h2>
+<ul>
+<li>Fixes the Size tool modifiers for objects with different origins.</li>
+<li>Origin tool allows custom origin properties (like in a NinePatchContainer).</li>
+<li>Fixes layout commands for objects with custom origin properties.</li>
+<li>Scene Editor: skips refreshing the whole scene after the paste operation. Fixes the object’s loader extensions.</li>
+<li>Fixes tilemap’s field code generation.</li>
+<li>Fixes tilemap’s layer selection in the scene.</li>
+<li>Exports Tint properties to third-party plugins.</li>
+<li>Adds an Alpha component to the Container game object.</li>
+<li>Avoids browser-caching of plugin resources.</li>
+</ul>
+<h2>NinePatch plugin updates</h2>
+<p>The <a href="https://npmjs.com/package/phasereditor2d-ninepatch-plugin">phasereditor2d-ninepatch-plugin</a> now has two new game objects: <strong>NinePatchImage</strong> and <strong>NinePatchContainer</strong>.</p>
+<p>The <strong>NinePatchImage</strong> implements the NinePatch interface but extends the <code>Phaser.GameObjects.Image</code> class. It means, your ninepatch object is a simple image. How does it work? Because the texture of the image is generated dynamically (or taken from the cache) each time you request to redraw the object. This implementation is really fast when you have many ninepatch objects sharing the same texture and properties. It also gets some of the features of images, like tint, and alpha.</p>
+<p>The <strong>NinePatchContainer</strong> object implements the NinePatch interface but extends the <code>Phaser.GameObjects.Container</code> class. It means, it is a container and the different patches are rendered as images. This implementation is fast and consumes small memory.</p>
+<p><a href="https://github.com/PhaserEditor2D/phasereditor2d-ninepatch-plugin">Learn more about the NinePatch plugin</a></p>
+<h2>New RoundedRectangleGraphics plugin</h2>
+<p>I published a new <a href="https://www.npmjs.com/package/phasereditor2d-roundedrectanglegraphics-plugin">phasereditor2d-roundedRectangleGraphics-plugin</a>. It is an improvement of the older <a href="https://www.npmjs.com/package/phasereditor2d-roundedrectangle-plugin">RoundedRectangle plugin</a>, that is now deprecated.</p>
+<p>If you are using the old RoundedRectangle plugin, I encourage you to migrate to this new plugin.</p>
+<p>This new plugin provides two game objects: RoundedRectangleGraphics and RoundedRectangleImage.</p>
+<p>The <strong>RoundedRectangleGraphics</strong> extends the <code>Phaser.GameObjects.Graphics</code> class. It provides features like the radius of the four corners, and the offset of the shadow on the four sides. Graphics game objects may be slow on certain devices/browsers. If possible, use the <strong>RoundedRectangleImage</strong> instead.</p>
+<p>The <strong>RoundedRectangleImage</strong> implements the same interface of the RoundedRectangleGraphics, but it extends the <code>Phaser.GameObjects.Image</code> class. When you call the redraw method, the texture of the image is rendered on the fly or gets a previous texture from the cache. I recommend using this object if you have many rounded rectangles sharing the same properties.</p>
+<p><a href="https://github.com/PhaserEditor2D/phasereditor2d-roundedRectangleGraphics-plugin">Learn more about the RoundedRectangleGraphics plugin</a></p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/plugins">plugins</a>, <a href="/blog/tag/fixes">fixes</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

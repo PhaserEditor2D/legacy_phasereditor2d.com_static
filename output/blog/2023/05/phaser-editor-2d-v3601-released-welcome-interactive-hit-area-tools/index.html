@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.61.0 released. Welcome interactive hit area tools! | Phaser Editor 2D Blog</title>
+  <meta name="description" content="Set an object&amp;#039;s interactive area with the new hit-area tools. Improved Object List, nested prefabs, and the new LOCAL variable scope.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.61.0 released. Welcome interactive hit area tools!</h1>
+        <p class="text-info">May 18, 2023 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20230518075311-release-3.61.0.jpeg" alt="Phaser Editor 2D v3.61.0 released. Welcome interactive hit area tools!"></p>
+        <div class="lead"><p>Hi!</p>
+<p>I am excited to share the latest release of Phaser Editor 2D v3.61.0! This version brings some exciting new features, including the Hit-Area tool, enhancements to nested prefabs, and the addition of a new variable scope called LOCAL.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.61.0</a></p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor 2D, please tell me, and I will be proud to feature it on the website, newsletter, and social channels.</p>
+<h3>Paper Dog Dash</h3>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230501082610-gLy5gM.png" alt="image"></p>
+<p>A new game made with Phaser Editor 2D, by <a href="https://gregwoodsfrontier.itch.io">gregwoodsfrontier</a> (I love the dog)</p>
+<blockquote>
+<p>Local good boy delivers newspaper to local residents.</p>
+<p>Deliver your papers before TIME runs out.</p>
+</blockquote>
+<p><a href="https://gregwoodsfrontier.itch.io/paper-dog-dash">Play it here</a></p>
+<h2>Hit Area tools</h2>
+<p>Finally, a tool for setting the interactive hit area of an object is available! Before I used user components, script nodes, or hand-written code to set the hit area, but now we have a tool for that.</p>
+<p>So, for enabling an interactive area, go to the <strong>Hit Area</strong> section in the Inspector view and select the shape of the area:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230518082226-hit-area.jpeg" alt="Hit area"></p>
+<p>You can change the hit area with the <strong>Hit Area Tool</strong> (<code>I</code>). It allows dragging the handlers for changing the position, size, radius, vertex, etc…</p>
+<p>You can select between the shapes: RECTANGLE, ELLIPSE, CIRCLE, POLYGON, and PIXEL_PERFECT. And NONE, for disabling the hit area.</p>
+<p>It will generate a code like this:</p>
+<pre><code class="language-javascript">// wizball
+const wizball = this.add.image(191, 161, &quot;wizball&quot;);
+wizball.setInteractive(
+    new Phaser.Geom.Circle(46, 46, 46),
+    Phaser.Geom.Circle.Contains);
+</code></pre>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/input-hit-area.html">Learn more about the interactive area</a></p>
+<h2>Nested prefabs enhancement</h2>
+<p>Starting today, you can declare any object in the object tree of a prefab as a nested prefab. Before, you were able to declare as nested prefab only the children of the root object or children of another nested prefab. This is not a requirement anymore, and I hope it will make your prefabs cleaner.</p>
+<p>You will probably not notice this change in your games but I had to spend a lot of energy and time implementing it, because of its complexity. Also, I had to introduce a new format for the <code>.scene</code> files, that is backward compatible but is not compatible if you open it with previous versions of the editor. If you are working in a team, be sure all the teammates are using the same version of the editor.</p>
+<h2>A new variable scope: LOCAL.</h2>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230518092315-variable-scope.jpeg" alt="Variable scopes"></p>
+<p>Sometimes, you need to reference an object in the create method, so you need the scene compiler to generate a variable for it. For example, if you have a user property that uses a third object in the create method. Before we didn’t have a way to force the generation of a variable for an object unless you declare the object with a CLASS, PUBLIC, or NESTED_PREFAB scope, but it has the inconvenience that it also generates a field for it.</p>
+<p>Now, we changed it, and the METHOD scope will force the creation of a method variable for an object. And introduced a new scope, LOCAL, which is like the previous METHOD scope, it means, the generation of a variable depends on the properties set to the object.</p>
+<p>The new LOCAL scope is the default scope for an object.</p>
+<p>These are backward-compatible changes, but previous versions of the editor are not going to understand the new LOCAL and METHOD scopes, so be sure all your team is using the same version of the editor.</p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/variable-properties.html?highlight=scope#scope-property">Learn more about variable scopes</a></p>
+<h2>Object List items in the Outline view</h2>
+<p>Now the Outline view shows the items of an Object List. This allows you to order the items using the <code>PageUp</code>, <code>PageDown</code>, <code>Home</code>, and <code>End</code>.</p>
+<p>It also allows deleting an item by selecting it and pressing the <code>Delete</code> command:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230518091459-object-list.jpeg" alt="Object list in the outline view"></p>
+<h2>Miscellaneous</h2>
+<ul>
+<li>
+<p>The Outline view shows some extra info next to the object name. The extra info is in the form of tags, like <code>#nested_prefab_inst</code>, <code>#prefab_inst</code>, <code>#script</code>, <code>#scope_public</code>, <code>#scope_local</code>, etc…</p>
+</li>
+<li>
+<p>The Script Node prefabs are not shown in the Blocks view anymore. You can add them with <code>U</code> command.</p>
+</li>
+</ul>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/script-node-create.html">Learn more about adding script nodes</a></p>
+<ul>
+<li>Excludes script node prefabs from the Blocks view when editing a non-script node scene.</li>
+</ul>
+<h2>Compatibility</h2>
+<p>This new version of the editor can work on the scene files of previous versions of the editor, but the old versions of the editor can’t open the scene files modified by this new editor. Please, be sure all your team is using the same version of the editor.</p>
+<h2>Bug fixes</h2>
+<ul>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/282">#282</a> Use full nested prefab path in user object variable properties.</li>
+</ul>
+<h2>What’s next?</h2>
+<p>The new features I did for this release are for a purpose, I want to make a new tutorial about script nodes.</p>
+<p>I know the script nodes are a very new feature and may create confusion in the way you can use them. Myself are exploring the ways I can use the script nodes in my games. So, I want to make a series of videos to explain how to use the script nodes in a game.</p>
+<p>Yet I have to keep working on the FX objects, but it will be after I finish the script node tutorial.</p>
+<p>By the way, I’m posting every day on Twitter, Facebook, and LinkedIn, about <a href="https://twitter.com/hashtag/PhaserEditor2DTips">#PhaserEditor2DTips</a>. Follow me!</p>
+<p>Kind regards,</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/hit-area">hit-area</a>, <a href="/blog/tag/object-list">object-list</a>, <a href="/blog/tag/nested-prefabs">nested-prefabs</a>, <a href="/blog/tag/hit-area">hit area</a>, <a href="/blog/tag/object-list">object list</a>, <a href="/blog/tag/nested-prefabs">nested prefabs</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

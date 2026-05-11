@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to install TypeScript IDE in Phaser Editor v1.4.2 | Phaser Editor 2D Blog</title>
+  <meta name="description" content="Step by step guide to install a TypeScript plugin inside Phaser Editor.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>How to install TypeScript IDE in Phaser Editor v1.4.2</h1>
+        <p class="text-info">September 12, 2017 - Posted in <a href="/blog/category/typescript">typescript</a></p>
+        
+        <div class="lead"><p>Hi,</p>
+<p>This is a small guide to install <a href="https://github.com/angelozerr/typescript.java">TypeScript IDE</a> inside Phaser Editor.</p>
+<p>The TypeScript IDE is a new plugin for Eclipse that includes TypeScript and JavaScript text editors. The plugin is inspired by <a href="https://code.visualstudio.com">Visual Studio Code</a> and uses the TypeScript Server (<a href="https://github.com/Microsoft/TypeScript/wiki/Standalone-Server-%28tsserver%29">tsserver</a>) from Microsoft to provide intellisense for both languages.</p>
+<p>In Phaser Editor the JavaScript editor (JSDT) is not modern and do not support JavaScript 6, for that reason TypeScript IDE is the option we recommend for these kind of projects. For the next release we plan to replace the current outdated JavaScript editor by this new plugin.</p>
+<p><strong>Step 1: Download the latest Phaser Editor</strong></p>
+<p>The current version of Phaser Editor is v1.4.2, please update to that version or download a fresh install.</p>
+<p><strong>Step 2: Add required Software Sites</strong></p>
+<p>TypeScript IDE depends on Eclipse Neon and Oxygen, so you need to add those update sites to the editor. (A fresh install of Phaser Editor v1.4.2 already contains that references, so you can skip this step)</p>
+<p>Just open preferences page at <code>Windows &gt; Preferences &gt; Install/Update &gt; Available Software Sites</code> and add the following update sites (if not present):</p>
+<p>Name: <code>Neon</code>
+Location: <code>http://download.eclipse.org/releases/neon</code></p>
+<p>Name: <code>Oxygen</code>
+Location: <code>http://download.eclipse.org/releases/oxygen</code></p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20170912084935-AddUpdateSite.png" alt="Add update sites"></p>
+<p><strong>Step 2: Install TypeScript IDE</strong></p>
+<p>To install the TypeScript IDE plugin click on <code>Help &gt; Eclipse Marketplace..</code>. It opens a window with all the plugins available in the marketplace, just type <code>typescript ide</code> in the search field to find the plugin:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20170912085953-TS_marketplace.png" alt="TypeScript IDE in marketplace"></p>
+<p>Click on the Install button to start the installation process. The first screen asks for the confirmation of the features to be installed, keep the default values and press Confirm.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20170912090306-InstallPage1.png" alt="Confirm features to install"></p>
+<p>The second window is about to accept the terms of the licenses. Accept it and press Finish, the plugin will be downloaded and installed in the background:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20170912100147-InstallProgress.png" alt="Installation progress"></p>
+<p>When the installation is complete it will ask for a restart, do it.</p>
+<p><strong>Step 3: Create a new Phaser project</strong></p>
+<p>Let’s see if all is working. Click on <code>File &gt; New &gt; Phaser Project</code>. It opens the project wizard, set the name of the game and click Next. In the project parameters page, select <code>TypeScript</code> in the Language combo:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20170912103808-NewProject_TS.png" alt="Create a TS project"></p>
+<p>Press Finish and wait the files are copied, the <code>Level.canvas</code> file should be opened in the scene editor. Press the “Show Code” button to open the source editor:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20170912110352-ShowCode.png" alt="Show scene code"></p>
+<p>The TypeScript editor should be opened, with the code of the scene. Just write something there to check the intellisense is working:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20170912110728-TypeScript_sourceEditor.png" alt="TypeScript editor"></p>
+<p><strong>Step 4: Configure the TypeScript project</strong></p>
+<p>Like in Visual Studio Code, the TypeScript compiler is configured in the <code>tsconfig.json</code> file. Phaser Editor generates that file for you, but you can open it to set other parameters:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20170912111044-ConfigureCompiler.png" alt="Configure TypeScript project"></p>
+<p>You can read more about these parameters here:</p>
+<p><a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">https://www.typescriptlang.org/docs/handbook/tsconfig-json.html</a></p>
+<p><strong>Step 5: Configure the JavaScript 6 project</strong></p>
+<p>When you select JavaScript 6 as the language of the project, a TypeScript IDE project is created, but with JavaScript support. The TypeScript Server supports JavaScript and it is a nice choice to edit this language.</p>
+<p>Note when you create a JavaScript 6 project, a <code>jsconfig.json</code> file is created. This file is used to configure the JavaScript tooling. You can read more here:</p>
+<p><a href="https://code.visualstudio.com/docs/languages/jsconfig">https://code.visualstudio.com/docs/languages/jsconfig</a></p>
+<h2>Known issues</h2>
+<p>Some users experience problems compiling the TypeScript files. Our recommendation is to avoid using the automatic builder provided by TypeScript IDE and use the TypeScript compiler watch mode. Please check these issues on GitHub:</p>
+<p><a href="https://github.com/PhaserEditor2D/PhaserEditor/issues/65">#65</a>
+<a href="https://github.com/PhaserEditor2D/PhaserEditor/issues/66">#66</a></p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/plugin">plugin</a>, <a href="/blog/tag/typescript">typescript</a>, <a href="/blog/tag/javascript6">javascript6</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

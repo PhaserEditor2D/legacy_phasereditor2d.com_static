@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor v3.11.0 released! | Phaser Editor 2D Blog</title>
+  <meta name="description" content="This release brings a lot of new features and bug fixes!">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor v3.11.0 released!</h1>
+        <p class="text-info">March 05, 2021 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20210304195256-go-to-scene-file.png" alt="Phaser Editor v3.11.0 released!"></p>
+        <div class="lead"><p>Hi!</p>
+<p>Today I’m releasing v3.11.0 of Phaser Editor 2D!</p>
+<p>This version brings a couple of bug fixes and features, like the new assets filtering and grouping.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.11.0</a></p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor 2D, please tell us, and we will be proud to feature it in our website, newsletter, and social channels.</p>
+<h2>Collaboration</h2>
+<p>A lot is happening in our <a href="https://discord.com/invite/4DdpMMD">Discord server</a>. Join us for collaboration. Ask questions or tell us your ideas. Your feedback is highly appreciated and is very important in the process of providing a more friendly and stable IDE.</p>
+<h2>Tab sections in the Blocks view</h2>
+<p>I introduced a new UI element: the tab sections:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304133005-blocks-view-tab-sections.png" alt="Tab sections of the Blocks view"></p>
+<p>A tab section is like a label or sub-tab of a view. You can select one or none. It is a general concept but, in the Blocks view, is used for filtering the content.</p>
+<p>In the above image, there is the Blocks view of the Scene Editor. It shows the <strong>Built-in</strong>, <strong>Prefabs</strong>, and <strong>Assets</strong> tab sections. When you select a tab section, the content of the view is filtered and shows only the related elements:</p>
+<ul>
+<li><strong>Built-in</strong>: it only shows the type of objects you can add to the scene.</li>
+<li><strong>Prefabs</strong>: it only shows the prefab files you can add to the scene.</li>
+<li><strong>Assets</strong>: it only shows the assets defined in the Asset Pack files.</li>
+</ul>
+<p>Selecting a tab section is entirely optional. I hope it will help you on finding the right blocks quickly.</p>
+<p>In future releases, it should allow creating custom tab-sections, using text filters or scopes.</p>
+<h2>Assets grouping</h2>
+<p>Now you can change how the assets are grouped in the Blocks view and certain dialogs. Like in previous versions, the default grouping of the assets is based on the asset’s type. With the new changes, you can group the assets by the Asset Pack, or the file location of the asset.</p>
+<p>All the grouping options are shown in the context menu of the viewer:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304134829-grouping-options.png" alt="Grouping options"></p>
+<p><strong>Group Assets by Type</strong></p>
+<p>It groups the assets using the type, like Image, Atlas, Prefab:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304141106-group-assets-by-type.png" alt="Group assets by type"></p>
+<p><strong>Group Assets by Asset Pack File</strong></p>
+<p>As you may know, all the assets are imported into the game using an Asset Pack file:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304182246-grouping-assets-by-pack-file.png" alt="Grouping assets by pack file"></p>
+<p><strong>Group Assets by Location</strong></p>
+<p>This option groups the assets by the parent folder:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304182426-grouping-assets-by-location.png" alt="Grouping assets by location"></p>
+<p><strong>Grouping assets in the Select Texture dialog</strong></p>
+<p>These options are also available in the Select Texture dialog:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304182759-select-texture-dialog-grouping.png" alt="Select texture dialog assets grouping"></p>
+<h2>Adding objects to the scene</h2>
+<p>In the initial release of v3, the editor provided a dialog for adding a new object to the scene. This dialog was replaced by the <strong>Built-in</strong> section in the Blocks view. That was a bad choice since many of you were very familiar with that dialog. So, in this release, I revived it for you. You can open the <strong>Add Object</strong> dialog with the <code>A</code> key or with the context menu:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304183922-add-dialog.png" alt="Add dialog"></p>
+<p>I also included the <strong>Add Object</strong> context menu. It shows all the built-in types, so you can select the kind of object you want to add:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304184123-add-object-context-menu.png" alt="Add Object content menu"></p>
+<p>Also, with the new <strong>Built-in</strong>  tab-section available in the Blocks view, you get the blocks dedicated only for the primitive types:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304184526-built-in-tab-section.png" alt="Built-in tab section"></p>
+<h2>Visible property</h2>
+<p>I added a new command (<code>V</code>) to toggle the visible property of the selected objects. Now, if an object is not visible, the Outline view shows it with a “hidden” message:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304190057-hidden-objects-in-outline-view.png" alt="Hidden objects in the Outline view"></p>
+<h2>SVG assets in the Blocks view</h2>
+<p>I included the SVG assets in the Blocks view of the Scene Editor. SVG support is a bit confusing, you can import it as an SVG asset or as a common image asset. Phaser provides some advantages when you import an SVG image with the SVG method, for example, it allows scaling the image at loading time. This particular feature is not available in the editor yet, but showing the SVG assets in the Blocks view may help some of you, like Glenn Wichman <a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/110">#110</a> (author of the original Rogue?!?!?)</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304192036-scene-editor-blocks-svg-support.png" alt="SVG support in Blocks view"></p>
+<h2>Changing the object’s frame</h2>
+<p>I included a new command and dialog to change the texture’s frame of an object. With the <code>M</code> key, you launch the <strong>Select Texture Frame</strong> dialog. It is just like the <strong>Select Texture</strong> dialog, but only shows the frames of the current texture of the object:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304192701-select-texture-frame-dialog.png" alt="Select Texture Frame dialog"></p>
+<p>This option is also available in the Texture context menu:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304192845-replace-texture-context-menu.png" alt="Replace Texture Frame menu"></p>
+<h2>Open texture in the Asset Pack Editor</h2>
+<p>I included a new <strong>Show Texture in Asset Pack Editor</strong> option in the Texture section of the Inspector view. It opens the pack file where the texture is imported:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304193542-texuture-section-open-pack-file.png" alt="Open object's texture in the Asset Pack Editor"></p>
+<p>This option is also available in the Texture context menu.</p>
+<h2>Adding objects to a List</h2>
+<p>Now you can create a new Object List (a simple array) and add the selected objects to it, with a single click:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304194007-add-object-to-new-list.png" alt="Ad object to new list"></p>
+<h2>New method for panning the scene</h2>
+<p>You can pan the scene using the Pan Tool (press the <code>Space</code> key to enable/disable it) or holding the middle button of the mouse and dragging it.  Now, also you can pan the scene by holding the <code>Alt</code> key and dragging the mouse with the left button pressed. It may help you if a mouse isn’t available.</p>
+<h2>Shortcut for opening a scene file</h2>
+<p>The new <strong>Go To Scene</strong> command (<code>Ctrl+Alt+O</code>) opens a dialog with all the scene files. You can select one for opening it. The files are grouped by type (<strong>Scene</strong> or <strong>Prefab</strong>), but also you can change the grouping for the file location:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304195256-go-to-scene-file.png" alt="Go to scene file command"></p>
+<h2>Opening the external editor</h2>
+<p>The scene files and component files are compiled into JavaScript code. For example, a <code>Level.scene</code> file is compiled into a <code>Level.js</code> file. A new command (<code>Ctrl+Alt+E</code>) is available to open the output file (<code>Level.js</code>) in the configured external editor (VS Code by default). The command is enabled when the Scene Editor or the User Components editor is active.</p>
+<h2>Asset Pack Editor</h2>
+<p>In this version, you can set the scale of the SVG assets. However, it is only useful if you plan to use it outside the Scene Editor. In the future, I should implement the scaling in the Scene Editor:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304201206-svg-type.png" alt="SVG asset properties"></p>
+<p>Now the files shown in the Blocks view of the Asset Pack Editor are grouped by the parent folder:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304201358-asset-pack-editor-blocks.png" alt="Asset Pack Editor blocks grouping"></p>
+<h2>Viewer filtering</h2>
+<p>The filtering of the viewers is yet too basic. It looks for substrings of the label of the shown items. This version brings a small improvement: you can write multiple words separated by spaces, and the viewer will match all labels containing all words, in the same order:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304204742-viewer-advacing-filtering.png" alt="Viewer new filtering"></p>
+<p>Look the matching characters are underlined.</p>
+<p>Concerning viewers,  now all of them have a context menu and a three-dots menu next to the filter text:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210304205113-three-dots-menu.png" alt="Three dots menu"></p>
+<h2>Other additions</h2>
+<ul>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/103">#103</a>: Close editor’s tab with the mouse middle button.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/109">#109</a>: Double click a folder to expand.</li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>Scene Editor: Change Texture dialog allows selecting a texture with a double-click.</li>
+<li>Scene Editor: <code>Text.lineSpacing</code> is ignored in code generation when it has the default value (<code>0</code>).</li>
+<li>Scene Editor: keeps the same origin when changing the texture.</li>
+<li>Scene Editor: uses <code>Array&lt;any&gt;</code> as type for an empty ObjectList.</li>
+<li>Scene Editor: fixes code generation of the Text’s <code>lineSpacing</code> property.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/112">#112</a> Asset Pack: skipping frames from spritesheets.</li>
+</ul>
+<h2>What’s next?</h2>
+<p>In the past two months, I collaborated with a local company on making some Phaser-based websites and games. It is a temporal collaboration, and that’s great because when I use Phaser Editor 2D in “real projects”, I get a lot of feedback from teammates and myself :-). This release has a lot of small changes and fixes requested by you, but also found by me while making the games.</p>
+<p>For the next release, the plan is to work on the GitHub issues reported by you, like providing better support for JavaScript modules and 9-slice scaling.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/filtering">filtering</a>, <a href="/blog/tag/viewer">viewer</a>, <a href="/blog/tag/grouping">grouping</a>, <a href="/blog/tag/assets">assets</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.9.2 released. Loading large projects. | Phaser Editor 2D Blog</title>
+  <meta name="description" content="New hotfix release to improve UI responsiveness dealing with large projects.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.9.2 released. Loading large projects.</h1>
+        <p class="text-info">December 06, 2020 - Posted in <a href="/blog/category/release">release</a></p>
+        
+        <div class="lead"><p>Hi!</p>
+<p>We just released v3.9.2! The second hotfix for version 3.9.x.</p>
+<p>We were working closely with a team who has a huge project (with lots of images, scenes, and prefabs) on improving the responsiveness of the editor.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.9.2</a></p>
+<p>Finally, we managed to improve some UI elements (especially tree/grid viewers) and the result is satisfactory. If you are working on a sized project, we strongly recommend updating the editor.</p>
+<h2>Scene Editor</h2>
+<p>As you may know, we generate a thumbnail image of each scene of the project. We use that image to show the prefab files in the Blocks view or preview of the scenes in the Inspector view. Now, those thumbnail images are cached in a browser Indexed DB. It means, the second time you open a project, it will not request all the resources needed to create the scene thumbnail images.</p>
+<p>You can clear the thumbnail cache by opening the Commands Platter and executing the <strong>Scene Editor: Clear Scene Thumbnail Cache</strong> command.</p>
+<p>We also improved the method to “screenshot” a scene. Now, scenes and prefabs based on containers has more accurate thumbnails. Basically, what we do is to flatten the scene into a list of objects with absolute positions, then we compute the scene bounds.</p>
+<h2>Viewers</h2>
+<p>As we mentioned at the beginning, we improved the way viewers display the project content. We did a better job on loading only the files needed to “paint” the viewers. You should not experience a “freeze” on the UI when you filter the viewers. Also, we realized that “text measuring” is an expensive operation and has a huge impact on performance when you are display lot of items. We improved that method too, using a cache or char and text measuring.</p>
+<h2>Other changes</h2>
+<ul>
+<li>Fixed a layout issue with dialogs based on viewers.</li>
+<li>Dialogs based on viewers allow to open items with the <code>Enter</code> key.</li>
+<li>The Electron-based editor does not disable gzip of text files. It improves loading times.</li>
+</ul>
+<h2>What’s next?</h2>
+<p>Phaser v3.50 support!</p>
+<p>Keep in contact,</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/hotfix">hotfix</a>, <a href="/blog/tag/large-projects">large-projects</a>, <a href="/blog/tag/preload">preload</a>, <a href="/blog/tag/large-projects">large projects</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

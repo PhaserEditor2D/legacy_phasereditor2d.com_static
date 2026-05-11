@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.63.0 released. Welcome Spine animations! | Phaser Editor 2D Blog</title>
+  <meta name="description" content="Are you making skeleton-based animations? This release is for you.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.63.0 released. Welcome Spine animations!</h1>
+        <p class="text-info">September 28, 2023 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20230926110922-release363.jpeg" alt="Phaser Editor 2D v3.63.0 released. Welcome Spine animations!"></p>
+        <div class="lead"><p>Hi.</p>
+<p>Today I’m releasing a new version of Phaser Editor 2D. It comes with a long-time-awaited feature: Spine animation support.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.63.0</a></p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor 2D, please tell me, and I will be proud to feature it on the website, newsletter, and social channels.</p>
+<h3>Japan Journey</h3>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230926104304-8b3sTT.png" alt="japan journey"></p>
+<p>A new game made with Phaser Editor 2D, by <a href="https://twitter.com/CodestarCreates">CodestarCreates</a></p>
+<blockquote>
+<p>Journey with PremierTwo and Ironmouse on a mission to raise as many donations as possible for the IDF! Blast through Hokkaido on the Cyclathon and give your best speech to raise morale for the gang, or chase down those dastardly trashy boys Donkey Connor, Crowey the Anime Bird, and Garbage Garnt to recover all the stolen cimmarolls!</p>
+</blockquote>
+<p><a href="https://codestarcreates.itch.io/japan-journey">Play Japan Journey</a></p>
+<h2>Welcome Spine</h2>
+<p><a href="https://esotericsoftware.com/">Spine</a> is one of the most popular tools for making 2D skeletal animations for games.</p>
+<p>If you follow the news about Phaser, maybe you are aware of the Spine team <a href="https://esotericsoftware.com/blog/spine-phaser-runtime">releasing an official runtime for Phaser</a>. I think it is a game changer for the Phaser community and I want to add first-class support to Spine in Phaser Editor 2D.</p>
+<p>This version of the editor comes with the first tooling about it and I love it. I migrated two of my games to Spine very quickly with the help of the editor.</p>
+<p>Following, I show you an overview of the new tools, but I recommend you <a href="https://help-v3.phasereditor2d.com/scene-editor/spine-animations.html">take a look at the documentation</a> and watch this small video:</p>
+<iframe width="100%" height="360" src="https://www.youtube.com/embed/4Vw4EcXC0Q8" title="[09-2023] Welcome Phaser Editor 2D Spine tools" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<h3>Spine assets</h3>
+<p>To use the Spine animations in the Scene Editor, first, you have to import the Spine assets into an asset pack file with the Asset Pack editor.</p>
+<p>This editor provides a preview of the atlas and skeleton assets:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230927101200-asset-pack-editor-20230927.jpeg" alt="Spine assets in the Asset Pack editor"></p>
+<p>Also, you can preview the skeleton animations:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230927101518-asset-pack-preview-animations-20230927.jpeg" alt="Spine animations preview in Asset Pack editor"></p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/spine-animations-loading.html">Learn more about the Spine assets</a></p>
+<h3>Spine game object</h3>
+<p>Now you can create Spine game objects in the Scene Editor. Just drag a Spine skin block from the Blocks view and drop it on the scene:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230927102707-add-spine-game-object-20230927.jpeg" alt="Add spine game object to the scene"></p>
+<p>With the Inspector view, you can edit some of the properties of the Spine game object: skeleton and images atlas, bounds provider, skin, and animation-related properties:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230927104605-spine-game-object-inspector-view.jpeg" alt="Spine game object properties"></p>
+<p>Here you can preview the game object animations, and edit some animation parameters like the animations mixes:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230927115357-spine-game-object-animations-preview.jpeg" alt="Spine game object preview"></p>
+<h3>User properties</h3>
+<p>Like any other game object, you can create prefabs of Spine game objects, and add user components and script nodes. Now there are new user property types related to Spine:</p>
+<p>The <a href="https://help-v3.phasereditor2d.com/scene-editor/prefab-user-properties-spine-skin-name.html">Spine Skin Name user property type</a> is for selecting a skin name from a list of all animations defined in all the skeletons:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230927120215-spine-skin-name-property-20230927.jpeg" alt="Spine Skin property"></p>
+<p>The <a href="https://help-v3.phasereditor2d.com/scene-editor/prefab-user-properties-spine-animation-name.html">Spine Animation Name user property type</a> is for selecting an animation from a list of all the animations in all the skeletons:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230927120759-spine-animation-property-20230927.jpeg" alt="Spine animation property"></p>
+<p>Also, the <a href="https://help-v3.phasereditor2d.com/scene-editor/prefab-user-properties-event-type.html">Event property type’s dialog</a> includes the custom Spine events defined in the skeletons:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230927142203-spine-user-property-event-20230927.jpeg" alt="Spine events"></p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/spine-animations-game-object.html">Learn more about the Spine game object in our documentation</a></p>
+<h3>Spine project template</h3>
+<p>If you are going to start with Spine and Phaser, then you can use this new <a href="http://marketplace.phasereditor2d.com/starters/spine/">Spine project template</a> available in the Phaser Editor 2D marketplace.</p>
+<p>It is also available in Phaser Editor 2D All-in-One.  When creating a new project, click on the “Get more in the Marketplace” link, and select <strong>Spine Starter</strong>:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230928214958-spine-project-template.jpeg" alt="Spine starter template in all in one"></p>
+<p>This is an overview of the new Spine tools. Please, take a look at the <a href="http://help-v3.phasereditor2d.com/scene-editor/spine-animations.html">editor’s documentation</a> for more details.</p>
+<h2>Prefab properties</h2>
+<p>Now the Prefab Properties section shows the links to the properties defined in the prefab. You can click on the link to edit the property:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230928215908-prefab-properties.jpeg" alt="Prefab properties links"></p>
+<h2>Events</h2>
+<p>The dialog of the Events user property type now shows icons:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20230928220008-events-property-type-icons-20230927.jpeg" alt="Events dialog icons"></p>
+<h2>Scene compiler</h2>
+<p>Now when you create a new <code>.scene</code> file the editor compiles it immediately. This way it is less confusing for new users.</p>
+<ul>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/249">249</a> Auto-compile the scene file when it is created.</li>
+</ul>
+<h2>Other</h2>
+<ul>
+<li>The editor shows a splash at the startup.</li>
+<li>Boosts booting speed, especially when opening in the cloud.</li>
+<li>All previous versions of Phaser Editor 2D All in One and Core are available for download <a href="http://updates.phasereditor2d.com/">here</a>.</li>
+<li><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/issues/289">#289</a> Fixes hit area computation on nested containers.</li>
+</ul>
+<h2>What’s next?</h2>
+<p>There is a lot to do about the Spine tools. Before continuing to work on new features, I want to hear some feedback from you. In the meantime, I will work on creating a better mechanism for encapsulating and installing script nodes and user components. If I finish it quickly, then I plan to work on supporting the new Phaser 3.60 FX.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/spine">spine</a>, <a href="/blog/tag/release">release</a>, <a href="/blog/tag/animations">animations</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

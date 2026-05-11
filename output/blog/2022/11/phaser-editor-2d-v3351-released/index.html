@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.35.1 released | Phaser Editor 2D Blog</title>
+  <meta name="description" content="A new minor version is ready. It contains bug fixes and a new way of presenting user components &amp;amp; prefab properties.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.35.1 released</h1>
+        <p class="text-info">November 03, 2022 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20221102212215-release3.35.1.jpeg" alt="Phaser Editor 2D v3.35.1 released"></p>
+        <div class="lead"><p>Hi!</p>
+<p>A new version of Phaser Editor 2D is ready for download!</p>
+<p><a href="https://phasereditor2d.com/downloads">Get Phaser Editor 2D v3.35.2</a></p>
+<p><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/releases/tag/v3.35.2">Update Nov 10, 2022: Phaser Editor 2D v3.35.2 released with bug fixes</a></p>
+<p>This release includes a new way of presenting the user components and the prefab properties.</p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor 2D, please tell me, and I will be proud to feature it on the website, newsletter, and social channels.</p>
+<h3>Game: Hokkaido Haul!</h3>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221022063125-HokkaidoHaul.png" alt="Hokkaido Haul"></p>
+<p>Thanks <a href="https://twitter.com/CodestarCreates">CodestarCreates</a> for sharing his game with us!</p>
+<blockquote>
+<p>Help the van gang make it to the end of the treacherous Hokkaido cycle! Bop bears and avoids drones while searching for root beer to give you the energy to give a rousing pep talk! Fill up your HYPE meter to gain more $$$ every 100kms!</p>
+</blockquote>
+<p>You can play it here: <a href="https://codestarcreates.itch.io/hokkaido-haul">https://codestarcreates.itch.io/hokkaido-haul</a></p>
+<h3>Video/Tutorial: Start making a Phaser game in the cloud</h3>
+<p>Lot of time I don’t make a new video tutorial… With this new video, I hope to start making a series of videos for helping you use Phaser Editor 2D.</p>
+<blockquote>
+<p>Most of us use Phaser Editor 2D on the desktop. In this video, I will show you how to run the editor in the cloud alongside VS Code. The trick is GitHub Codespaces, a service that provides a cloud development environment. And Phaser Editor 2D Core, an edition of the editor made for the cloud.</p>
+</blockquote>
+<p><a href="https://www.youtube.com/watch?v=lndU7UAjzgo">Watch the video</a></p>
+<h2>User Components Editor</h2>
+<p>I did some small changes to the User Components Editor. It now shows the properties as separated elements in the editor. It means, below each component, it shows the component’s properties. So, for editing a property you should select it in the editor:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221102231606-select-user-property.png" alt="Properties are independent elements"></p>
+<p>Searching for a particular property is now way easier:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221102231655-user-component-search-property.png" alt="Searching for properties"></p>
+<h3>The user components of an object</h3>
+<p>Now the user components of an object are shown as children of the object in the Outline view:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221102232101-object-components-outline.png" alt="Show user components in the Outline"></p>
+<p>For editing the properties of the component, you should select it:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221102232352-edit-user-component-props.png" alt="Edit user component properties"></p>
+<h2>Hiding user components of prefabs</h2>
+<p>As you know, when you are editing an instance of a prefab, you can change the properties of the user components present in the prefab. Now, you have the option of hiding a user component of a prefab in the prefab instances. This may be useful when the user components of a prefab contain data and behaviors useful only for the prefab and should not be tweaked in the prefab instances.</p>
+<p>Now you can hide a user component of a prefab by unmarking the <strong>Export</strong> parameter:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221102233124-export-parameter.png" alt="The export parameter"></p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/user-components-editor.html">Learn more about User Components in the docs</a></p>
+<h2>Prefab properties</h2>
+<p>In this new version, the user properties of a prefab are shown as separated elements, below the <strong>Prefab Properties</strong> element in the <strong>Outline</strong> view:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20221102233615-prefab-properties.png" alt="Prefab properties"></p>
+<p><a href="https://help-v3.phasereditor2d.com/scene-editor/prefab-user-properties-create.html">Learn more about the prefab properties</a></p>
+<h2>Other changes</h2>
+<ul>
+<li>Removes duplicated <code>collideWorldBounds</code> parameter from the <strong>Arcade Physics Body Collision</strong> section of the Inspector.</li>
+<li>Bug fix: doesn’t keep user components in the object when converting it to prefab.</li>
+<li>Fixes background for the “New update available” notification. If you click the notification panel, it opens the <code>https://phasereditor2d.com/downloads</code> page.</li>
+</ul>
+<h2>What’s next?</h2>
+<p>This release was for preparing the field for a new huge feature: the “behaviors tree”. This will require a lot of time &amp; energy but I hope it will be ready before the next year.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/components">components</a>, <a href="/blog/tag/prefabs">prefabs</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

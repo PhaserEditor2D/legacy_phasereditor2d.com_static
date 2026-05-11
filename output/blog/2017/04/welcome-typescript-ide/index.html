@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome TypeScript IDE for Phaser Editor! | Phaser Editor 2D Blog</title>
+  <meta name="description" content="How to install TypeScript IDE inside Phaser Editor, for a rich TypeScript editing experience.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Welcome TypeScript IDE for Phaser Editor!</h1>
+        <p class="text-info">April 17, 2017 - Posted in <a href="/blog/category/typescript">typescript</a></p>
+        
+        <div class="lead"><p><strong>This article is not valid for the last Phaser Editor version. To install TypeScript IDE on Phaser Editor v1.4.2 please read here: <a href="https://phasereditor2d.com/blog/2017/09/how-to-install-typescript-ide-in-phaser-editor-v142">https://phasereditor2d.com/blog/2017/09/how-to-install-typescript-ide-in-phaser-editor-v142</a></strong></p>
+<p>Welcome TypeScript IDE!</p>
+<p>We follow the work of <a href="https://github.com/angelozerr">Angelo Zerr</a> since he developed <a href="https://github.com/angelozerr/tern.java/wiki/Tern-Eclipse-IDE">Tern Eclipse IDE</a>, a great tool to write JavaScript code. This <a href="https://accounts.eclipse.org/users/azerr">Eclipse comitter</a> now is working on other promising projects that are <a href="https://github.com/angelozerr/typescript.java">TypeScript IDE</a> and <a href="https://github.com/eclipse/tm4e">TextMate for Eclipse</a>, both projects that we now are going to integrate to Phaser Editor progressively.</p>
+<p>What is TypeScript IDE? It is a set of plugins that you can install on Eclipse to edit and compile TypeScript code. It uses <code>tsserver</code> and understand TypeScrtipt projects (<a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">tsconfig.json</a>) and Salsa projects (<a href="https://code.visualstudio.com/docs/languages/jsconfig">jsconfig.json</a>).</p>
+<p><a href="https://github.com/angelozerr/typescript.java">Read the complete list of features</a></p>
+<p><a href="http://">Read the TypeScript IDE wiki</a></p>
+<p><a href="https://github.com/angelozerr/typescript.java/wiki/New-and-Noteworthy-1.2.0">Read the release notes of TypeScript 1.2.0</a></p>
+<h2>Install TypeSript IDE</h2>
+<p>Let’s go step by step:</p>
+<ul>
+<li>Add Eclipse Neon to the available update sites:</li>
+<li>Open the preferences window and select <code>Install/Update &gt; Available Software Sites</code>.</li>
+<li>Click the Add button and enter the Eclipse Neon update site <code>http://download.eclipse.org/releases/neon</code>:
+<img src="https://phasereditor2d.com/blog/content/images/20170417145905-AddNeonSite.png" alt="Add Neon site"></li>
+<li>Press OK to close the preferences window.</li>
+<li>Install TypeScript IDE</li>
+<li>Open the Eclipse Marketplace client <code>Help &gt; Eclipse Marketplace...</code>.</li>
+<li>Search for <code>typescript ide</code>. Note there are other plugins related to TypeScript, look in the image the one you have to install:
+<img src="https://phasereditor2d.com/blog/content/images/20170417150332-TypeScriptIDEInMarketplace.png" alt="TypeScipt IDE on Marketplace"></li>
+<li>Click on the Install button and confirm all the dialogs.</li>
+<li>To check that it was installed well click on <code>Help &gt; Installation Details</code>. The TypeScript plugins should be listed.</li>
+</ul>
+<h2>Add TypeScript support to a Phaser project</h2>
+<p>Since version <code>v1.4.0-preview</code> Phaser Editor supports  to create TypeScript projects. Just click on <code>File &gt; New &gt; Phaser Project</code> and select <strong>Add TypeScript support</strong>:
+<img src="https://phasereditor2d.com/blog/content/images/20170417150943-AddTypeScriptProject.png" alt="Enable TypeScript support in Phaser project"></p>
+<p>It will create a Phaser project with the Phaser definition (<code>*.d.ts</code>) files.</p>
+<p>To link the project with TypeScript IDE follow these  steps:</p>
+<ul>
+<li>Right click on <code>WebContent/tsconfig.json</code>file  and select <code>TypeScript &gt; Add TypeScript BuildPath</code>.</li>
+<li>Right click on the project and select <code>Properties</code>. It opens the project properties dialog.</li>
+<li>Select <code>TypeScript</code> and check the <code>Enable TypeScript Builder?</code> field.
+<img src="https://phasereditor2d.com/blog/content/images/20170417151601-EnableTypeScriptBuilder.png" alt="Enable TypeScript builder"></li>
+</ul>
+<p>And that’s all. Now when you modify a TS file and save it, it will compile automatically to JavaScript. To change this behavior and other parameters open the <code>tsconfig.json</code> file. It shows a nice visual editor that show you the main parameters.</p>
+<p>Try edit any file, it should show you the Phaser API auto-completions.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20170417152142-TSAutoComplete.png" alt="Phaser auto completion"></p>
+<p>We recommend you to <a href="http://">read the TypeScript IDE wiki</a> to learn all its features and how to configure them. It is a relative new project so please support them by <a href="https://github.com/angelozerr/typescript.java/issues">providing feedback on its issues</a>. You can open issue <a href="https://github.com/boniatillo-com/PhaserEditor/issues">on our repo</a> too.</p>
+<p>Enjoy it!</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/typescript">typescript</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

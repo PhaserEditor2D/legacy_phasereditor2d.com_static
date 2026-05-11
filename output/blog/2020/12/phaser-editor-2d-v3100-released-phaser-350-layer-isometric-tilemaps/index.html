@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.10.0 released! Phaser 3.50. Layer. Isometric Tilemaps. | Phaser Editor 2D Blog</title>
+  <meta name="description" content="This release includes the new Phaser 3.50 (the biggest release of Phaser 3). From this version of Phaser, we added support to layers, isometric tilemaps, bitmap-text drop shadows, and more.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.10.0 released! Phaser 3.50. Layer. Isometric Tilemaps.</h1>
+        <p class="text-info">December 22, 2020 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20201222222742-release3.10.1.png" alt="Phaser Editor 2D v3.10.0 released! Phaser 3.50. Layer. Isometric Tilemaps."></p>
+        <div class="lead"><p>Hi!</p>
+<p>A few days ago, the Phaser team published Phaser v3.50, the biggest release of Phaser 3. It includes a lot of new and exciting features. We recommend you to <a href="https://phaser.io/news/2020/12/phaser-350-released">read the release notes</a>.</p>
+<p>Today, we are releasing Phaser Editor 2D v3.10.0, to support some of the new features available in the new Phaser, like the new Layer objects and the different orientation of the Tilemaps: Isometric, Staggered, and Hexagonal.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D</a></p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor, 2D please, tell us, we will be proud to feature it in our website, newsletter, and social channels.</p>
+<h2>Collaboration</h2>
+<p>A lot is happening in our <a href="https://discord.com/invite/4DdpMMD">Discord server</a>. Join us for collaboration. Ask questions or tell us your ideas. Your feedback is highly appreciated and is key in the process of providing a more friendly and stable IDE.</p>
+<p>Also, we just opened the <a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/discussions">Phaser Editor forum</a> on GitHub (thanks to the new GitHub Discussions).</p>
+<h2>Hello Layer</h2>
+<p>One of our preferred feature included in Phaser 3.5 is the <a href="https://photonstorm.github.io/phaser3-docs/Phaser.GameObjects.Layer.html">Layer</a> game object.</p>
+<p>Probably, you use “layer of objects” in many of your game levels: the background layer, the platform layers, the controls layer, the enemies layer, the HUD layer… Many of us used the <a href="https://photonstorm.github.io/phaser3-docs/Phaser.GameObjects.Container.html">Container</a> game object for that. But now, we have a real Layer object.</p>
+<p><a href="https://help.phasereditor2d.com/v3/scene-editor/layer-object.html">Learn more about layers</a></p>
+<h3>Adding a Layer</h3>
+<p>Like the other objects in the Scene Editor, you can create a layer by dragging it from the Blocks view into the scene:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20201222131838-drop-layer-to-scene-12222020.png" alt="Drop layer to the scene"></p>
+<p>Also, you can create a layer with an array of selected objects:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20201222132142-create-layer-with-selected-objects-12222020.png" alt="Create a layer with the selected objects"></p>
+<p>By the way, the context menu now has a <strong>Parent</strong> sub-menu with options to create, flatten, and manipulate layers and containers.</p>
+<p><a href="https://help.phasereditor2d.com/v3/scene-editor/working-with-parent-objects.html">Learn more about working with parent objects</a></p>
+<h3>Adding objects to a Layer</h3>
+<p>Like containers, you can move an object to a layer:</p>
+<ul>
+<li>Select the object.</li>
+<li>In the Parent section of the Inspector view, click on the Parent button.</li>
+<li>It shows the Parent dialog. Select the new layer (containers are an option too).</li>
+<li>The objects will be moved to the new parent, preserving the absolute position.</li>
+</ul>
+<p><img src="https://phasereditor2d.com/blog/content/images/20201222132849-object-parent-dialog-12222020.png" alt="Moving an object to a parent"></p>
+<h3>Automatic adding of objects to layers</h3>
+<p>It is possible to add new objects (from the Blocks view) to a specific layer. To do this, first select the layer, or an object inside the layer, and drop the new object. It will be automatically added to the layer.</p>
+<h3>Layer prefabs</h3>
+<p>Like the containers and the other game objects, you can create a layer prefab. It is great for creating reusable menus, HUDs, dialogs, controls. Probably you have in your games a lot of container-based prefabs that can be transformed into layer prefabs.</p>
+<h2>Tilemap</h2>
+<p>Phaser 3.50.0 introduces new Tilemap features and some API changes.</p>
+<h3>Tilemap Layer</h3>
+<p>In the new Phaser, the <code>StaticTilemapLayer</code> and <code>DynamicTilemapLayer</code> are not available anymore. Now there is a unique <a href="https://photonstorm.github.io/phaser3-docs/Phaser.Tilemaps.TilemapLayer.html">TilemapLayer</a> that contains all the features available in the previous implementations.</p>
+<p>If you created a tilemap with the Scene Editor, in previous versions of the editor, then re-compile (<code>Ctrl+Alt+B</code>) all the scenes to update the code. The scene compiler now will use the new API.</p>
+<h3>Tilemap orientation</h3>
+<p>Phaser 3.50.0 includes support for more Tiled-tilemap orientations: isometric, staggered, hexagonal, and orthogonal.</p>
+<p>This means, that now you can load isometric tilemaps into the Scene Editor:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20201222140722-isometric-tilemap-12222020.png" alt="Isometric and staggered tilemaps"></p>
+<h2>BitmapText drop shadow</h2>
+<p>Phaser 3.50.0 added more features to the <a href="https://photonstorm.github.io/phaser3-docs/Phaser.GameObjects.BitmapText.html">BitmapText</a> game object. In this version of the editor, we added support for the <a href="https://photonstorm.github.io/phaser3-docs/Phaser.GameObjects.BitmapText.html#setDropShadow__anchor">drop shadow properties</a>.</p>
+<p>Eventually, we should add support for other features, like tinting the characters.</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20201222142520-bitmaptext-drop-shadow-properties-12222020.png" alt="Bitmap text drop shadow properties"></p>
+<h2>Other changes:</h2>
+<ul>
+<li>Scene thumbnail image generation now uses WEBGL mode, so it creates more accurate images.</li>
+<li>Set origin commands now use <code>Ctrl+NumpadX</code> instead <code>Shift+NumpadX</code>. It fixes problems with Windows.</li>
+<li>Now running the server in <code>-dev</code> mode works when no <code>-editor</code> option is provided. You can run <code>PhaserEditor2D -dev</code> to disable the caching of the editor’s source files, and load the <code>phaser.js</code> runtime (not the <code>phaser.min.js</code>).</li>
+<li>The Scene Editor validates if the tilemap’s tileset is using an external source. External tilesets are not supported by Phaser.</li>
+<li>Now the license file is stored in a user folder (<code>$HOME/.phasereditor2d/PhaserEditor2D.lic</code>). It fixes the problem of activating the editor when it is installed in a folder without write permissions.</li>
+</ul>
+<h2>What’s next</h2>
+<p>Next is 2021! Happy new year! We will keep working on support more features introduced by Phaser 3.50.0. We also should look into the issues list.</p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/release">release</a>, <a href="/blog/tag/tilemap">tilemap</a>, <a href="/blog/tag/bitmaptext">bitmaptext</a>, <a href="/blog/tag/layer">layer</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

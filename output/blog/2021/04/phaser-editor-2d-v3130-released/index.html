@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phaser Editor 2D v3.13.0 released! | Phaser Editor 2D Blog</title>
+  <meta name="description" content="New version with the latest Phaser. New project templates for Webpack and Parcel. Scene &amp;amp; Component&amp;#039;s compiler improvements.">
+  <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="/static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <link href="/static/css/custom.css" rel="stylesheet" type="text/css">
+  <link href="/blog/themes/phasereditor2/css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/"><img class="logo-icon mr-1" src="/static/images/favicon.png">Phaser Editor 2D</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="/downloads">Downloads</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link active bg-dark" href="/blog">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="p-5"></div>
+  <main class="container mb-5">
+    
+      <article class="post p-4 rounded-lg" style="background-color: rgb(36, 40, 44);">
+        <h1>Phaser Editor 2D v3.13.0 released!</h1>
+        <p class="text-info">April 02, 2021 - Posted in <a href="/blog/category/release">release</a></p>
+        <p><img class="img-fluid rounded shadow" src="https://phasereditor2d.com/blog/content/images/20210402123857-release3.13.0.png" alt="Phaser Editor 2D v3.13.0 released!"></p>
+        <div class="lead"><p>Hi!</p>
+<p>A new Phaser Editor 2D version is ready for download!</p>
+<p>This is a small update, but I’m particularly happy with this version. It introduces changes that remove some friction when you start with the editor. I’m talking about the new project templates for Webpack and Parcel. The new settings for compiling the scenes and user components to ES modules. And a new helper class for user components.</p>
+<p><a href="https://phasereditor2d.com/downloads">Download Phaser Editor 2D v3.13.0</a></p>
+<h2>Games and tutorials</h2>
+<p>If you are creating games, tutorials, or any other content (no matter if it is your first project) with Phaser Editor 2D, please tell me, and I will be proud to feature it in the website, newsletter, and social channels.</p>
+<h3>Using the Component Pattern with Phaser 3.50+</h3>
+<p>Tommy Leung from <a href="https://ourcade.co">Ourcade.co</a> is making a new tutorial series about the Component Pattern. It is not about Phaser Editor 2D but it explains basic principles about the Component Pattern and how you can use it in your games. In Phaser Editor 2D the component pattern is a central concept, so I think this tutorial can help you in making better use of the editor.</p>
+<blockquote>
+<p>Need a better way to organize and reuse logic in your game? Then the Component Pattern may be what you are looking for! We go over a Unity-inspired implementation for use in Phaser 3.50+ and typescript.</p>
+</blockquote>
+<p><a href="https://www.youtube.com/watch?v=a1MlMgRzsDU">Watch the video</a></p>
+<h2>Collaboration</h2>
+<p>A lot is happening in our <a href="https://discord.com/invite/4DdpMMD">Discord server</a>. Join us for collaboration. Ask questions or tell us your ideas. Your feedback is highly appreciated and is very important in the process of providing a more friendly and stable IDE.</p>
+<h2>Phaser v3.54.0</h2>
+<p>The Phaser team recently released Phaser v3.45.0. It is now built-in supported in Phaser Editor 2D.</p>
+<p><a href="https://github.com/photonstorm/phaser/releases/tag/v3.54.0">Read more about this new Phaser release</a></p>
+<h2>Welcome Webpack and Parcel!</h2>
+<p>I’m very pleased to include in the editor better support for developers using Webpack or Parcel.</p>
+<p>That was an old request, but is better now than never!</p>
+<p>Now, when you open the New Project dialog, you will see there are two four new templates, grouped in the Webpack and Parcel folders:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210402132036-new-project-dialog-webpack.png" alt="New Project dialog shows new webpack and parcel templates"></p>
+<p>You can create a JavaScript or TypeScript project with Webpack or Parcel.</p>
+<p><strong>Side note</strong>: <em>Phaser Editor 2D allows editing JavaScript files using the Monaco editor. It is fine for basic project structures, but not for Webpack or any other bundler-based project. I always recommend using Visual Studio Code for editing your JavaScript/TypeScript files.</em></p>
+<p><em>Phaser Editor 2D integrates with VS Code by default. You can launch it with the <code>Ctrl+Alt+U</code> keys. Also, you can open the active scene in VS Code with <code>Ctrl+Alt+E</code>.</em></p>
+<p>Just read the README file included in the project when it is created. It shows the instructions for compiling and testing it.</p>
+<p>The Parcel project template is a fork of the <a href="https://github.com/ourcade/phaser3-parcel-template">phaser3-parcel-template</a> created by the <a href="https://ourcade.co">Ourcade</a> team. I hope it will help you on following the amazing tutorials they are making and apply your learnings to Phaser Editor 2D.</p>
+<h2>Configuring public folders</h2>
+<p>Phaser Editor 2D uses Asset Pack files for importing the assets in the projects and loading them in the games. Each file configuration has an URL field that points to the file. The editor computes that URL automatically, by taking the relative path of the file, starting at the root of the project.</p>
+<p>That works if the root of your project is the root of the website. However, in Webpack (and similar), you can use a very different project structure, and store the assets in a folder that is not at the root of the project.</p>
+<p>For this reason, now the editor supports changing the public root folder for the asset packs. It is very simple, just create a <code>publicroot</code> file in the folder that will be at the root of the website:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210402135212-publicroot-folder.png" alt="configuring a public root folder"></p>
+<p>In the above image, the <code>static</code> folder is a “public root” folder of the project. All Asset Pack files inside the <code>static</code> folder will use as a URL for the files, a relative path that starts in the <code>static</code> folder and not in the project’s root.</p>
+<p>For example, the URL to the <code>Background_01.png</code> file is <code>assets/Background_01.png</code> and not <code>static/assets/Background_01.png</code>.</p>
+<p><a href="https://help.phasereditor2d.com/v3/asset-pack-editor/public-root.html">Learn more about the public root folders</a></p>
+<p>The Webpack and Parcel project templates provided by the editor are well configured, so you don’t have to care about it.</p>
+<h2>ES modules support</h2>
+<p>There are two new parameters for the scene compilers: <strong>Export Class</strong> and <strong>Auto import</strong>.</p>
+<p>When the <strong>Export Class</strong> is on, the compiler includes the <code>export default</code> modifiers in the scene’s class declaration.</p>
+<p>When the <strong>Auto Import</strong> parameter is on, the compiler looks for the classes used by the scene and generates the <code>import</code> statements. The compiler only knows the types it generates, but if you use other types and elements in the user code sections, then you have to import them manually:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210402155858-automatic-export-and-import.png" alt="Automatic import and export in ES modules"></p>
+<p>These parameters are also present in the User Components Editor, and it works the same. The component compiler automatically exports and imports elements of ES modules.</p>
+<h2>A base class for your components</h2>
+<p>If you are using User Components in your projects, then you may use a common class for all our components. Or for most of them. This base class registers listeners to the Phaser events and call special methods that are overridden in the derived classes.</p>
+<p>In this version, the editor proposes you use a base class for your components, which may be useful for the majority of the cases. This class is named <strong>UserComponent</strong>, and you can add it to your project with a single click.</p>
+<p>In the User Components editor, open the context menu and select the <strong>Resources</strong> → <strong>Create UserComponent.js</strong>:</p>
+<p><img src="https://phasereditor2d.com/blog/content/images/20210402161127-create-user-component-base-class.png" alt="User components menu to create usercomponent.js file"></p>
+<p>Look there are options for generating the file with an ES module format, JavaScript, or TypeScript.</p>
+<p>You only need to generate this file once. Then you can use it in your components, setting the <strong>Super Class</strong> parameter to <strong>UserComponent</strong>.</p>
+<p>The <strong>UserComponent</strong> class is very simple. It listens to different Phaser events and call the correspondent method: <strong>awake()</strong>, <strong>start()</strong>, <strong>update()</strong>, and <strong>destroy()</strong>.</p>
+<p><a href="https://help.phasereditor2d.com/v3/scene-editor/user-components-super-class.html">Learn more about the User Component class</a></p>
+<h2>The awake event</h2>
+<p>User components can listen to Phaser events for implementing a particular behavior. One important event to catch is when the component “starts”. That event is emitted in the next scene update. However, you want to execute an initialization routine right away after the component is created and all its properties are set. It is not possible by listening to Phaser events.</p>
+<p>In this version, the Scene compiler generates the code to emit the <strong>components-awake</strong> event. When you implement a component, you can listen to this event and perform your initialization routine.</p>
+<p>If your component extends the <strong>UserComponent</strong> class, then the only thing you have to do is to implement an <strong>awake</strong> event:</p>
+<pre><code>class PushOnClick extends UserComponent {
+
+    constructor(gameObject) {
+        super(gameObject);
+    }
+
+    awake() {
+        // write your init code here
+    }
+}
+</code></pre>
+<p><a href="https://help.phasereditor2d.com/v3/scene-editor/user-components-awake-event.html">Learn more about the awake event</a></p>
+<h2>Other changes</h2>
+<h3>Class fields</h3>
+<p>The scene compiler now generates class fields instead of constructor initialized fields. Maybe that code is not compatible with all browsers. If you are making professional games, I recommend using a build tool like TypeScript, Babel, Webpack, etc…</p>
+<h3>Scene settings: Method Create</h3>
+<p>The scene compiler generates all the “creation” code inside a create method. The <strong>Method Create</strong> parameter of the scene settings allows changing the name of that method. Before, it has the <strong>create</strong> name by default, in concordance with that special method of a Phaser scene. However, many of you get confused the first time you want to add custom code to the “create” method.</p>
+<p>In this release, the <strong>Method Create</strong> parameter has the <strong>editorCreate</strong> value by default. And the compiler, the first time generates the scene code, includes a “create” method in the user code. This means, that now you can add custom code to the <strong>create</strong> method. Something like this:</p>
+<pre><code>export default class Level extends Phaser.Scene {
+	
+	editorCreate() {
+		// the objects created by the editor
+	}
+	
+	/* START-USER-CODE *
+	
+	create() {
+		// you can write code here
+		this.editorCreate();
+	}
+	
+	/* END-USER-CODE */
+}
+</code></pre>
+<p>The <strong>Create Method</strong> parameter of the scene settings allows changing the name of the method generated by the scene compiler.</p>
+<p><a href="https://help.phasereditor2d.com/v3/scene-editor/scene-compiler-scene-settings.html">Learn more about the Create Method parameter</a></p>
+<h3>Change Log</h3>
+<p><a href="https://github.com/PhaserEditor2D/PhaserEditor2D-v3/releases/tag/v3.13.0">Take a look at the complete CHANGELOG</a></p>
+<h2>What’s next?</h2>
+<p>The next in line is the support of nine-slice objects! I’m delayed with the Phaser Help Center, but… did you see the new docs from Phaser? It improved a lot! Take a look:</p>
+<p><a href="https://newdocs.phaser.io/">newdocs.phaser.io</a></p>
+<p>Keep in contact!</p>
+<p>Arian</p>
+</div>
+        <p><strong>Tags:</strong> <a href="/blog/tag/webpack">webpack</a>, <a href="/blog/tag/parcel">parcel</a>, <a href="/blog/tag/user-components">user-components</a>, <a href="/blog/tag/compiler">compiler</a>, <a href="/blog/tag/webpack">Webpack</a>, <a href="/blog/tag/parcel">Parcel</a>, <a href="/blog/tag/user-components">User Components</a></p>
+      </article>
+    
+  </main>
+
+  <script type="text/javascript" src="/static/js/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
